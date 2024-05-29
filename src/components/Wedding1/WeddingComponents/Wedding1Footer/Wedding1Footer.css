@@ -1,0 +1,322 @@
+footer {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 10px;
+    gap: 60px;
+}
+
+.footer>h1 {
+    color: white;
+    max-width: 800px;
+    text-align: center;
+}
+
+.invitation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer>form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.footer>form>input {
+    border: none;
+    background-color: transparent;
+    border-bottom: 4px solid rgba(255, 205, 151);
+    width: 800px;
+    font-size: 35px;
+    color: rgba(242, 184, 182);
+    padding: 10px 10px;
+    font-family: 'global-font';
+}
+
+.footer>form>input:focus {
+    outline: none;
+}
+
+.footer>form>input::placeholder {
+    color: rgb(255, 205, 151);
+}
+
+/* ---------------------------------------button-------------------------------------- */
+.button_answer {
+    --offset: 10px;
+    --border-size: 2px;
+    display: block;
+    position: relative;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    color: rgba(242, 184, 182);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background-color 0.8s ease;
+    width: 400px;
+    height: 80px;
+    font-size: 30px;
+    font-family: 'global-font';
+}
+
+.button__horizontal,
+.button__vertical {
+    position: absolute;
+    top: var(--horizontal-offset, 0);
+    right: var(--vertical-offset, 0);
+    bottom: var(--horizontal-offset, 0);
+    left: var(--vertical-offset, 0);
+    transition: transform 0.8s ease;
+    will-change: transform;
+}
+
+.button__horizontal::before,
+.button__vertical::before {
+    content: '';
+    position: absolute;
+    border: inherit;
+}
+
+.button__horizontal {
+    --vertical-offset: calc(var(--offset) * -1);
+    border-top: var(--border-size) solid currentcolor;
+    border-bottom: var(--border-size) solid currentcolor;
+}
+
+.button__horizontal::before {
+    top: calc(var(--vertical-offset) - var(--border-size));
+    bottom: calc(var(--vertical-offset) - var(--border-size));
+    left: calc(var(--vertical-offset) * -1);
+    right: calc(var(--vertical-offset) * -1);
+}
+
+.button_answer:hover .button__horizontal {
+    transform: scaleX(0);
+}
+
+.button__vertical {
+    --horizontal-offset: calc(var(--offset) * -1);
+    border-left: var(--border-size) solid currentcolor;
+    border-right: var(--border-size) solid currentcolor;
+}
+
+.button__vertical::before {
+    top: calc(var(--horizontal-offset) * -1);
+    bottom: calc(var(--horizontal-offset) * -1);
+    left: calc(var(--horizontal-offset) - var(--border-size));
+    right: calc(var(--horizontal-offset) - var(--border-size));
+}
+
+.button_answer:hover .button__vertical {
+    transform: scaleY(0);
+}
+
+/* ---------------------------------------------------------------------------- */
+
+.image_cell {
+    max-width: 500px;
+}
+
+.image_hands {
+    max-width: 400px;
+    filter: hue-rotate(-30deg);
+    opacity: 0;
+}
+
+.hands {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.image_heart {
+    position: absolute;
+    max-width: 300px;
+    left: 50%;
+}
+
+.footer>h2 {
+    color: rgba(242, 184, 182, 255);
+    font-size: 35px;
+    text-align: center;
+}
+
+.right_hand {
+    animation: right_hand 5.5s ease-in-out;
+    z-index: 1;
+}
+
+.wats_up_number_div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    color: rgba(242, 184, 182, 255);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'global-font';
+    text-align: center;
+}
+
+.wats_up_number_div>input{
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgba(242, 184, 182, 255);
+    background-color: transparent;
+    color: rgba(242, 184, 182, 255);
+   outline: none;
+}
+
+
+.wats_up_number_div>input::placeholder{
+    color: rgba(242, 184, 182, 255);
+    padding: 5px 10px;
+}
+
+.wats_up_number_div>button{
+    width: 300px;
+    height: 30px;
+    background-color: transparent;
+    color: rgba(242, 184, 182, 255);
+    border: 1px solid rgba(242, 184, 182, 255);
+    font-family: 'global-font';
+}
+
+.wats_up_number_div>button:hover{
+    background-color: rgba(242, 184, 182, 255);
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes right_hand {
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-75%);
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+        transform: translateX(-75%);
+    }
+}
+
+.left_hand {
+    animation: left_hand 5.5s ease-in-out;
+    z-index: 1;
+}
+
+@keyframes left_hand {
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(75%);
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+        transform: translateX(75%);
+    }
+}
+
+/* -------------------------------------radio-button--------------------------------- */
+.radio-input {
+    visibility: hidden;
+}
+
+.radio-label {
+    position: relative;
+    padding-left: 35px;
+}
+
+.radio-label {
+    color: rgb(255, 205, 151);
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.radio-label:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    border-radius: 50%;
+}
+
+.radio-border {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    outline: solid 3px rgba(255, 205, 151);
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.radio-input:checked+.radio-label:after {
+    transition: all 0.5s;
+    background-color: rgba(255, 205, 151);
+}
+
+/* --------------------------------------response------------------------------------------------------- */
+@media screen and (max-width:414px) {
+    .footer>form>input {
+        width: 300px;
+        font-size: 15px;
+    }
+
+    .button_answer {
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .radio-label {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width:415px) and (max-width:820px) {
+    .footer>form>input {
+        width: 350px;
+        font-size: 15px;
+    }
+
+    .button_answer {
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+    }
+}

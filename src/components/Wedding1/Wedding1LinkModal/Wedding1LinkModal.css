@@ -1,0 +1,53 @@
+.wedding1LinkModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.677);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+
+.wedding1_link_modal_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    color: rgba(135, 101, 65);
+    background-color: white;
+    height: 300px;
+    width: 400px;
+    padding-top: 60px;
+}
+
+.wedding1_link_modal_block >h1{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.wedding1_link_modal_block >input{
+    width: 350px;
+    height: 30px;
+    border: 2px solid rgba(135, 101, 65);
+    padding: 10px;
+    outline: none;
+}
+
+
+.wedding1_link_modal_block >button{
+    width: 350px;
+    height: 40px;
+    border: 2px solid rgba(135, 101, 65);
+    padding: 10px;
+    outline: none;
+    background-color: rgba(135, 101, 65);
+    color: white;
+    cursor: pointer;
+}
