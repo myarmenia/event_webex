@@ -8,37 +8,34 @@ import { musicModalSelector, open } from '../store/slices/MusicModalSlice/MusicM
 import FixedButton from '../components/FixedButton/FixedButton';
 
 function HomeWraper() {
-  const [langModal, setLangModal] = useState(false);
-  const musicModalIsopen = useSelector(musicModalSelector);
-  const dispatch = useDispatch()
+   const [langModal, setLangModal] = useState(false);
+   const musicModalIsopen = useSelector(musicModalSelector);
+   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const modalState = localStorage.getItem('langModal');
-    if (modalState === null) {
-      setLangModal(true);
-      localStorage.setItem('langModal', 'true');
-      
-    } else {
-      setLangModal(modalState === 'true');
-      dispatch(open())
-    } 
+   useEffect(() => {
+      const modalState = localStorage.getItem('langModal');
+      if (modalState === null) {
+         setLangModal(true);
+         localStorage.setItem('langModal', 'true');
+      } else {
+         setLangModal(modalState === 'true');
+         dispatch(open());
+      }
 
+      setTimeout(() => {
+         localStorage.removeItem('langModal');
+      }, 3000);
+   }, []);
 
-    setTimeout(() => {
-      localStorage.removeItem('langModal');
-      
-    }, 3000);
-  }, []);
-
-  return (
-    <div className="home_wraper">
-      <Outlet />
-      <Footer_Autors />
-      {langModal && <Language setLangModal={setLangModal}/>}
-      {musicModalIsopen && <MusicMoadal />}
-      <FixedButton/>
-    </div>
-  );
+   return (
+      <div className="home_wraper">
+         <Outlet />
+         {/* <Footer_Autors /> */}
+         {/* {langModal && <Language setLangModal={setLangModal} />}
+         {musicModalIsopen && <MusicMoadal />} */}
+         {/* <FixedButton /> */}
+      </div>
+   );
 }
 
 export default HomeWraper;
