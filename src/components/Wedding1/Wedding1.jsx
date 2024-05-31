@@ -17,6 +17,6 @@ function Wedding1() {
         {selectLinkModal && <Wedding1LinkModal/>}
     </div>
   )
-}
+} 
 
 export default Wedding1
