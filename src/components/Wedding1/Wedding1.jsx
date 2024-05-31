@@ -24,7 +24,8 @@ function Wedding1() {
     if (modalState === null) {
       setLangModal(true);
       localStorage.setItem('langModal', 'true');
-      
+       
+    
     } else {
       setLangModal(modalState === 'true');
       dispatch(open())
