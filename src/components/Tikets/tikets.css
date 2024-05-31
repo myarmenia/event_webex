@@ -80,6 +80,9 @@
    color: #1be5e8;
    pointer-events: none;
 }
+.blockCenter_nameBlock-inptData > input::placeholder {
+   color: #1be5e8; /* Задайте желаемый цвет */
+}
 .tiketsHeader-imgBlockLeft {
    top: 0;
    left: 0;
