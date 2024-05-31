@@ -4,6 +4,8 @@ import { footerBackground, handLeft, handRight, redHeart, wedding } from '../../
 import './Wedding1Footer.css';
 import { allInfoSelector, changeFeedback, changeInfoSelector, changeInfoWatsUp } from '../../../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { postPrivateProject } from '../../../../store/slices/privateProjectSlice/privateProjectApi';
+import { privateProjectSelector } from '../../../../store/slices/privateProjectSlice/privateProjectSlice';
 
 function Wedding1Footer() {
     const { t, i18n } = useTranslation();
@@ -12,6 +14,7 @@ function Wedding1Footer() {
     const [wutsUpNumber, setWutsUpNumber] = useState('');
     const allInfo = useSelector(allInfoSelector);
     const changeInfoState = useSelector(changeInfoSelector);
+    const respProj = useSelector(privateProjectSelector);
     const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,55 +41,62 @@ function Wedding1Footer() {
             const resultObj = {
                 template_id: '1',
                 date: allInfo.date,
-                sound_path: allInfo.music_path,
+                // sound_path: allInfo.music_path,
                 feedBack: allInfo.feedback,
+                invitation_name: allInfo.nameBoy + '-' + allInfo.nameGirl,
                 sections: [
                     {
                         section_number: 1,
-                        name_1: allInfo.nameBoy,
-                        name_2: allInfo.nameGirl,
+                        ...(allInfo.nameBoy && { name_1: allInfo.nameBoy }),
+                        ...(allInfo.nameGirl && { name_2: allInfo.nameGirl })
                     },
 
-                    {
+                    {   
                         section_number: 2,
-                        time: allInfo.eventTime,
-                        text: allInfo.eventText,
-                        address: allInfo.eventAddres,
-                        address_link: allInfo.event_addres_link,
-                        images: allInfo.event_imgs
+                        ...(allInfo.eventTime && { time: allInfo.eventTime }),
+                        ...(allInfo.eventText && { text: allInfo.eventText }),
+                        ...(allInfo.eventAddres && { address: allInfo.eventAddres }),
+                        ...(allInfo.event_addres_link && { address_link: allInfo.event_addres_link }),
+                        // ...(allInfo.event_imgs.length > 0 && { images: allInfo.event_imgs })
                     },
 
                     {
                         section_number: 3,
-                        time: allInfo.churchesTime,
-                        text: allInfo.chrchesText,
-                        address: allInfo.chrchesAddres,
-                        address_link: allInfo.churches_addres_link,
-                        images: allInfo.churches_imgs
+                        ...(allInfo.churchesTime && { time: allInfo.churchesTime }),
+                        ...(allInfo.chrchesText && { text: allInfo.chrchesText }),
+                        ...(allInfo.chrchesAddres && { address: allInfo.chrchesAddres }),
+                        ...(allInfo.churches_addres_link && { address_link: allInfo.churches_addres_link }),
+                        // ...(allInfo.churches_imgs.length > 0 && { images: allInfo.churches_imgs })
                     },
 
                     {
                         section_number: 4,
-                        time: allInfo.registryTime,
-                        text: allInfo.registryText,
-                        address: allInfo.registryAddres,
-                        address_link: allInfo.registry_addres_link,
-                        images: allInfo.registry_imgs
+                        ...(allInfo.registryTime && { time: allInfo.registryTime }),
+                        ...(allInfo.registryText && { text: allInfo.registryText }),
+                        ...(allInfo.registryAddres && { address: allInfo.registryAddres }),
+                        ...(allInfo.registry_addres_link && { address_link: allInfo.registry_addres_link }),
+                        // ...(allInfo.registry_imgs.length > 0 && { images: allInfo.registry_imgs })
                     },
 
                     {
                         section_number: 5,
-                        time: allInfo.banquetTime,
-                        text: allInfo.banquetText,
-                        address: allInfo.banquetAddres,
-                        address_link: allInfo.banquet_addres_link,
-                        images: allInfo.banquet_imgs
+                        ...(allInfo.banquetTime && { time: allInfo.banquetTime }),
+                        ...(allInfo.banquetText && { text: allInfo.banquetText }),
+                        ...(allInfo.banquetAddres && { address: allInfo.banquetAddres }),
+                        ...(allInfo.banquet_addres_link && { address_link: allInfo.banquet_addres_link }),
+                        // ...(allInfo.banquet_imgs.length > 0 && { images: allInfo.banquet_imgs })
                     }
-                ]
+                ].filter(item => Object.keys(item).length !== 1),
+                  
 
             }
             
-          console.log(resultObj);
+          dispatch(postPrivateProject(resultObj)).then(res =>{
+             if (res.payload.success) {
+                window.location.href = res.payload.data.redirect_url
+             }
+          })
+          
         }
 
        

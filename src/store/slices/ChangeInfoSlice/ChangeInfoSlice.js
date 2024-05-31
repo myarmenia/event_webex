@@ -9,7 +9,7 @@ const changeInfoSlice = createSlice({
             nameBoy: '',
             nameGirl: '',
 
-            date: '2024-08-25',
+            date: '',
             music_path: '',
 
             eventTime: '',

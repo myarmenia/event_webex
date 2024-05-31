@@ -12,14 +12,12 @@ function Timer() {
   const [day, setDay] = useState(0);
   const allInfo = useSelector(allInfoSelector);
 
-  // Parse date parts from allInfo
-  const allInfoyear = allInfo.date.split('-')[0];
-  const allInfomonth = allInfo.date.split('-')[1];
-  const allInfoday = allInfo.date.split('-')[2];
-
+  // Parse date parts from allInfo or use default date if empty
+  const defaultDate = '2024-10-12';
+  const dateToUse = allInfo.date || defaultDate;
+  const [allInfoyear, allInfomonth, allInfoday] = dateToUse.split('-');
 
   useEffect(() => {
-    // let timer
     const targetDate = new Date(allInfoyear, allInfomonth - 1, allInfoday, 31, 17, 0, 0).getTime();
 
     const updateTimer = () => {
