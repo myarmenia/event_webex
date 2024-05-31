@@ -49,6 +49,6 @@ function Wedding1() {
         <FixedButton/>
     </div>
   )
-}
+} 
 
 export default Wedding1

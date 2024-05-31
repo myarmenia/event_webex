@@ -1,0 +1,98 @@
+/* Header start ................................................................... */
+
+.tiketsHeader {
+   position: relative;
+   background-color: #3c0d4b;
+   max-height: 900px;
+   height: 900px;
+}
+
+.tiketsHeader img {
+   height: 100%;
+}
+
+.tiketsHeader-blockCenter {
+   display: flex;
+   justify-content: center;
+}
+.tiketsHeader-blockCenter_nameBlock {
+   flex-basis: 860px;
+   height: 600px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Jomhuria';
+   flex-direction: column;
+}
+.tiketsHeader-imgBlockLeft,
+.tiketsHeader-imgBlockRight,
+.tiketsHeader-imgBlockBottom {
+   position: absolute;
+}
+.blockCenter_nameBlock-name-minname {
+   font-size: 200px;
+   font-family: Jomhuria;
+   height: 70px;
+   font-style: normal;
+   color: #fdfdfd;
+}
+.blockCenter_nameBlock-name-bigName {
+   font-size: 400px;
+   font-family: Jomhuria;
+   height: 268px;
+   font-style: normal;
+   /* font-size: 72px; */
+   background: -webkit-linear-gradient(#21e4e8, #4f60bc, #5297e5, #8f0c93);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+
+   /* box-shadow: 0px 4px 100px 0px #f8bfdd; */
+}
+.blockCenter_nameBlock-name {
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: center;
+   margin-top: -35px;
+}
+
+.nameBlock-inptData-text {
+   font-size: 100px;
+   font-family: Jomhuria;
+   /* height: 70px; */
+   font-style: normal;
+   color: #1be5e8;
+   letter-spacing: 4px;
+}
+
+.blockCenter_nameBlock-inptData > input {
+   background-color: inherit;
+   padding: 10px;
+   font-size: 45px;
+   width: 307px;
+   position: relative;
+   z-index: 76543367;
+   outline: none;
+   border: none;
+   color: #1be5e8;
+   pointer-events: none;
+}
+.tiketsHeader-imgBlockLeft {
+   top: 0;
+   left: 0;
+   bottom: 0;
+}
+.tiketsHeader-imgBlockRight {
+   top: 0;
+   right: 0;
+   bottom: 0;
+}
+.tiketsHeader-imgBlockBottom {
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+/* Header end ................................................................... */
