@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { editIcon, ringsWedding } from '../../../../iconsFolder/icons';
 import { imageCouple } from '../../../../images/images';
 import { openLinkModal } from '../../../../store/slices/LinkModalSlice/LinkModalSlice';
+import { convertToBase64, setBase64 } from '../../../../utils/helperFunck';
 
 function Wedding1Event({ item }) {
     const [eventItem, setEventItem] = useState(false);
@@ -50,7 +51,9 @@ function Wedding1Event({ item }) {
 
 
     function handleChange(e) {
-        setFile(URL.createObjectURL(e.target.files[0]));
+       convertToBase64(e.target.files[0]).then((base64) => {
+           setFile(base64)
+       })
     }
 
 

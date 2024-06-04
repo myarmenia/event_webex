@@ -183,27 +183,12 @@ footer {
     background-color: transparent;
     color: rgba(242, 184, 182, 255);
    outline: none;
+    padding:  10px ;
 }
 
 
 .wats_up_number_div>input::placeholder{
     color: rgba(242, 184, 182, 255);
-    padding: 5px 10px;
-}
-
-.wats_up_number_div>button{
-    width: 300px;
-    height: 30px;
-    background-color: transparent;
-    color: rgba(242, 184, 182, 255);
-    border: 1px solid rgba(242, 184, 182, 255);
-    font-family: 'global-font';
-}
-
-.wats_up_number_div>button:hover{
-    background-color: rgba(242, 184, 182, 255);
-    color: white;
-    cursor: pointer;
 }
 
 @keyframes right_hand {

@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './MusicModal.css';
 import { playIcon, pauseIcon } from '../../iconsFolder/icons'; // Assume pauseIcon is also defined
 import { audioData } from '../../dataFolder/data';
 import { useDispatch, useSelector } from 'react-redux';
-import { close, musicModalSelector } from '../../store/slices/MusicModalSlice/MusicModalSlice';
-import { changeMusic } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
+import { close, musicModalSelector, open } from '../../store/slices/MusicModalSlice/MusicModalSlice';
+import { change, changeMusic } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 
-function MusicModal({ setMusicModal }) {
+function MusicModal({langModal}) {
   const audioRefs = useRef([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(null);
@@ -37,11 +37,16 @@ function MusicModal({ setMusicModal }) {
 
     dispatch(changeMusic(track.src))
     dispatch(close())
+    dispatch(change())
   };
+
+
+
 
   return (
     <div className='music-modal'>
       <div className='music-modal_content'>
+        <h1 className='music-modal_title'>Ընտրեք երաժշտություն</h1>
         {audioData.map((track, index) => (
           <div key={track.id} className="button-container_music">
             <label className='button_musicc'>
@@ -60,12 +65,14 @@ function MusicModal({ setMusicModal }) {
                   checked={selectedTrack === index}
                   onChange={(e) => handleRadioChange(track, index)}
                 />
-                <span className='button_music_play' onClick={() => playaudio(index)}>
-                  {isPlaying === index ? pauseIcon : playIcon}
-                </span>
-                <span className="button_music_name">Track {index + 1}</span>
               </div>
             </label>
+            <div className='button_music_controls'>
+              <span className='button_music_play' onClick={() => playaudio(index)}>
+                {isPlaying === index ? pauseIcon : playIcon}
+              </span>
+              <span className="button_music_name">Track {index + 1}</span>
+            </div>
           </div>
         ))}
       </div>

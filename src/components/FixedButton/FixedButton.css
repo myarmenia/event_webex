@@ -1,14 +1,50 @@
 .fixed_button {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #f8b8b0;
+    top: 50px;
+    right: 130px;
+    height: 44px;
+    background: linear-gradient(to left, rgba(135, 101, 65), rgba(185, 133, 104));
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 100;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    outline: none;
+    border:none;
+    font-size: 16px;
+    font-family: 'global-font';
+    cursor: pointer;
+}
+
+
+
+
+.fixed_button_2{
+    position: fixed;
+    top: 50px;
+    right: 30px;
+    height: 44px;
+    background: linear-gradient(to left, rgba(135, 101, 65), rgba(185, 133, 104));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    outline: none;
+    border:none;
+    font-size: 16px;
+    font-family: 'global-font';
+    cursor: pointer;
+}
+
+
+
+.fixed_button:hover, .fixed_button_2:hover {
+    background: rgba(185, 133, 104);
 }
