@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { allInfoSelector } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 import { useSelector } from 'react-redux';
 
-function Timer({ allInfo, liner }) {
+function Timer({ allInfo = {}, liner }) {
    const { t } = useTranslation();
    const [sec, setSec] = useState(0);
    const [min, setMin] = useState(0);
@@ -13,16 +13,16 @@ function Timer({ allInfo, liner }) {
    // const allInfo = useSelector(allInfoSelector);
 
 
-  // Parse date parts from allInfo or use default date if empty
-  const defaultDate = '2024-10-12';
-  const dateToUse = allInfo.date || defaultDate;
-  const [allInfoyear, allInfomonth, allInfoday] = dateToUse.split('-');
-
+   // Parse date parts from allInfo or use default date if empty
+   const defaultDate = '2024-10-12';
+   const dateToUse = allInfo.date || defaultDate;
+   const [allInfoyear, allInfomonth, allInfoday] = dateToUse.split('-');
 
    // Parse date parts from allInfo
-  //  const allInfoyear = allInfo.date.split('-')[0];
-  //  const allInfomonth = allInfo.date.split('-')[1];
-  //  const allInfoday = allInfo.date.split('-')[2];
+   // const allInfoyear = allInfo.date.split('-')[0];
+   // const allInfomonth = allInfo.date.split('-')[1];
+   // const allInfoday = allInfo.date.split('-')[2];
+
 
    useEffect(() => {
       // let timer
@@ -30,7 +30,7 @@ function Timer({ allInfo, liner }) {
          allInfoyear,
          allInfomonth - 1,
          allInfoday,
-         31,
+         // 31,
          17,
          0,
          0,
@@ -39,7 +39,6 @@ function Timer({ allInfo, liner }) {
       const updateTimer = () => {
          const now = new Date().getTime();
          const remainingTime = targetDate - now;
-
 
          if (remainingTime <= 0) {
             clearInterval(timer);
@@ -66,7 +65,7 @@ function Timer({ allInfo, liner }) {
 
    return (
       <div className="timer">
-         <h1>{t('timer.0')}</h1>
+         {liner && <h1>{t('timer.0')}</h1>}
          <div className="timer_content">
             <div className="time">
                <span>{day}</span>
