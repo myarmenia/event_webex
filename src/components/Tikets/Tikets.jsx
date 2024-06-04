@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Header } from './index';
+import { Header, Section } from './index';
 
 import './tikets.css';
 
@@ -10,6 +10,9 @@ const Tikets = () => {
       <div>
          <div>
             <Header />
+            <div>
+               <Section />
+            </div>
          </div>
       </div>
    );

@@ -1,4 +1,4 @@
-/* Header start ................................................................... */
+/* TiketsHeader start ................................................................... */
 
 .tiketsHeader {
    position: relative;
@@ -14,9 +14,10 @@
 .tiketsHeader-blockCenter {
    display: flex;
    justify-content: center;
+   flex-direction: column;
 }
 .tiketsHeader-blockCenter_nameBlock {
-   flex-basis: 860px;
+   flex-basis: 590px;
    height: 600px;
    background-size: contain;
    background-repeat: no-repeat;
@@ -60,7 +61,7 @@
 }
 
 .nameBlock-inptData-text {
-   font-size: 100px;
+   font-size: 70px;
    font-family: Jomhuria;
    /* height: 70px; */
    font-style: normal;
@@ -72,17 +73,41 @@
    background-color: inherit;
    padding: 10px;
    font-size: 45px;
-   width: 307px;
+   max-width: 340px;
    position: relative;
    z-index: 76543367;
    outline: none;
    border: none;
    color: #1be5e8;
-   pointer-events: none;
+   color-scheme: dark;
+   /* pointer-events: none; */
 }
 .blockCenter_nameBlock-inptData > input::placeholder {
    color: #1be5e8; /* Задайте желаемый цвет */
 }
+.blockCenter_nameBlock-inptData > input::-webkit-calendar-picker-indicator {
+   color: #1be5e8;
+   opacity: 0.5;
+   display: block;
+   /* background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat; */
+   width: 30px;
+   height: 30px;
+   margin-top: 8px;
+   /* border-width: thin; */
+}
+
+.tiketsHeader-blockCenter_timeBlock {
+   margin-top: -82px;
+   display: flex;
+   justify-content: center;
+}
+.tiketsHeader-blockCenter_timeBlock > div {
+   padding: 22px 36px 22px 36px;
+   background-size: cover;
+   background-position: center;
+   position: relative;
+}
+
 .tiketsHeader-imgBlockLeft {
    top: 0;
    left: 0;
@@ -98,4 +123,100 @@
    right: 0;
    bottom: 0;
 }
-/* Header end ................................................................... */
+/* TiketsHeader end ................................................................... */
+
+/* TiketsSection start ................................................................... */
+
+.TiketsSection {
+   width: 100%;
+   position: relative;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   margin-top: -5px;
+}
+
+.tiketsSection-imgBlockLeft,
+.tiketsSection-imgBlockRight > img {
+   height: 100%;
+}
+
+.tiketsSection-imgBlockLeft {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   display: inline-flex;
+}
+
+.tiketsSection-imgBlockRight {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+}
+
+.TiketsSection-contaner {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: flex;
+   padding: 20px;
+}
+
+.TiketsSection-contaner-blockLeft {
+   flex: 1 2 50%;
+   padding: 10px;
+}
+
+.TiketsSection-contaner-blockRight {
+   flex: 1 1 12%;
+   position: relative;
+}
+
+.TiketsSection-contaner-blockRight::before {
+   content: '';
+   position: absolute;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   width: 1px;
+   height: 100%;
+   background-color: #ff56f6;
+   box-shadow: 0px -9px 26px 1px #ff56f6;
+}
+
+.TiketsSection-blockLeft-blockImg {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+.TiketsSection-blockRight-img {
+   max-width: 280px;
+}
+
+.TiketsSection-blockLeft-blockDescript > h3 {
+   font-size: 100px;
+   font-family: Jomhuria;
+   font-style: normal;
+   color: #ffffff;
+   font-weight: 100;
+   letter-spacing: 6px;
+}
+
+.TiketsSection-blockDescript-textarea {
+   font-size: 24px;
+   font-family: Jomhuria;
+   font-style: normal;
+   color: #ffffff;
+   font-weight: 100;
+   letter-spacing: 6px;
+}
+.TiketsSection-blockDescript-defaulttext {
+   font-size: 24px;
+   font-family: Jomhuria;
+   font-style: normal;
+   color: #ffffff;
+   font-weight: 100;
+   letter-spacing: 6px;
+}
+
+/* TiketsSection end ................................................................... */

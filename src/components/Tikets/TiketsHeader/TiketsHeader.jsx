@@ -1,10 +1,17 @@
 import React from 'react';
-
-import { wing1, wing2, wing3, wing4, backgroundCenterBlock } from '../../../images/TiketsImg';
+import Timer from '../../timer/Timer';
+import {
+   wing1,
+   wing2,
+   wing3,
+   wing4,
+   backgroundCenterBlock,
+   Showa,
+} from '../../../images/TiketsImg';
 
 const TiketsHeader = () => {
    const [headerTitle, setHeaderTitle] = React.useState({ name: 'PROM', lastName: ' NIGHT' });
-   const [dataInput, setDataInput] = React.useState(true);
+   const [dataInput, setDataInput] = React.useState(false);
    return (
       <div className="tiketsHeader">
          <div className="tiketsHeader-blockButton"></div>
@@ -30,15 +37,30 @@ const TiketsHeader = () => {
                         {headerTitle.lastName}
                      </span>
                   </div>
+                  {/* <div className="blockCenter_nameBlock-inptData">
+                     <input
+                        onChange={(e) => {
+                           console.log(e.target.value);
+                        }}
+                        type="date"
+                        // value={'2024-10-12'}
+                        placeholder="JUNE 5 18:00"
+                        style={{ pointerEvents: dataInput ? '' : 'none' }}
+                     />
+                  </div> */}
                   <div className="blockCenter_nameBlock-inptData">
                      {dataInput ? (
-                        <input type="text" placeholder="JUNE 5 18:00" />
+                        <input type="date" placeholder="JUNE 5 18:00" />
                      ) : (
-                        <p className="nameBlock-inptData-text">JUNE 5 18:00</p>
+                        <p className="nameBlock-inptData-text">06.06.2024 18:00</p>
                      )}
                   </div>
                </div>
-               <div className="tiketsHeader-blockCenter_timeBlock"></div>
+               <div className="tiketsHeader-blockCenter_timeBlock">
+                  <div style={{ backgroundImage: `url(${Showa})` }}>
+                     <Timer liner={false} />
+                  </div>
+               </div>
             </div>
          </div>
       </div>
