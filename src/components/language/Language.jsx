@@ -25,7 +25,7 @@ function Language({setLangModal}) {
       setLangModal(false);
       localStorage.setItem('langModal', 'false');
       dispatch(open())
-    
+     
   };
 
 
@@ -40,6 +40,7 @@ function Language({setLangModal}) {
 
   return (
     <div className='language-modal'>
+      <h1 className='language-title'>Ընտրեք այն լեզուն որով ցանկանում եք լինի ձեր հրավիրատոմսը</h1>
       <div className='menu_language'>
         <input className='toggle' id='menu' type='checkbox' placeholder='Language' />
         <label className='style' htmlFor='menu'>

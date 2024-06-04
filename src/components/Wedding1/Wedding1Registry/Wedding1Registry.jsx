@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { birdLeft, birdRight, imageRestaurant, rings } from '../../../images/images';
 import { openLinkModal } from '../../../store/slices/LinkModalSlice/LinkModalSlice';
 import { editIcon } from '../../../iconsFolder/icons';
+import { convertToBase64 } from '../../../utils/helperFunck';
 
 function Wedding1Registry({ item }) {
     const { t } = useTranslation();
@@ -53,8 +54,10 @@ function Wedding1Registry({ item }) {
 
 
     function handleChange(e) {
-        setFile(URL.createObjectURL(e.target.files[0]));
-      }
+        convertToBase64(e.target.files[0]).then((base64) => {
+            setFile(base64)
+        })
+     }
 
       useEffect(() => {
         file && dispatch(changeInfoRegistry_imgs(file));
