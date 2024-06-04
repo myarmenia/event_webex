@@ -5,6 +5,7 @@ import { allInfoSelector, changeInfoBanquet_imgs, changeInfoBanquetAddres, chang
 import { cake, imageBride } from '../../../images/images';
 import { openLinkModal } from '../../../store/slices/LinkModalSlice/LinkModalSlice';
 import { editIcon } from '../../../iconsFolder/icons';
+import { convertToBase64 } from '../../../utils/helperFunck';
 
 function Wedding1Bonquete({ item }) {
   const { t, i18n } = useTranslation();
@@ -48,8 +49,10 @@ function Wedding1Bonquete({ item }) {
   }, [banquetAddress]);
 
   function handleChange(e) {
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+    convertToBase64(e.target.files[0]).then((base64) => {
+        setFile(base64)
+    })
+ }
 
   useEffect(() => {
     file && dispatch(changeInfoBanquet_imgs(file));
