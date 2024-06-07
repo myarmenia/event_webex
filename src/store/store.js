@@ -3,16 +3,16 @@ import musicModalSlice from './slices/MusicModalSlice/MusicModalSlice';
 import changeInfoSlice from './slices/ChangeInfoSlice/ChangeInfoSlice';
 import linkModalSlice from './slices/LinkModalSlice/LinkModalSlice';
 import privateProjectSlice from './slices/privateProjectSlice/privateProjectSlice';
-
+import { tiketsReducer } from './slices/Tikets/tiketsSlice';
 
 const store = configureStore({
    reducer: {
       musicModal: musicModalSlice.reducer,
       changeInfo: changeInfoSlice.reducer,
       linkModal: linkModalSlice.reducer,
-      privateProject: privateProjectSlice.reducer
+      privateProject: privateProjectSlice.reducer,
+      tikets: tiketsReducer,
    },
-  
 });
 
 export default store;

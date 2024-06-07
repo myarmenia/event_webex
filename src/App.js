@@ -16,22 +16,18 @@ function App() {
    const navigate = useNavigate();
 
    const { pathname } = useLocation();
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
 
    useEffect(() => {
       pathname == '/' && navigate(`/${leng}/`);
    }, []);
-
 
    useEffect(() => {
       const params = customBasesUrlFunc();
       if (pathname !== `/${leng}/wedding1`) {
          params?.token && dispatch(getProject(params.token));
       }
-      
    }, []);
-
-
 
    return (
       <div className="App">
@@ -43,7 +39,7 @@ function App() {
                      {/* <Route path=":m" element={<Wedding1/>} /> */}
                   </Route>
                   <Route
-                     path="tikets"
+                     path="tikets/:key"
                      element={
                         <div style={{ backgroundColor: 'black' }}>
                            <Tikets />
