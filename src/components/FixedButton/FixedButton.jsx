@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FixedButton.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeInfoSelector, view, changeInfo, allInfoSelector, change } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 import { postPrivateProject } from '../../store/slices/privateProjectSlice/privateProjectApi';
 import { open } from '../../store/slices/MusicModalSlice/MusicModalSlice';
+import { selectProjectData } from '../../store/slices/GetProjectSlice/GetProjectSlice';
+import { useTranslation } from 'react-i18next';
 
 function FixedButton({setLangModal, lengModal}) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const changeInfoState = useSelector(changeInfoSelector);
-
+  const respProjectData = useSelector(selectProjectData);
   const allInfo  = useSelector(allInfoSelector);
-
+  const [count, setCount] = useState(1);
   const handleButtonClick = () => {
+    setCount(count + 1);
     dispatch(changeInfo(allInfo));
     dispatch(view());
   };
@@ -23,7 +27,7 @@ function FixedButton({setLangModal, lengModal}) {
             template_route: '/wedding1',
             date: allInfo.date,
             sound_path: allInfo.music_path,
-            feedBack: allInfo.feedback,
+            feedback: allInfo.feedback,
             invitation_name: allInfo.nameBoy + '-' + allInfo.nameGirl,
             sections: [
                 {
@@ -83,7 +87,10 @@ function FixedButton({setLangModal, lengModal}) {
 
 
   const editTemplateBtn = () => {
-    setLangModal(true);
+    console.log(count,'ff666');
+   if(count === 1){
+    setLangModal(!lengModal)
+   }
     dispatch(change())
 
   }
@@ -91,9 +98,9 @@ function FixedButton({setLangModal, lengModal}) {
 
   return (
     <>
-      {changeInfoState === 'view' && <button className='fixed_button' onClick={editTemplateBtn} >Edit Template</button>}
-      {changeInfoState === 'edit' && <button className='fixed_button'onClick={handleButtonClick}>View</button>}
-      {allInfo.date  !== ""  &&  allInfo.feedback !== "" && <button  className='fixed_button_2' onClick={privateProject}>Send</button>}
+      {(!respProjectData.data.success) && changeInfoState === 'view' && <button className='fixed_button' onClick={editTemplateBtn} >{t('wedding1_buttons.0')}</button>}
+      {changeInfoState === 'edit' && <button className='fixed_button'onClick={handleButtonClick}>{t('wedding1_buttons.1')}</button>}
+      {allInfo.date  !== ""  &&  allInfo.feedback !== "" && <button  className='fixed_button_2' onClick={privateProject}>{t('wedding1_buttons.2')}</button>}
   </>
   );
 }

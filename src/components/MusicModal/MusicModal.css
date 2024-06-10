@@ -15,14 +15,14 @@
 .music-modal_content{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
 .music-modal_title {
     color: white;
     font-size: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 .button_music_play_div {
@@ -37,6 +37,7 @@
 .button-container_music{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .button_music_controls {
@@ -47,3 +48,7 @@
     align-items: center;
     gap: 10px;
 }
+
+
+
+

@@ -191,6 +191,12 @@ footer {
     color: rgba(242, 184, 182, 255);
 }
 
+.wedding1_error{
+    color: red;
+    text-align: left;
+    width: 100%;
+}
+
 @keyframes right_hand {
     0% {
         opacity: 0;
