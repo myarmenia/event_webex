@@ -1,0 +1,1161 @@
+/*......... header start....... */
+.birthday_header {
+  width: 100%;
+  height: 900px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
+.header_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 30px 0;
+}
+.button_parent {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  padding-right: 50px;
+  gap: 10px;
+}
+.birthday .button {
+  background: #c6900a;
+  width: 146px;
+  height: 44px;
+  border-radius: 8px;
+  padding: 10px, 24px, 10px, 24px;
+  border: none;
+  color: white;
+}
+.birthday .view {
+  background: #1485ba;
+  width: 100px;
+}
+.birthday .save {
+  width: 100px;
+}
+.birthday .button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.birthday_box input {
+  height: 80px;
+  max-width: 380px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  font-size: 32px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.birthday_box {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid;
+  border-image: linear-gradient(
+    to left,
+    rgba(246, 197, 147, 1),
+    rgba(255, 129, 3, 1)
+  );
+  border-image-slice: 1;
+  background-color: #0b1a39a1;
+  padding: 30px;
+  gap: 10px;
+  position: relative;
+  animation: birthday_box 1.5s ease-in-out;
+  text-transform: uppercase;
+}
+@keyframes birthday_box {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.balloons {
+  position: absolute;
+  max-width: 540px;
+  bottom: -20%;
+  right: -48%;
+  animation: balloons 1.5s ease-in-out;
+}
+@keyframes balloons {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.birthday_box > h1 {
+  color: white;
+  font-size: 90px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.birthday_box > h2 {
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  font-size: 50px;
+  transform: translateX(58%);
+  font-family: "global-font1";
+  z-index: 2;
+}
+
+.birthday_box > span {
+  font-size: 32px;
+  color: white;
+  font-weight: 400;
+}
+
+.age {
+  display: flex;
+  justify-content: center;
+}
+
+.age > img {
+  width: 200px;
+}
+/* ........header end..... */
+/*.......... modal......... */
+.birth_day_modal_bacground {
+  position: fixed;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+}
+.birth_day_modal_bacground {
+  /* background: #c6900a;
+  color: white; */
+}
+/* ........language...... */
+
+.menu_language1 {
+  background-color: #c6900a;
+  width: 465px;
+  height: 324px;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
+}
+.menu_language1 :first-child {
+  font-size: 48px;
+  font-family: "jomhuria";
+}
+.menu_language1 p {
+  font-size: 24px;
+  font-family: "jomhuria";
+  font-weight: 400;
+}
+.menu_language1 .round {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+/*........... timer.......... */
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.timer > h1 {
+  color: white;
+  text-align: center;
+}
+
+.timer_content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.timer_content > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.timer_content > div > span:first-child {
+  font-size: 32px;
+  font-family: "poppins-font";
+}
+
+.timer_content > div > span:last-child {
+  font-size: 15px;
+}
+
+/* ........birthdaySection1 start */
+.main_invitation {
+  width: 100%;
+  background-color: #f9f9f8;
+  padding: 100px 0;
+  height: auto;
+}
+
+.main_invitation_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.main_invitation input {
+  width: 300px;
+  border: 1px solid #c6900a;
+  color: #000;
+  text-align: center;
+  font-size: 18px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.main_invitation textarea {
+  width: 900px;
+  min-height: 50px;
+  resize: vertical;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+.invitation_blank textarea {
+  width: 300px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #c6900a;
+  background-color: transparent;
+}
+.invintation_text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  width: 100%;
+  padding: 30px;
+  position: relative;
+}
+
+.invintation_text > p {
+  font-size: 24px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+.invintation_text > h1 {
+  font-size: 44px;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  font-family: "global-font";
+  letter-spacing: 2px;
+  position: absolute;
+  top: -30%;
+  left: 15%;
+}
+
+.invitation_box {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 30px;
+}
+
+/* -------------------------------------images---------------------------------- */
+.invitation_image {
+  position: relative;
+}
+
+.invitation_image_1 {
+  max-width: 350px;
+  height: 380px;
+  border-radius: 60px 0 0 0;
+  animation: invitation_image_1 1.5s ease-in-out;
+}
+
+@keyframes invitation_image_1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invitation_image_2 {
+  max-width: 230px;
+  height: 205px;
+  border-radius: 60px 60px 0 0;
+  z-index: 9999;
+  position: absolute;
+  top: 55%;
+  right: -5%;
+  animation: invitation_image_2 1.5s ease-in-out;
+}
+
+@keyframes invitation_image_2 {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invitation_image_3 {
+  max-width: 250px;
+  height: 290px;
+  border-radius: 0 60px 0 0;
+  position: absolute;
+  top: 35%;
+  right: -50%;
+  animation: invitation_image_3 1.5s ease-in-out;
+}
+
+@keyframes invitation_image_3 {
+  0% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.invitation_image_1 > img {
+  border-radius: 60px 0 0 0;
+}
+
+.invitation_image_2 > img {
+  border-radius: 60px 60px 0 0;
+}
+
+.invitation_image_3 > img {
+  border-radius: 0 60px 0 0;
+}
+
+/* ----------------------------------------------------------------------------- */
+.invitation_blank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: invitation_blank 1.5s ease-in-out;
+}
+
+@keyframes invitation_blank {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invitation_blank > h1 {
+  font-size: 44px;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  font-family: "global-font";
+  letter-spacing: 1px;
+}
+
+.invitation_blank > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.invitation_blank > div > span {
+  font-size: 24px;
+}
+
+.invitation_blank > div > span:last-child {
+  /* color: var(--cream-color); */
+  color: #c6900a;
+}
+
+.adress_text {
+  max-width: 350px;
+  text-align: center;
+}
+
+.autor_text {
+  max-width: 200px;
+  text-align: center;
+}
+/* ...........Section2.......... */
+.main_restaurant {
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  padding: 30px;
+}
+.main_restaurant input {
+  border: 1px solid #c6900a;
+  font-size: 18px;
+  height: 50px;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+}
+.main_restaurant_content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.main_restaurant_content > h1 {
+  font-size: 44px;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  font-family: "global-font";
+  letter-spacing: 1px;
+  position: absolute;
+  top: -10%;
+  left: 8%;
+}
+
+.restaurant_1 > div {
+  max-width: 730px;
+}
+
+.restaurant_2_3 > div {
+  max-width: 510px;
+  /* gap: 10px; */
+}
+
+.restaurant_navigate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.restaurant {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-height: auto;
+}
+.restaurant_1 {
+  animation: restaurant_1 1.5s ease-in-out;
+}
+@keyframes restaurant_1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.restaurant_2_3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: restaurant_2_3 1.5s ease-in-out;
+}
+@keyframes restaurant_2_3 {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.get {
+  width: 400px;
+  height: 45px;
+  font-size: 16px;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  /* border: 1px solid var(--cream-color); */
+  border: 1px solid #c6900a;
+  background-color: transparent;
+}
+
+.get:hover {
+  /* background-color: var(--cream-color); */
+  background-color: #c6900a;
+  color: white;
+  transition: background-color 800ms linear;
+}
+/* ...........Form...... */
+
+.register {
+  background-color: white;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 30px;
+}
+
+.full_name_div > span {
+  font-size: 16px;
+}
+
+.name_inp > input,
+.guest_inp > input {
+  width: 370px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.name_inp > input:focus,
+.guest_inp > input:focus,
+.full_name_div > textarea:focus {
+  outline: none;
+}
+
+.register_btn {
+  width: 240px;
+  height: 40px;
+  font-size: 16px;
+  background-color: transparent;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  /* border: 1px solid var(--cream-color); */
+  border: 1px solid #c6900a;
+}
+
+.register_btn:hover {
+  /* background-color: var(--cream-color); */
+  background-color: #c6900a;
+  color: white;
+  transition: background-color 800ms linear;
+}
+
+.full_name_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.full_name_div > textarea {
+  width: 370px;
+  height: 60px;
+  border: none;
+  border-bottom: 1px solid #aaaaaa;
+  resize: none;
+  font-size: 16px;
+}
+
+.full_name_div > textarea::placeholder {
+  color: black;
+}
+
+.error {
+  margin: 5px 0;
+  color: red;
+}
+
+/* --------------------------------------radio-------------------------------------- */
+.radio_inp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.radio-input {
+  visibility: hidden;
+}
+
+.radio-label {
+  position: relative;
+  padding-left: 35px;
+}
+
+.radio-label {
+  font-size: 16px;
+}
+
+.radio-label:after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+}
+
+.radio-border {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  outline: solid 1px #aaaaaa;
+  border-radius: 50%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.radio-input:checked + .radio-label:after {
+  transition: all 0.5s;
+  background-color: #aaaaaa;
+}
+
+.radio_inp > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.birthday .form button {
+  border-radius: 10px;
+}
+.birthday .form button:hover {
+  cursor: pointer;
+}
+.success {
+  color: green;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+
+/*....... firwerk........ */
+.Firework-bigPar {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+.Firework-bigPar-child {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 900px;
+}
+
+.firework-par1,
+.firework-par2 {
+  position: relative;
+  background-color: #c6900a;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: block;
+}
+
+@keyframes firework {
+  0% {
+    transform: translate(2%, 20vh);
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  50% {
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  100% {
+    width: 30vmin;
+    opacity: 0;
+  }
+}
+
+.firework {
+  top: -130px !important;
+}
+.firework,
+.firework::before,
+.firework::after {
+  /* --top: 60vh; */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background:
+    /* random backgrounds */ radial-gradient(
+        circle,
+        #c6900a 0.2vmin,
+        #0000 0
+      )
+      50% 00%,
+    radial-gradient(circle, #c6900a 0.3vmin, #0000 0) 00% 50%,
+    radial-gradient(circle, #c6900a 0.5vmin, #0000 0) 50% 99%,
+    radial-gradient(circle, #c6900a 0.2vmin, #0000 0) 99% 50%,
+    radial-gradient(circle, #c6900a 0.3vmin, #0000 0) 80% 90%,
+    radial-gradient(circle, #c6900a 0.5vmin, #0000 0) 95% 90%,
+    radial-gradient(circle, #c6900a 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, #c6900a 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, #c6900a 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, #c6900a 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, #c6900a 0.3vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #c6900a 0.5vmin, #0000 0) 13% 24%;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  animation: firework 2s infinite;
+}
+
+.firework-par2 > .firework,
+/* .firework::before, */
+.firework::after {
+  animation: firework 2.5s infinite !important;
+}
+.firework-par1 > .firework,
+.firework::before {
+  animation: firework 2.8s infinite !important;
+}
+
+.firework::before {
+  transform: translate(-50%, -50%) rotate(25deg) !important;
+}
+
+.firework::after {
+  transform: translate(-50%, -50%) rotate(-37deg) !important;
+}
+.birthDay_footer {
+  width: 100%;
+  background-color: #f9f9f8;
+  padding: 50px 0;
+}
+
+.footer_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_content > h1 {
+  font-size: 44px;
+  /* color: var(--cream-color); */
+  color: #c6900a;
+  font-family: "global-font";
+  letter-spacing: 1px;
+  max-width: 600px;
+  text-align: center;
+  transform: translateY(15%);
+}
+/*............... miniFooter........... */
+.mini_footer {
+  width: 100%;
+  /* background-color: var(--cream-color); */
+  background-color: #c6900a;
+  /* margin-top: 50px; */
+}
+
+.mini_footer_content {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.mini_footer_content > span {
+  color: white;
+  font-size: 18px;
+}
+
+.created {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.created > img {
+  width: 25px;
+}
+
+.mini_footer_content > a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.mini_footer_content > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* --------------------------------------response---------------------------------------------------------- */
+@media screen and (max-width: 1440px) {
+  .balloons {
+    max-width: 350px;
+    bottom: -10%;
+    right: -20%;
+  }
+
+  .birthday_header {
+    height: 900px;
+  }
+
+  .main_invitation {
+    /* height:; */
+  }
+
+  .invitation_box {
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .invitation_image_1 {
+    max-width: 280px;
+    height: 310px;
+  }
+
+  .invitation_image_2 {
+    max-width: 160px;
+    height: 145px;
+    top: 70%;
+    right: -2%;
+  }
+
+  .invitation_image_3 {
+    max-width: 180px;
+    height: 210px;
+    top: 45%;
+    right: -30%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .birthday_box {
+    width: 500px;
+  }
+
+  .balloons {
+    max-width: 300px;
+    bottom: -10%;
+    right: -20%;
+  }
+
+  .age > img {
+    width: 150px;
+  }
+
+  .birthday_box > h1 {
+    font-size: 60px;
+    max-width: 400px;
+  }
+
+  .birthday_box > h2 {
+    font-size: 35px;
+  }
+  .birthday textarea {
+    width: 600px;
+  }
+  .birthday_header {
+    height: 800px;
+  }
+  .timer > h1 {
+    font-size: 24px;
+  }
+  .invintation_text > h1 {
+    position: static;
+    text-align: center;
+  }
+
+  .invintation_text > p {
+    font-size: 18px;
+  }
+  .main_restaurant_content > h1 {
+    position: static;
+    text-align: center;
+  }
+  .restaurant {
+    height: 450px;
+  }
+  .mini_footer_content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header_content {
+    padding-top: 20px;
+  }
+  .header_content {
+    gap: 20px;
+  }
+  .birthday_box {
+    width: 350px;
+    border: none;
+  }
+  .birthday textarea {
+    width: 400px;
+  }
+  .balloons {
+    max-width: 200px;
+    bottom: 0;
+    right: -15%;
+  }
+
+  .age > img {
+    width: 100px;
+  }
+  .birthday input {
+    font-size: 16px;
+    height: 40px;
+  }
+  .birthday_box > h1 {
+    font-size: 40px;
+    max-width: 300px;
+  }
+
+  .birthday_box > h2 {
+    font-size: 25px;
+  }
+
+  .birthday_header {
+    height: 700px;
+  }
+  .timer > h1 {
+    font-size: 18px;
+  }
+  .main_invitation {
+    padding-bottom: 50px;
+  }
+  .invintation_text > p {
+    font-size: 16px;
+  }
+
+  .invitation_blank > h1 {
+    font-size: 34px;
+  }
+  .round {
+    background: url("../../images/BirthDayImg/round.png") no-repeat center/cover;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .restaurant {
+    flex-wrap: wrap;
+    /* gap: 30px; */
+    align-items: center;
+    height: auto;
+  }
+
+  .main_restaurant {
+    max-height: auto;
+  }
+
+  .restaurant_1 > div {
+    max-width: 410px;
+  }
+
+  .restaurant_2_3 > div {
+    max-width: 410px;
+  }
+  .register {
+    width: 100%;
+  }
+
+  .radio_inp > span {
+    font-size: 12px;
+  }
+
+  .radio-label {
+    font-size: 12px;
+  }
+  .footer_content > h1 {
+    font-size: 24px;
+    max-width: 400px;
+  }
+  .mini_footer_content > a {
+    font-size: 15px;
+  }
+
+  .mini_footer_content > span {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .birthday_box {
+    width: 300px;
+  }
+
+  .balloons {
+    max-width: 150px;
+    bottom: 0;
+    right: -5%;
+  }
+
+  .age > img {
+    width: 70px;
+  }
+
+  .birthday_box > h2 {
+    font-size: 20px;
+  }
+
+  .birthday_box > h1 {
+    font-size: 30px;
+    max-width: 300px;
+  }
+
+  .header {
+    height: 600px;
+  }
+  .birthday textarea {
+    width: 300px;
+  }
+  .birthday_box {
+    padding: 10px 0;
+  }
+
+  .birthday_box > span {
+    z-index: 9999;
+  }
+  .timer > h1 {
+    font-size: 12px;
+  }
+  .invintation_text > h1 {
+    font-size: 24px;
+  }
+
+  .invintation_text > p {
+    font-size: 16px;
+  }
+
+  .invitation_blank > h1 {
+    font-size: 24px;
+  }
+
+  .invitation_image_1 {
+    max-width: 200px;
+    height: 220px;
+  }
+
+  .invitation_image_2 {
+    max-width: 105px;
+    height: 95px;
+    top: 75%;
+    right: -2%;
+  }
+
+  .invitation_image_3 {
+    max-width: 122px;
+    height: 118px;
+    top: 45%;
+    right: -30%;
+  }
+
+  .main_invitation {
+    height: 1200px;
+    padding: 70px 0;
+  }
+
+  .invitation_image_1 > img {
+    border-radius: 30px 0 0 0;
+  }
+
+  .invitation_image_2 > img {
+    border-radius: 30px 30px 0 0;
+  }
+
+  .invitation_image_3 > img {
+    border-radius: 0 30px 0 0;
+  }
+  .restaurant {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    height: auto;
+  }
+
+  .main_restaurant {
+    height: auto;
+  }
+
+  .restaurant_1 > div {
+    max-width: 310px;
+  }
+
+  .restaurant_2_3 > div {
+    max-width: 310px;
+  }
+
+  .get {
+    width: 270px;
+  }
+
+  .main_restaurant_content > h1 {
+    font-size: 24px;
+  }
+  .register {
+    width: 100%;
+  }
+
+  .radio_inp > span {
+    font-size: 12px;
+  }
+
+  .radio-label {
+    font-size: 12px;
+  }
+  .mini_footer_content > a {
+    font-size: 15px;
+  }
+
+  .mini_footer_content > span {
+    font-size: 15px;
+  }
+}

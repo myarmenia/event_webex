@@ -3,6 +3,8 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import HomeWraper from "./page/HomeWraper";
 import { Tikets } from "./components";
 import Wedding1 from "./components/Wedding1/Wedding1";
+import BirthDay from "./components/Birthday/BirthDay";
+import Modal from "./components/Birthday/modal/Modal";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <Modal />
       <Routes>
         <Route path="/" element={<HomeWraper />}>
           <Route path=":lang">
@@ -36,6 +39,7 @@ function App() {
                 </div>
               }
             />
+            <Route path="birthDay" element={<BirthDay />} />
           </Route>
         </Route>
       </Routes>
