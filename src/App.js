@@ -36,11 +36,8 @@ function App() {
                <Route path=":lang">
                   <Route path="wedding1">
                      <Route index element={<Wedding1 />} />
-                     {/* <Route path=":m" element={<Wedding1/>} /> */}
                   </Route>
-                  <Route
-                     path="tikets/:key"
-                     element={
+                  <Route path="tikets" element={
                         <div style={{ backgroundColor: 'black' }}>
                            <Tikets />
                         </div>

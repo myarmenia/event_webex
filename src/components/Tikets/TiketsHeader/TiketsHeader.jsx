@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setEditStatusTemplate } from '../../../store/slices/Tikets/tiketsSlice';
+import { changePromNightDate, selectDefaultData, setEditStatusTemplate } from '../../../store/slices/Tikets/tiketsSlice';
 
 import CustomBtnTikets2 from '../TicetsCustom/CustomBtnTikets2';
 import Timer from '../../timer/Timer';
@@ -15,19 +15,29 @@ import {
 } from '../../../images/TiketsImg';
 
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const TiketsHeader = () => {
    const dispatch = useDispatch();
    const [headerTitle, setHeaderTitle] = React.useState({ name: 'PROM', lastName: ' NIGHT' });
    const [dataInput, setDataInput] = React.useState(false);
    const { statusTemplate, editStatusTemplate } = useSelector((state) => state.tikets);
+   const allInfoPromNight = useSelector(selectDefaultData);
+   const [promNightDate, setPromNightDate] = useState(allInfoPromNight.date)
    const [open, setOpen] = React.useState(false);
+   // const { t } = useTranslation();
 
+   console.log(allInfoPromNight,'ddd555');
    React.useEffect(() => {
       setTimeout(() => {
          setOpen(true);
       }, 60000);
    }, []);
+
+   useEffect(() => {
+      console.log(promNightDate,'88');
+      dispatch((changePromNightDate(promNightDate)));
+   }, [dispatch, promNightDate]);
 
    return (
       <div className="tiketsHeader">
@@ -36,14 +46,14 @@ const TiketsHeader = () => {
             Your browser does not support the video tag.
          </video>
          <div className="tiketsHeader-blockButton">
-            {statusTemplate === 'view' && !editStatusTemplate ? (
+            { !editStatusTemplate ? (
                <CustomBtnTikets2
                   handleClick={() => dispatch(setEditStatusTemplate(true))}
                   btnText={'Edit Template '}
                   background="#c93789"
                />
-            ) : statusTemplate === 'edit' && editStatusTemplate ? (
-               <CustomBtnTikets2 btnText={'view'} background="#c93789" />
+            ) : editStatusTemplate ? (
+               <CustomBtnTikets2 btnText={'view'} handleClick={() => dispatch(setEditStatusTemplate(false))} background="#c93789" />
             ) : null}
 
             {/* <CustomBtnTikets2 btnText={'Save '} background="#2CE2E7" /> */}
@@ -82,10 +92,12 @@ const TiketsHeader = () => {
                      />
                   </div> */}
                   <div className="blockCenter_nameBlock-inptData">
+                  { console.log(allInfoPromNight.date,'666')}
                      {editStatusTemplate ? (
-                        <input type="date" placeholder="JUNE 5 18:00" />
+                        <input type="date" placeholder="JUNE 5 18:00" value={allInfoPromNight.date || '2024-10-12'}  onChange={(e) => setPromNightDate(e.target.value)}/>
                      ) : (
-                        <p className="nameBlock-inptData-text">06.06.2024 18:00</p>
+                        <p className="nameBlock-inptData-text">{allInfoPromNight.date}</p>
+                       
                      )}
                   </div>
                </div>

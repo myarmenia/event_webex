@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SectionImages = ({ defaultImagesList }) => {
+const SectionImages = ({ defaultImagesList, item }) => {
    return (
       <div className="TiketsSection-blockLeft-blockImg">
          {defaultImagesList.map((el, idx) => (

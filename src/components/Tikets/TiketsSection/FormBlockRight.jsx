@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckboxChecked, CheckboxNoChecked } from '../../../iconsFolder/icons';
 import CustomBtnTikets from '../TicetsCustom/CustomBtnTikets';
 
-const FormBlockRight = ({ defaultImages_place, editStatusTemplate }) => {
+const FormBlockRight = ({ defaultImages_place, editStatusTemplate, item}) => {
    const [chechBox1, setChechBox1] = React.useState(false);
    const [chechBox2, setChechBox2] = React.useState(false);
    const hendleChechBox = (val) => {
@@ -15,9 +15,12 @@ const FormBlockRight = ({ defaultImages_place, editStatusTemplate }) => {
       }
    };
    return (
-      <div style={{ maxWidth: '280px' }}>
+      <div style={{ maxWidth: '280px', marginTop: '20px' }}>
          <div className="TiketsSection-blockRight-img">
-            <img src={defaultImages_place} alt="" />
+            {/* <img src={defaultImages_place} alt="" /> */}
+            {item ? item.images.map(img =>(
+               <img src={img} alt="img" />
+            )) : <img src={defaultImages_place} alt="img" />}
             {editStatusTemplate && (
                <div className="iketsSection-blockRight-img-blockPhoneNumger">
                   <p>Your phone number is required for data accuracy</p>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CustomBtnTikets from '../TicetsCustom/CustomBtnTikets';
-const SectionDescript = ({ textArea_plesholder, editStatusTemplate }) => {
+const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
    return (
       <div className="TiketsSection-blockLeft-blockDescript">
          <h3>INVITATION</h3>

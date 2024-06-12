@@ -9,6 +9,7 @@ import CustomModal from './TicetsCustom/CustomModal';
 import { setStatusTemplate } from '../../store/slices/Tikets/tiketsSlice';
 
 import './tikets.css';
+import CustomChangeBtn from './TicetsCustom/CustomChangeBtn';
 
 const customStyles = {
    content: {
@@ -45,7 +46,7 @@ const Tikets = () => {
             <div>
                <Section />
             </div>
-            <div ref={modalContainerRef} className="Tikets-modalBlock">
+            {/* <div ref={modalContainerRef} className="Tikets-modalBlock">
                {isModalContainerReady && (
                   <CustomModal
                      parentSelector={() => modalContainerRef.current}
@@ -53,8 +54,9 @@ const Tikets = () => {
                      <ContentModal />
                   </CustomModal>
                )}
-            </div>
+            </div> */}
          </div>
+         {/* <CustomChangeBtn/> */}
       </div>
    );
 };

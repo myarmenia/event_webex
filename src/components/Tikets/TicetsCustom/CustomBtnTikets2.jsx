@@ -1,4 +1,5 @@
 const CustomBtnTikets2 = ({ handleClick = () => {}, btnText, background = '#c93789' }) => {
+   
    return (
       <button
          style={{ backgroundColor: `${background}` }}

@@ -217,16 +217,19 @@
 .TiketsSection-blockLeft-blockImg {
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-between;
-   gap: 20px;
+   justify-content: center;
+   gap: 60px;
 }
 .TiketsSection-blockLeft-blockImg > div {
-   display: flex;
+   display: grid;
    justify-content: center;
    align-items: center;
-   width: 31%;
+   grid-template-columns: repeat(3, 1fr);
+   width: 220px;
    max-height: 300px;
    height: 300px;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .TiketsSection-blockLeft-blockImg > div > img {
@@ -331,6 +334,9 @@
    border-image-slice: 1;
    box-shadow: 0px 4px 97px 10px #38dfe6;
    border-radius: 3px;
+   position: fixed;
+   top: 60px;
+   right: 100px;
 }
 
 .TiketsSection-blockDescript-defaultName {
@@ -515,3 +521,136 @@
    opacity: 0.7;
 }
 /* TiketsModal end ................................................................... */
+
+
+
+/* =============fixet buttons */
+
+
+.fixed_button_prom_night_edit {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #5098e4;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000000;
+}
+
+/* ==============media */
+
+@media(max-width: 700px) {
+   .TiketsSection-blockLeft-blockImg > div{
+      grid-template-columns: repeat(2, 1fr);
+      width: 300px;
+   }
+
+   .TiketsSection-contaner{
+      flex-direction: column;
+   }
+
+   .blockCenter_nameBlock-name{
+      margin-top: -135px;
+   }
+
+   .tiketsHeader-background-video{
+      position: static;
+      width: 400px;
+      height: 300px;
+      transform: translate(0, 0);
+      object-fit: contain;
+      
+   }
+
+   .tiketsHeader{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+     
+
+   }
+
+   .tiketsHeader-imgBlockRight, .tiketsHeader-imgBlockLeft, .tiketsHeader-imgBlockBottom{
+      display: none;
+   }
+
+   .tiketsHeader .container{
+      display: block !important;
+   }
+
+   .tiketsHeader-blockCenter_nameBlock{
+      background-position: unset;
+      flex-basis: 450px;
+   }
+
+   .blockCenter_nameBlock-name-bigName{
+      font-size: 100px;
+      height: 60px;
+   }
+
+   .blockCenter_nameBlock-name-minname{
+      font-size: 80px;
+   }
+
+   .tiketsHeader-blockCenter_timeBlock{
+      margin-top: -150px;
+   }
+
+   .TiketsSection-blockLeft-blockDescript > h3{
+      font-size: 60px;
+   }
+
+   .TiketsSection-blockDescript-defaulttext{
+      font-size: 20px;
+   }
+
+   .TiketsSection-contaner-blockRight::before{
+      display: none;
+   }
+
+   .blockCenter_nameBlock-inptData > input{
+      font-size: 25px;
+   }
+
+   .nameBlock-inptData-text{
+      font-size: 25px;
+   }
+
+}
+
+
+@media (max-width: 460px) {
+   .blockCenter_nameBlock-name-bigName{
+      font-size: 80px;
+      height: 60px;
+   }
+
+   .blockCenter_nameBlock-name-minname{
+      font-size: 60px;
+      height: 40px;
+   }
+
+   .blockCenter_nameBlock-name{
+      margin-top: -160px;
+   }
+
+   .tiketsHeader-background-video{
+      width: 250px;
+      height: 200px;
+   }
+}
+
+
+@media (max-width: 420px) {
+
+   .blockCenter_nameBlock-name{
+      margin-top: -206px;
+   }
+
+   .TiketsSection-blockDescript-parLovation{
+      gap: 8px;
+   }
+}
