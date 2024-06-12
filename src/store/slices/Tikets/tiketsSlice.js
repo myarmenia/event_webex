@@ -46,24 +46,24 @@ const tiketSlice = createSlice({
       // ===========================
 
       changePromNightTime(state, action) {
-         state.allInfo.section_1_time = action.payload;
+         state.defaultData.section_1_time = action.payload;
       },
 
       changePromNightText2(state, action) {
-         state.allInfo.section_2_text = action.payload;
+         state.defaultData.section_2_text = action.payload;
       },
 
       changePromNightAddressLink(state, action) {
-         state.allInfo.section_2_addressLink = action.payload;
+         state.defaultData.section_2_addressLink = action.payload;
       },
       changePromNight_imgs_section_2(state, action) {
-         state.allInfo.section_2_images.push(action.payload);
+         state.defaultData.section_2_images.push(action.payload);
       },
       changePromNightText3(state, action) {
-         state.allInfo.section_3_text = action.payload;
+         state.defaultData.section_3_text = action.payload;
       },
       changePromNight_imgs_section_3(state, action) {
-         state.allInfo.section_3_images.push(action.payload);
+         state.defaultData.section_3_images.push(action.payload);
       },
    },
 });

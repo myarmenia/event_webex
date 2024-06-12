@@ -16,6 +16,7 @@ import {
 
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { sectiosData } from '../../../dataFolder/data';
 
 const TiketsHeader = () => {
    const dispatch = useDispatch();
@@ -94,9 +95,9 @@ const TiketsHeader = () => {
                   <div className="blockCenter_nameBlock-inptData">
                   { console.log(allInfoPromNight.date,'666')}
                      {editStatusTemplate ? (
-                        <input type="date" placeholder="JUNE 5 18:00" value={allInfoPromNight.date || '2024-10-12'}  onChange={(e) => setPromNightDate(e.target.value)}/>
+                        <input type="date" placeholder="JUNE 5 18:00" value={allInfoPromNight.date || sectiosData.date || '2024-10-12'}  onChange={(e) => setPromNightDate(e.target.value)}/>
                      ) : (
-                        <p className="nameBlock-inptData-text">{allInfoPromNight.date}</p>
+                        <p className="nameBlock-inptData-text">{allInfoPromNight.date || '2024-10-12'}</p>
                        
                      )}
                   </div>
