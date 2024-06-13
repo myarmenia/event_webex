@@ -76,8 +76,8 @@ function Wedding1Registry({ item }) {
                     </label>}
 
                     {
-                        item.images.map((img, index) => {
-                            return <img key={index} src={(changeInfoState === 'view' && file) || img} alt="not found" />
+                      item.images &&   item.images.map((img, index) => {
+                            return <img key={index} src={(changeInfoState === 'view' && file) || img.path} alt="not found" />
                         })
                     }
                 </div>
@@ -99,8 +99,8 @@ function Wedding1Registry({ item }) {
                     <div className='about'>
                         <span className='marriage_title'>{t('regMarriage.0')}</span>
                         {changeInfoState === 'edit' ? <input type="time" placeholder='Ժամ' value={allInfo?.registryTime} className='event_inp' onChange={(e) => setRegistryTime(e.target.value)} /> : <span>{allInfo.registryTime || item.time}</span>}
-                        {changeInfoState === 'edit' ? <input type="text" placeholder='Տեքստ' value={allInfo?.registryText} className='event_inp' onChange={(e) => setRegistryText(e.target.value)} /> : <span>{allInfo.registryText || item.text}</span>}
-                        {changeInfoState === 'edit' ? <input type="text" placeholder='Հասցե' value={allInfo?.registryAddres} className='event_inp' onChange={(e) => setRegistryAddres(e.target.value)} /> : <span>{allInfo.registryAddres || item.address}</span>}
+                        {changeInfoState === 'edit' ? <input type="text" placeholder={t('placeholderWedding1.2')} value={allInfo?.registryText} className='event_inp' onChange={(e) => setRegistryText(e.target.value)} /> : <span>{allInfo.registryText || item.text}</span>}
+                        {changeInfoState === 'edit' ? <input type="text" placeholder={t('placeholderWedding1.3')} value={allInfo?.registryAddres} className='event_inp' onChange={(e) => setRegistryAddres(e.target.value)} /> : <span>{allInfo.registryAddres || item.address}</span>}
 
 
                     </div>

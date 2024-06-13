@@ -7,10 +7,15 @@ export const getProject = createAsyncThunk(
       try {
         const config = {
           method: 'get',
-          url: `https://backend.invitationcard.webex.am/api/event-result?${token}`,
+          url: `event-result?token=${token}`,
         };
   
         const response = await instance(config);
+        
+        localStorage.setItem('lang', response.data.data.lang);
+        if (window.location.pathname !== `/${response.data.data.lang}/wedding1/`) {
+          window.location.pathname = `/${response.data.data.lang}/wedding1/`;
+        }
         return response?.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);

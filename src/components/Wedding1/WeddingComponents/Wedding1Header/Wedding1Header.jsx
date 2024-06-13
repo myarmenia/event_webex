@@ -12,12 +12,14 @@ import {
    changeInfoSelector,
 } from '../../../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 import { useDebounce } from '../../../../hooks/hooks';
+import { selectProjectData } from '../../../../store/slices/GetProjectSlice/GetProjectSlice';
 
 function Wedding1Header() {
    const [display, setDisplay] = useState(false);
    const { t, i18n } = useTranslation();
    const changeInfoState = useSelector(changeInfoSelector);
    const allInfo = useSelector(allInfoSelector);
+   const respProjectData = useSelector(selectProjectData);
    const dispatch = useDispatch();
 
    const [inputs, setInputs] = useState({ nameBoy: '', nameGirl: '' });
@@ -66,24 +68,24 @@ function Wedding1Header() {
                                  className="male"
                                  name="nameBoy"
                                  type="text"
-                                 placeholder="Փեսացու"
+                                 placeholder={t('placeholderWedding1.0')}
                                  value={inputs.nameBoy}
                                  onChange={handleInputChange}
                               />
                            ) : (
-                              <span className="male">{allInfo.nameBoy || t('couple.0')}</span>
+                              <span className="male">{respProjectData?.data?.data?.sections[0].name_1 || allInfo.nameBoy || t('couple.0')}</span>
                            )}
                            {changeInfoState === 'edit' ? (
                               <input
                                  className="female"
                                  name="nameGirl"
                                  type="text"
-                                 placeholder="Հարսնացու"
+                                 placeholder={t('placeholderWedding1.1')}
                                  value={inputs.nameGirl}
                                  onChange={handleInputChange}
                               />
                            ) : (
-                              <span className="female">{allInfo.nameGirl || t('couple.1')}</span>
+                              <span className="female">{respProjectData?.data?.data?.sections[0].name_2 || allInfo.nameGirl || t('couple.1')}</span>
                            )}
                         </div>
                      )}
