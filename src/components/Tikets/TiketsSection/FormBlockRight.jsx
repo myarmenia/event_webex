@@ -18,9 +18,9 @@ const FormBlockRight = ({ defaultImages_place, editStatusTemplate, item}) => {
       <div style={{ maxWidth: '280px', marginTop: '20px' }}>
          <div className="TiketsSection-blockRight-img">
             {/* <img src={defaultImages_place} alt="" /> */}
-            {item ? item.images.map(img =>(
-               <img src={img} alt="img" />
-            )) : <img src={defaultImages_place} alt="img" />}
+            {item ? item.images.map((img, index) =>(
+               <img key={index} src={img} alt="img" />
+            )) : <img  src={defaultImages_place} alt="img" />}
             {editStatusTemplate && (
                <div className="iketsSection-blockRight-img-blockPhoneNumger">
                   <p>Your phone number is required for data accuracy</p>

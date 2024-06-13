@@ -30,7 +30,7 @@ const TiketsSection = () => {
             {
                sectiosData.sections ? sectiosData.sections.map((item, index) => {
                   if (item.section_number === 2) {
-                     return (<div className="TiketsSection-contaner-blockLeft">
+                     return (<div key={index} className="TiketsSection-contaner-blockLeft">
                         <SectionDescript
                            textArea_plesholder={textArea_plesholder}
                            editStatusTemplate={editStatusTemplate}
@@ -42,7 +42,7 @@ const TiketsSection = () => {
 
                   }
                   else if (item.section_number === 3) {
-                     return (<div className="TiketsSection-contaner-blockRight">
+                     return (<div key={index} className="TiketsSection-contaner-blockRight">
                         <FormBlockRight
                            defaultImages_place={defaultImages_place}
                            editStatusTemplate={editStatusTemplate}

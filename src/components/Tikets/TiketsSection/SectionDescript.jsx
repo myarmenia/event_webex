@@ -7,8 +7,8 @@ import { sectiosData } from '../../../dataFolder/data';
 const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
    const [linkModal, setLinkModal] = useState(false);
    const allInfoPromNight = useSelector(selectDefaultData);
-   const [description, setDescription] = useState(allInfoPromNight?.section_2_text);
-   const [addressLink, setAddressLink] = useState(allInfoPromNight?.address_link);
+   const [description, setDescription] = useState(allInfoPromNight.section_2_text);
+   const [addressLink, setAddressLink] = useState(allInfoPromNight.address_link);
    const dispatch = useDispatch();
 
    const handleRouteClick = () => {
@@ -36,7 +36,7 @@ const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
          )}
 
          <div>
-            {linkModal ? (
+            {linkModal && editStatusTemplate  ? (
                <div className="TiketsSection-blockDescript-parLovation">
                   <p className="TiketsSection-blockDescript-parLovation-p">ROUTE</p>
                   <div className="TiketsSection-blockDescript-parLovation-inputBlock">
@@ -55,9 +55,10 @@ const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
                   </div>
                </div>
             ) : (
-               <a href={item.address_link} target='_blank' onClick={handleRouteClick}>
+               <a href={item?.address_link || 'https://yandex.by/maps/157/minsk/?ll=27.555691%2C53.902735&mode=routes&rtext=&rtt=comparison&z=12'} target='_blank' onClick={handleRouteClick}>
                   <CustomBtnTikets btnText="ROUTE"/>
                </a>
+               
             )}
          </div>
          {editStatusTemplate ? (

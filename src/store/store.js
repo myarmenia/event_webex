@@ -13,7 +13,6 @@ const store = configureStore({
       linkModal: linkModalSlice.reducer,
       privateProject: privateProjectSlice.reducer,
       tikets: tiketsReducer,
-      promNight: promNightSlice.reducer
    },
 });
 
