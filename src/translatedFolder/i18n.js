@@ -52,6 +52,7 @@ i18n.use(initReactI18next).init({
                 ],
                 autors: 'Կայքը պատրաստել է',
 
+
                 wedding1_buttons: [
                     'Ստեղծել',
                     'Տեսնել',
@@ -73,6 +74,7 @@ i18n.use(initReactI18next).init({
                    'Միջոառման վայր',
                    'Հասցե'
                 ]
+
 
             },
         },
@@ -127,6 +129,7 @@ i18n.use(initReactI18next).init({
                 autors: 'Сайт разработал',
 
 
+
                 wedding1_buttons: [
                     'Создать',
                     'Видеть',
@@ -148,6 +151,7 @@ i18n.use(initReactI18next).init({
                     'Место проведения',
                     'Адрес'
                  ]
+
             },
         },
 
@@ -200,6 +204,7 @@ i18n.use(initReactI18next).init({
                 ],
                 autors: 'Website developed',
 
+
                 wedding1_buttons: [
                     'Create',
                     'View',
@@ -222,6 +227,7 @@ i18n.use(initReactI18next).init({
                     'Address'
                  ]
                 
+
             },
         },
     },

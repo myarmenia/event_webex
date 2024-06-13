@@ -1,0 +1,1 @@
+export const Ring=require('./images/p1.png')

@@ -1,0 +1,88 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-main {
+  background: #4612b3;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 500px;
+  max-width: 80%;
+  height: auto;
+  color: white;
+  margin-left: 450px;
+  margin-top: 50px;
+}
+
+.form input {
+  border-radius: 50%;
+}
+
+.modal-main input {
+  background-color: #4612b3;
+  border-top-color: #4612b3;
+  border-right-color: #4612b3;
+  border-left-color: #4612b3;
+}
+.form_group {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: flex-start;
+}
+.form_group > div {
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.close-button {
+  display: flex;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+#message {
+  background-color: #4612b3;
+  border: none;
+  outline: none;
+  border-bottom-style: double;
+  border-bottom-color: white;
+}
+
+.btn-primary {
+  margin-top: 55px;
+  background-color: #5EBEA3;
+  width: 130px;
+  height: 32px;
+}
+
+.form-control::placeholder{
+    color: white;
+}
+
