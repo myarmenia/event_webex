@@ -54,6 +54,7 @@ function Language({setLangModal}) {
         </div>
         <div className='tab'>
           <p id='en' onClick={(e) => changeLanguage(e.target.id)}>Eng</p>
+         
         </div>
       </div>
     </div>

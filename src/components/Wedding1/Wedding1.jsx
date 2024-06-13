@@ -55,6 +55,7 @@ function Wedding1() {
     }, 2000);
   }, [langModal]);
 
+
   return (
     <div className='wedding_1'>
         <Wedding1Header/>
