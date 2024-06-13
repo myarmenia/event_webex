@@ -16,7 +16,7 @@ import {
   Harsaniq2,
   Foto,
   Footer1,
-  Slide2,
+
   Slide3,
   Slide4,
   Slide5,
@@ -83,13 +83,13 @@ const sliderData = [
     description:
       "Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit.",
   },
-  {
-    id: 2,
-    img: Slide2,
-    title: "Discover Amazing Gifts",
-    description:
-      "Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum.",
-  },
+  // {
+  //   id: 2,
+  //   img: Slide2,
+  //   title: "Discover Amazing Gifts",
+  //   description:
+  //     "Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum.",
+  // },
   {
     id: 3,
     img: Slide3,
