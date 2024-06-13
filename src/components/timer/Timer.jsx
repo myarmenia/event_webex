@@ -18,14 +18,6 @@ function Timer({ allInfo, liner }) {
   const dateToUse = allInfo.date || defaultDate;
   const [allInfoyear, allInfomonth, allInfoday] = dateToUse.split('-');
 
-  useEffect(() => {
-    const targetDate = new Date(allInfoyear, allInfomonth - 1, allInfoday, 31, 17, 0, 0).getTime();
-
-   // Parse date parts from allInfo
-   const allInfoyear = allInfo.date.split('-')[0];
-   const allInfomonth = allInfo.date.split('-')[1];
-   const allInfoday = allInfo.date.split('-')[2];
-
    useEffect(() => {
       // let timer
       const targetDate = new Date(

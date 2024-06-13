@@ -51,6 +51,8 @@ i18n.use(initReactI18next).init({
                     'Սիրով սպասում ենք ձեզ',
                 ],
                 autors: 'Կայքը պատրաստել է',
+
+                tandz: '888',
             },
         },
 
@@ -102,6 +104,8 @@ i18n.use(initReactI18next).init({
                     'С нетерпением ждем Вас!',
                 ],
                 autors: 'Сайт разработал',
+
+                tandz: '666'
             },
         },
 
@@ -153,6 +157,7 @@ i18n.use(initReactI18next).init({
                     'We look forward to see you!',
                 ],
                 autors: 'Website developed',
+                tandz: '777'
             },
         },
     },
