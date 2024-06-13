@@ -52,7 +52,30 @@ i18n.use(initReactI18next).init({
                 ],
                 autors: 'Կայքը պատրաստել է',
 
-                tandz: '888',
+
+                wedding1_buttons: [
+                    'Ստեղծել',
+                    'Տեսնել',
+                    'Ուղարկել',
+                ],
+
+                leng_modal: [
+                    'Լեզու',
+                    'Ընտրեք այն լեզուն որով ցանկանում եք լինի ձեր հրավիրատոմսը'
+                ],
+
+                musicModalTitle: 'Ընտրեք երաժշտություն',
+
+                watsUpNumberTitle: 'Գրել Wats Up-ի հեռախոսահամար',
+
+                placeholderWedding1: [
+                   'Փեսացու',
+                   'Հարսնացու',
+                   'Միջոառման վայր',
+                   'Հասցե'
+                ]
+
+
             },
         },
 
@@ -105,7 +128,30 @@ i18n.use(initReactI18next).init({
                 ],
                 autors: 'Сайт разработал',
 
-                tandz: '666'
+
+
+                wedding1_buttons: [
+                    'Создать',
+                    'Видеть',
+                    'Отправлять',
+                ],
+
+                leng_modal: [
+                    'Язык',
+                    'Выберите язык, на котором вы хотите, чтобы ваше приглашение было'
+                ],
+
+                musicModalTitle: 'Выберите музыку',
+
+                watsUpNumberTitle: 'Напишите номер телефона Wats Up',
+
+                placeholderWedding1: [
+                    'Жених',
+                    'Невеста',
+                    'Место проведения',
+                    'Адрес'
+                 ]
+
             },
         },
 
@@ -157,7 +203,31 @@ i18n.use(initReactI18next).init({
                     'We look forward to see you!',
                 ],
                 autors: 'Website developed',
-                tandz: '777'
+
+
+                wedding1_buttons: [
+                    'Create',
+                    'View',
+                    'Send',
+                ],
+
+                leng_modal: [
+                    'Language',
+                    'Choose the language you want your invitation to be in'
+                ],
+
+                musicModalTitle: 'Select music',
+
+                watsUpNumberTitle: 'Write Wats Up phone number',
+
+                placeholderWedding1: [
+                    'Groom',
+                    'Bride',
+                    'Location',
+                    'Address'
+                 ]
+                
+
             },
         },
     },

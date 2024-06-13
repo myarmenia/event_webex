@@ -61,6 +61,7 @@ function Wedding1Event({ item }) {
         file && dispatch(changeInfoEvent_imgs(file));
       }, [file, dispatch]);
 
+
     return (
         <div className='event' ref={eventRef}>
             {
@@ -71,8 +72,8 @@ function Wedding1Event({ item }) {
                         <span className='wedding1_edite_image'>{editIcon}</span>
                     </label>}
                     {
-                        item.images.map((img, index) => {
-                            return <img key={index} src={(changeInfoState === 'view' && file) || img} alt="not found" />
+                       item.images && item.images.map((img, index) => {
+                            return <img key={index} src={(changeInfoState === 'view' && file) || img.path} alt="not found" />
                         })
                     }
                 </div>
@@ -83,13 +84,13 @@ function Wedding1Event({ item }) {
                     <span className='icon_marriage_ring'>{ringsWedding}</span>
                     <div className='about'>
                         <span className='marriage_title'>{t('party.0')}</span>
-                        {changeInfoState === 'edit' ? <input type="time" className='time_inp event_inp' value={allInfo?.eventTime} onChange={(e) => setEventTime(e.target.value)} placeholder='Ժամ' /> : <span>{allInfo?.eventTime || item.time}</span>}
-                        {changeInfoState === 'edit' ? <input type="text" className='text_inp event_inp' value={allInfo?.eventText} onChange={(e) => setEvent1Text(e.target.value)} placeholder='Տեքս' /> : <span>{allInfo?.eventText || item.text}</span>}
-                        {changeInfoState === 'edit' ? <input type="text" className='address_inp event_inp' value={allInfo?.eventAddres} onChange={(e) => setEventAddress(e.target.value)} placeholder='Հասցե' /> : <span>{allInfo?.eventAddres || item.address}</span>}
+                        {changeInfoState === 'edit' ? <input type="time" className='time_inp event_inp' value={allInfo?.eventTime} onChange={(e) => setEventTime(e.target.value)} /> : <span>{allInfo?.eventTime || item.time}</span>}
+                        {changeInfoState === 'edit' ? <input type="text" className='text_inp event_inp' value={allInfo?.eventText} onChange={(e) => setEvent1Text(e.target.value)} placeholder={t('placeholderWedding1.2')} /> : <span>{allInfo?.eventText || item.text}</span>}
+                        {changeInfoState === 'edit' ? <input type="text" className='address_inp event_inp' value={allInfo?.eventAddres} onChange={(e) => setEventAddress(e.target.value)} placeholder={t('placeholderWedding1.3')} /> : <span>{allInfo?.eventAddres || item.address}</span>}
                     </div>
-                    <a href={item.address_link} target='_blank'>
+                    {item.address_link && <a href={item.address_link} target='_blank'>
                         <button className='get odd' onClick={() => dispatch(openLinkModal('event'))}>{t('party.2')}</button>
-                    </a>
+                    </a>}
                 </div>
             }
         </div>

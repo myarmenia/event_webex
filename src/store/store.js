@@ -4,6 +4,11 @@ import changeInfoSlice from './slices/ChangeInfoSlice/ChangeInfoSlice';
 import linkModalSlice from './slices/LinkModalSlice/LinkModalSlice';
 import privateProjectSlice from './slices/privateProjectSlice/privateProjectSlice';
 import homePageSlice from './slices/HomePageSlice/HomePageSlice';
+import { tiketsReducer } from './slices/Tikets/tiketsSlice';
+import getProjectSlice from './slices/GetProjectSlice/GetProjectSlice';
+import weeding1ResultMessageSlice from './slices/Wedding1ResultMessageSlice/Wedding1ResultMessageSlice';
+
+
 
 
 const store = configureStore({
@@ -12,9 +17,12 @@ const store = configureStore({
       changeInfo: changeInfoSlice.reducer,
       linkModal: linkModalSlice.reducer,
       privateProject: privateProjectSlice.reducer,
-      homePage: homePageSlice.reducer
+      homePage: homePageSlice.reducer,
+      tikets: tiketsReducer,
+      projectData: getProjectSlice.reducer,
+      wedding1ResultMessage: weeding1ResultMessageSlice.reducer
+
    },
-  
 });
 
 export default store;

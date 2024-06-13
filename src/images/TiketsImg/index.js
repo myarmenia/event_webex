@@ -6,6 +6,7 @@ export { default as backgroundCenterBlock } from './Rectangle5.png';
 export { default as Showa } from './Showa.png';
 export { default as TiketsSectionBackground } from './TiketsSectionBackground.png';
 export { default as TiketsSectionBackground2 } from './TiketsSectionBackground2.png';
+export { default as sectionBg2 } from './sectionBg2png.png';
 export { default as tiketsSectionRigth } from './tiketsSectionRigth.png';
 export { default as tiketsSectionLeft } from './tiketsSectionLeft.png';
 export { default as defaultImages_place } from './defaultImages_place.png';

@@ -22,6 +22,10 @@ img {
    src: url('../src/fonts/Jomhuria-Regular.ttf');
 }
 @font-face {
+   font-family: 'Poppins';
+   src: url('../src/fonts/Poppins-ExtraLight.ttf');
+}
+@font-face {
    font-family: 'global-font';
    src: url(../src/fonts/ArmenianDecorativeU-Italic.ttf);
 }
