@@ -1,22 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './MusicModal.css';
 import { playIcon, pauseIcon } from '../../iconsFolder/icons'; // Assume pauseIcon is also defined
 import { audioData } from '../../dataFolder/data';
 import { useDispatch, useSelector } from 'react-redux';
-import { close, musicModalSelector, open } from '../../store/slices/MusicModalSlice/MusicModalSlice';
+import { close, musicModalSelector } from '../../store/slices/MusicModalSlice/MusicModalSlice';
 import { change, changeMusic } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
+import { useTranslation } from 'react-i18next';
 
-function MusicModal({langModal}) {
+function MusicModal({ langModal }) {
   const audioRefs = useRef([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(null);
-  const musicModalIsopen = useSelector(musicModalSelector);
-  const [file, setFile] = useState(null);
-  const dispatch = useDispatch()
+  const musicModalIsOpen = useSelector(musicModalSelector);
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const playaudio = (index) => {
-    if (selectedTrack !== null && selectedTrack !== index) {
-      audioRefs.current[selectedTrack].pause();
+    if (isPlaying !== null && isPlaying !== index) {
+      audioRefs.current[isPlaying].pause();
     }
 
     if (audioRefs.current[index].paused) {
@@ -29,24 +30,21 @@ function MusicModal({langModal}) {
   };
 
   const handleRadioChange = (track, index) => {
-    setSelectedTrack(index);
-
-    if (isPlaying !== index) {
+    if (isPlaying !== null && isPlaying !== index) {
+      audioRefs.current[isPlaying].pause();
       setIsPlaying(null);
     }
 
-    dispatch(changeMusic(track.src))
-    dispatch(close())
-    dispatch(change())
+    setSelectedTrack(index);
+    dispatch(changeMusic(track.src));
+    dispatch(close());
+    dispatch(change());
   };
-
-
-
 
   return (
     <div className='music-modal'>
       <div className='music-modal_content'>
-        <h1 className='music-modal_title'>Ընտրեք երաժշտություն</h1>
+        <h1 className='music-modal_title'>{t('musicModalTitle')}</h1>
         {audioData.map((track, index) => (
           <div key={track.id} className="button-container_music">
             <label className='button_musicc'>
@@ -55,7 +53,7 @@ function MusicModal({langModal}) {
                 ref={(el) => (audioRefs.current[index] = el)}
                 style={{ display: 'none' }}
               >
-                <source src={track.src} type="audio/mpeg" />
+                <source src={require(`../../audio/${track.src}`)} type="audio/mpeg" />
               </audio>
               <div className="button_music_play_div">
                 <input
@@ -71,7 +69,7 @@ function MusicModal({langModal}) {
               <span className='button_music_play' onClick={() => playaudio(index)}>
                 {isPlaying === index ? pauseIcon : playIcon}
               </span>
-              <span className="button_music_name">Track {index + 1}</span>
+              <span className="button_music_name">{track.track}</span>
             </div>
           </div>
         ))}

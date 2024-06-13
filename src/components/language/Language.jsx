@@ -9,6 +9,7 @@ import { musicModalSelector, open } from '../../store/slices/MusicModalSlice/Mus
 function Language({setLangModal}) {
   const leng = localStorage.getItem('lang')
   const musicModalIsopen = useSelector(musicModalSelector);
+
   const dispatch = useDispatch()
 
   const { t, i18n } = useTranslation()
@@ -29,7 +30,6 @@ function Language({setLangModal}) {
   };
 
 
-
   useEffect(() => {
     if (leng === null) {
       localStorage.setItem('lang', 'am')
@@ -40,11 +40,11 @@ function Language({setLangModal}) {
 
   return (
     <div className='language-modal'>
-      <h1 className='language-title'>Ընտրեք այն լեզուն որով ցանկանում եք լինի ձեր հրավիրատոմսը</h1>
+      <h1 className='language-title'>{t('leng_modal.1')}</h1>
       <div className='menu_language'>
         <input className='toggle' id='menu' type='checkbox' placeholder='Language' />
         <label className='style' htmlFor='menu'>
-          <i className="fa fa-bars" >Language</i>
+          <i className="fa fa-bars" >{t('leng_modal.0')}</i>
         </label>
         <div className='tab'>
           <p id='am' onClick={(e) => changeLanguage(e.target.id)}>Arm</p>

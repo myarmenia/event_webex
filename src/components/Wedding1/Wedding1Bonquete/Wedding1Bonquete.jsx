@@ -59,6 +59,7 @@ function Wedding1Bonquete({ item }) {
   }, [file, dispatch]);
 
 
+  console.log(item,'ggh');
 
   return (
     <div className='banquet' ref={banquetRef}>
@@ -74,8 +75,8 @@ function Wedding1Bonquete({ item }) {
               <span>{item.text}</span>
               <span>{item.address}</span> */}
             {changeInfoState === 'edit' ? <input type="time" value={allInfo.banquetTime} placeholder='Ժամ' className='event_inp' onChange={(e) => setBanquetTime(e.target.value)} /> : <span>{allInfo.banquetTime || item.time}</span>}
-            {changeInfoState === 'edit' ? <input type="text" value={allInfo.banquetText} placeholder='Տեքստ' className='event_inp' onChange={(e) => setBanquetText(e.target.value)} /> : <span>{allInfo.banquetText || item.text}</span>}
-            {changeInfoState === 'edit' ? <input type="text" value={allInfo.banquetAddres} placeholder='Հասցե' className='event_inp' onChange={(e) => setBanquetAddress(e.target.value)} /> : <span>{allInfo.banquetAddres || item.address}</span>}
+            {changeInfoState === 'edit' ? <input type="text" value={allInfo.banquetText} placeholder={t('placeholderWedding1.2')} className='event_inp' onChange={(e) => setBanquetText(e.target.value)} /> : <span>{allInfo.banquetText || item.text}</span>}
+            {changeInfoState === 'edit' ? <input type="text" value={allInfo.banquetAddres} placeholder={t('placeholderWedding1.3')} className='event_inp' onChange={(e) => setBanquetAddress(e.target.value)} /> : <span>{allInfo.banquetAddres || item.address}</span>}
           </div>
           <a href={item.address_link} target='_blank'>
             <button className='get even' onClick={() => dispatch(openLinkModal('banquet'))}>{t('restaurant.3')}</button>
@@ -90,8 +91,8 @@ function Wedding1Bonquete({ item }) {
             <span className='wedding1_edite_image'>{editIcon}</span>
           </label>}
           {
-            item.images.map((img, index) => {
-              return <img key={index} src={(changeInfoState === 'view' && file) || img} alt="not found" />
+           item.images &&  item.images.map((img, index) => {
+              return <img key={index} src={(changeInfoState === 'view' && file) || img.path} alt="not found" />
             })
           }
         </div>
