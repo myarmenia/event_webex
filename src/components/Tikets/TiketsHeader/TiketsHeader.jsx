@@ -1,116 +1,153 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { changePromNightDate, selectDefaultData, setEditStatusTemplate } from '../../../store/slices/Tikets/tiketsSlice';
-
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { 
+    changePromNightDate, 
+    changePromNightTime, 
+    selectDefaultData, 
+    setEditStatusTemplate 
+} from '../../../store/slices/Tikets/tiketsSlice';
 import CustomBtnTikets2 from '../TicetsCustom/CustomBtnTikets2';
 import Timer from '../../timer/Timer';
-import {
-   wing1,
-   wing2,
-   wing3,
-   wing4,
-   backgroundCenterBlock,
-   Showa,
-   backgroundVideo,
+import { 
+    wing1, 
+    wing2, 
+    wing3, 
+    backgroundCenterBlock, 
+    Showa 
 } from '../../../images/TiketsImg';
-
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { 
+    openModalPrivate 
+} from '../../../store/slices/ModalPrivate/ModalPrivateSlice';
+import { 
+    openModalTiketsLeng, 
+    tiketsLengModalSelector 
+} from '../../../store/slices/TiketsLengModal/TiketsLengModalSlice';
 import { sectiosData } from '../../../dataFolder/data';
+import '../tikets.css';
 
 const TiketsHeader = () => {
-   const dispatch = useDispatch();
-   const [headerTitle, setHeaderTitle] = React.useState({ name: 'PROM', lastName: ' NIGHT' });
-   const [dataInput, setDataInput] = React.useState(false);
-   const { statusTemplate, editStatusTemplate } = useSelector((state) => state.tikets);
-   const allInfoPromNight = useSelector(selectDefaultData);
-   const [promNightDate, setPromNightDate] = useState(allInfoPromNight.date)
-   const [open, setOpen] = React.useState(false);
-   // const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const [headerTitle, setHeaderTitle] = useState({ name: 'PROM', lastName: ' NIGHT' });
+    const [open, setOpen] = useState(false);
+    
+    const { statusTemplate, editStatusTemplate } = useSelector((state) => state.tikets);
+    const tiketsLengModal = useSelector(tiketsLengModalSelector);
+    const allInfoPromNight = useSelector(selectDefaultData);
+    const [promNightDate, setPromNightDate] = useState(allInfoPromNight.date);
+    const [promNightTime, setPromNightTime] = useState(allInfoPromNight.section_1_time);
 
-   console.log(allInfoPromNight,'ddd555');
-   React.useEffect(() => {
-      setTimeout(() => {
-         setOpen(true);
-      }, 60000);
-   }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setOpen(true);
+        }, 10000);
+    }, []);
 
-   useEffect(() => {
-      console.log(promNightDate,'88');
-      dispatch((changePromNightDate(promNightDate)));
-   }, [dispatch, promNightDate]);
+    useEffect(() => {
+        dispatch(changePromNightDate(promNightDate));
+    }, [dispatch, promNightDate]);
 
-   return (
-      <div className="tiketsHeader">
-         <video className="tiketsHeader-background-video" autoPlay muted>
-            <source src={'/backgroundVideo.mp4'} type="video/mp4" />
-            Your browser does not support the video tag.
-         </video>
-         <div className="tiketsHeader-blockButton">
-            { !editStatusTemplate ? (
-               <CustomBtnTikets2
-                  handleClick={() => dispatch(setEditStatusTemplate(true))}
-                  btnText={'Edit Template '}
-                  background="#c93789"
-               />
-            ) : editStatusTemplate ? (
-               <CustomBtnTikets2 btnText={'view'} handleClick={() => dispatch(setEditStatusTemplate(false))} background="#c93789" />
-            ) : null}
+    useEffect(() => {
+        dispatch(changePromNightTime(promNightTime));
+    }, [dispatch, promNightTime]);
 
-            {/* <CustomBtnTikets2 btnText={'Save '} background="#2CE2E7" /> */}
-         </div>
-         <div className="tiketsHeader-imgBlockLeft">
-            <img src={wing1} alt="" />
-         </div>
-         <div className="tiketsHeader-imgBlockRight">
-            <img src={wing2} alt="" />
-         </div>
-         <div className="tiketsHeader-imgBlockBottom">
-            <img src={wing3} alt="" />
-         </div>
-         <div style={{ display: open ? '' : 'none' }} className="container">
-            <div className="tiketsHeader-blockCenter">
-               <div
-                  className="tiketsHeader-blockCenter_nameBlock"
-                  style={{ backgroundImage: `url(${backgroundCenterBlock})` }}>
-                  {/* <img src={backgroundCenterBlock} alt="" /> */}
+    useEffect(() => {
+        if (tiketsLengModal === false && localStorage.getItem('langModalTiket') === 'true') {
+            dispatch(setEditStatusTemplate(true));
+        }
 
-                  <div className="blockCenter_nameBlock-name">
-                     <span className="blockCenter_nameBlock-name-minname">{headerTitle.name}</span>
-                     <span className="blockCenter_nameBlock-name-bigName">
-                        {headerTitle.lastName}
-                     </span>
-                  </div>
-                  {/* <div className="blockCenter_nameBlock-inptData">
-                     <input
-                        onChange={(e) => {
-                           console.log(e.target.value);
-                        }}
-                        type="date"
-                        // value={'2024-10-12'}
-                        placeholder="JUNE 5 18:00"
-                        style={{ pointerEvents: dataInput ? '' : 'none' }}
-                     />
-                  </div> */}
-                  <div className="blockCenter_nameBlock-inptData">
-                  { console.log(allInfoPromNight.date,'666')}
-                     {editStatusTemplate ? (
-                        <input type="date" placeholder="JUNE 5 18:00" value={allInfoPromNight.date || sectiosData.date || '2024-10-12'}  onChange={(e) => setPromNightDate(e.target.value)}/>
-                     ) : (
-                        <p className="nameBlock-inptData-text">{allInfoPromNight.date || '2024-10-12'}</p>
-                       
-                     )}
-                  </div>
-               </div>
-               <div className="tiketsHeader-blockCenter_timeBlock">
-                  <div style={{ backgroundImage: `url(${Showa})` }}>
-                     <Timer liner={false} />
-                  </div>
-               </div>
+        setTimeout(() => {
+            localStorage.removeItem('langModalTiket');
+        }, 2000);
+    }, [tiketsLengModal, dispatch]);
+
+    return (
+        <div className="tiketsHeader">
+            <video className="tiketsHeader-background-video" autoPlay muted>
+                <source src={'/backgroundVideo.mp4'} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div className="tiketsHeader-blockButton">
+                {!editStatusTemplate ? (
+                    <CustomBtnTikets2
+                        handleOpenLengModal={() => dispatch(openModalTiketsLeng(true))}
+                        handleClick={() => dispatch(setEditStatusTemplate(true))}
+                        btnText={'Edit'}
+                    />
+                ) : (
+                    <CustomBtnTikets2 
+                        btnText={'View'}  
+                        handleOpenLengModal={() => dispatch(openModalTiketsLeng(true))} 
+                        handleClick={() => dispatch(setEditStatusTemplate(false))} 
+                        background="#c93789" 
+                    />
+                )}
+
+                {allInfoPromNight.date && allInfoPromNight.feedback && (
+                    <button 
+                        className='fixed_button_prom_night_send' 
+                        onClick={() => dispatch(openModalPrivate('promNight'))}
+                    >
+                        Send
+                    </button>
+                )}
             </div>
-         </div>
-      </div>
-   );
+            <div className="tiketsHeader-imgBlockLeft">
+                <img src={wing1} alt="" />
+            </div>
+            <div className="tiketsHeader-imgBlockRight">
+                <img src={wing2} alt="" />
+            </div>
+            <div className="tiketsHeader-imgBlockBottom">
+                <img src={wing3} alt="" />
+            </div>
+            <div style={{ display: open ? '' : 'none' }} className="container">
+                <div className="tiketsHeader-blockCenter">
+                    <div
+                        className="tiketsHeader-blockCenter_nameBlock"
+                        style={{ backgroundImage: `url(${backgroundCenterBlock})` }}
+                    >
+                        <div className="blockCenter_nameBlock-name">
+                            <span className="blockCenter_nameBlock-name-minname">{headerTitle.name}</span>
+                            <span className="blockCenter_nameBlock-name-bigName">
+                                {headerTitle.lastName}
+                            </span>
+                        </div>
+                        <div className="blockCenter_nameBlock-inptData">
+                            {editStatusTemplate ? (
+                                <input 
+                                    type="time" 
+                                    placeholder="JUNE 5 18:00" 
+                                    value={promNightTime} 
+                                    onChange={(e) => setPromNightTime(e.target.value)} 
+                                />
+                            ) : (
+                                <p className='nameBlock-inptData-text'>
+                                    {allInfoPromNight.section_1_time || sectiosData.sections[1]?.time || '18:00'}
+                                </p>
+                            )}
+                            {editStatusTemplate ? (
+                                <input 
+                                    type="date" 
+                                    placeholder="JUNE 5 18:00" 
+                                    value={promNightDate} 
+                                    onChange={(e) => setPromNightDate(e.target.value)} 
+                                />
+                            ) : (
+                                <p className="nameBlock-inptData-text">
+                                    {allInfoPromNight.date || '2024-10-12'}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                    <div className="tiketsHeader-blockCenter_timeBlock">
+                        <div style={{ backgroundImage: `url(${Showa})` }}>
+                            <Timer liner={false} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default TiketsHeader;

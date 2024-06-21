@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import CustomBtnTikets from '../TicetsCustom/CustomBtnTikets';
-import { changePromNightAddressLink, changePromNightText2, selectDefaultData } from '../../../store/slices/Tikets/tiketsSlice';
+import { changeInvitationName, changePromNightAddressLink, changePromNightText2, selectDefaultData } from '../../../store/slices/Tikets/tiketsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { sectiosData } from '../../../dataFolder/data';
 const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
@@ -9,10 +9,11 @@ const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
    const allInfoPromNight = useSelector(selectDefaultData);
    const [description, setDescription] = useState(allInfoPromNight.section_2_text);
    const [addressLink, setAddressLink] = useState(allInfoPromNight.address_link);
+   const [invitationName, setInvitationName] = useState(allInfoPromNight.invitation_name)
    const dispatch = useDispatch();
 
    const handleRouteClick = () => {
-     !sectiosData.sections && setLinkModal(true);
+     setLinkModal(true);
 
    };
 
@@ -25,12 +26,15 @@ const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
       dispatch(changePromNightText2(description))
    }, [description]);
 
-   console.log(item, 'item');
+   useEffect(() => {
+      dispatch(changeInvitationName(invitationName))
+   }, [invitationName]);
+  
    return (
       <div className="TiketsSection-blockLeft-blockDescript">
          <h3>INVITATION</h3>
          {editStatusTemplate ? (
-            <textarea className="TiketsSection-blockDescript-textarea" value={allInfoPromNight.section_2_text || item?.text || textArea_plesholder} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea className="TiketsSection-blockDescript-textarea" defaultValue={allInfoPromNight.section_2_text || item?.text || textArea_plesholder} onChange={(e) => setDescription(e.target.value)}></textarea>
          ) : (
             <p className="TiketsSection-blockDescript-defaulttext">{allInfoPromNight.section_2_text || item?.text || textArea_plesholder}</p>
          )}
@@ -62,9 +66,9 @@ const SectionDescript = ({ textArea_plesholder, editStatusTemplate, item }) => {
             )}
          </div>
          {editStatusTemplate ? (
-            <input className="TiketsSection-blockDescript-input" type="text" placeholder="Name" />
+            <input className="TiketsSection-blockDescript-input" defaultValue={allInfoPromNight.invitation_name || item?.invitation_name} type="text" placeholder="Name" onChange={(e) => setInvitationName(e.target.value)}/>
          ) : (
-            <p className="TiketsSection-blockDescript-defaultName">CLAS 12 A</p>
+            <p className="TiketsSection-blockDescript-defaultName">{allInfoPromNight?.invitation_name || item?.invitation_name || '12A'}</p>
          )}
       </div>
    );
