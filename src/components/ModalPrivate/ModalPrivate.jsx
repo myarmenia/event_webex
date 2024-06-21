@@ -47,7 +47,7 @@ function ModalPrivate() {
         }
     ]
 
-    const privateProject = (id) => {
+    const privateProject = (promoCode, tariff_id) => {
         if (selectTypeModal === 'promNight') {
             if (allInfoPromNight.feedBack !== '' && allInfoPromNight.date !== '') {
                 const resultObj = {
@@ -56,7 +56,8 @@ function ModalPrivate() {
                     date: allInfoPromNight.date,
                     feedback: allInfoPromNight.feedback,
                     invitation_name: allInfoPromNight.invitation_name,
-                    tariff_id: id,
+                    ...(tariff_id && { tariff_id: tariff_id }),
+                    ...(promoCode && { promo_code: promoCode }),
                     sections: [
                         {
                             section_number: 1,
@@ -98,7 +99,8 @@ function ModalPrivate() {
                     sound_path: allInfo.music_path,
                     feedback: allInfo.feedback,
                     invitation_name: allInfo.nameBoy + '-' + allInfo.nameGirl,
-                    tariff_id: id,
+                    ...(tariff_id && { tariff_id: tariff_id }),
+                    ...(promoCode && { promo_code: promoCode }),
                     sections: [
                         {
                             section_number: 1,
@@ -165,12 +167,12 @@ function ModalPrivate() {
                     <p>A word or set of letters and numbers that you can use to get a discount</p>
 
                     <div className='modal_private_block_top_input'>
-                        <div className='modal_private_block_top_input_div'>
+                        <form className='modal_private_block_top_input_div' onSubmit={(e) => privateProject(e.target[0].value,null)}>
                             <span>promo code/coupon</span>
                             <input type="text" placeholder='FRN3' />
-                        </div>
+                            <span></span>
+                        </form>
 
-                        <span>{rightIconArrow}</span>
                     </div>
                 </div>
 
@@ -193,7 +195,7 @@ function ModalPrivate() {
                                         }
                                     </ul>
                                 </div>
-                                <button className='modal_private_block_bottom_item_btn' onClick={() => privateProject(el.id)}>Pay</button>
+                                <button className='modal_private_block_bottom_item_btn' onClick={() => privateProject(null, el.id)}>Pay</button>
                             </div>
                         ))
                     }
