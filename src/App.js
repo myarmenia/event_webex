@@ -28,9 +28,7 @@ function App() {
 
    useEffect(() => {
       const params = customBasesUrlFunc();
-      if (pathname !== `/${leng}/wedding1`) {
         params?.token && dispatch(getProject(params.token));
-      }
 
     }, []);
 

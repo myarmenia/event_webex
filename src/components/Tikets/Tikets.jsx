@@ -54,7 +54,7 @@ const Tikets = () => {
                      <ContentModal />
                   </CustomModal>
                )}
-            </div> */}
+            </div>  */}
          </div>
          {/* <CustomChangeBtn/> */}
       </div>

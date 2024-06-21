@@ -34,7 +34,7 @@ const initialState = {
 const tiketFormSlice = createSlice({
    name: 'tiketFormSlice',
    initialState,
-   reducers: {
+   reducers: { 
       setStatusTemplate(state, { payload }) {
          state.statusTemplate = payload;
       },

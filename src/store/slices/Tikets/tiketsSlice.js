@@ -12,6 +12,7 @@ const initialState = {
 
       date: '',
       feedback: '',
+      invitation_name: '',
 
       section_1_time: '',
 
@@ -43,6 +44,14 @@ const tiketSlice = createSlice({
          console.log(action.payload, 'dd');
       },
 
+      changePromNightFeedback(state, action) {
+         state.defaultData.feedback = action.payload;
+      },
+
+      changeInvitationName(state, action) {
+         state.defaultData.invitation_name = action.payload;
+      },
+
       // ===========================
 
       changePromNightTime(state, action) {
@@ -71,4 +80,4 @@ const tiketSlice = createSlice({
 export const statusTemplate = (state) => state.statusTemplate;
 export const selectDefaultData = (state) => state.tikets.defaultData
 export const tiketsReducer = tiketSlice.reducer;
-export const { setStatusTemplate, setEditStatusTemplate, changePromNightDate, changePromNightTime, changePromNightAddressLink, changePromNight_imgs_section_2, changePromNight_imgs_section_3, changePromNightText2, changePromNightText3 } = tiketSlice.actions;
+export const { setStatusTemplate, setEditStatusTemplate, changePromNightDate, changePromNightTime, changePromNightAddressLink, changePromNight_imgs_section_2, changePromNight_imgs_section_3, changePromNightText2, changePromNightText3, changePromNightFeedback, changeInvitationName} = tiketSlice.actions;

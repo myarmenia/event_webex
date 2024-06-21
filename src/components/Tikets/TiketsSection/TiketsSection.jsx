@@ -28,8 +28,8 @@ const TiketsSection = () => {
             className="TiketsSection-contaner"
             style={{ backgroundImage: `url(${TiketsSectionBackground})` }}>
             {
-               sectiosData.sections ? sectiosData.sections.map((item, index) => {
-                  if (item.section_number === 2) {
+               sectiosData.sections.length  ? sectiosData.sections.map((item, index) => {
+                  if (item.section_number === '2') {
                      return (<div key={index} className="TiketsSection-contaner-blockLeft">
                         <SectionDescript
                            textArea_plesholder={textArea_plesholder}
@@ -41,7 +41,7 @@ const TiketsSection = () => {
                      )
 
                   }
-                  else if (item.section_number === 3) {
+                  else if (item.section_number === '3') {
                      return (<div key={index} className="TiketsSection-contaner-blockRight">
                         <FormBlockRight
                            defaultImages_place={defaultImages_place}

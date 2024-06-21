@@ -13,7 +13,7 @@ const defaultCustomStyles = {
 };
 
 const CustomModal = ({ parentSelector, customStyles, children }) => {
-   const [modalIsOpen, setIsOpen] = React.useState(true);
+   const [modalIsOpen, setIsOpen] = React.useState(false);
 
    function openModal() {
       setIsOpen(true);
