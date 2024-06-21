@@ -64,7 +64,7 @@
    color: #fdfdfd;
 }
 .blockCenter_nameBlock-name-bigName {
-   font-size: 400px;
+   font-size: 280px;
    font-family: Jomhuria;
    height: 268px;
    font-style: normal;
@@ -322,21 +322,57 @@
    border-radius: 3px;
 }
 .customBtnTokets2 {
-   font-size: 25px;
-   line-height: 20px;
-   font-family: initial;
+   font-size: 43px;
+   line-height: 26px;
+   font-family: Jomhuria;
    font-style: normal;
    /* width: 110px; */
-   padding: 7px 17px 6px;
+   padding: 8px 30px 2px;
+   background-image: linear-gradient(
+      92.23deg,
+      #ff56f6 21.43%,
+      #b936ee 50.63%,
+      #3bace2 100%,
+      #406aff 117.04%
+   );
    color: #ffffff;
-   letter-spacing: 0px;
+   letter-spacing: 2px;
    border: 2px solid transparent;
+   border-image: linear-gradient(90deg, #3c79d5 47.49%, #ffa6fa 98.81%);
    border-image-slice: 1;
-   box-shadow: 0px 4px 97px 10px #38dfe6;
+   box-shadow: 0px 4px 97px 10px #ff56f682;
    border-radius: 3px;
    position: fixed;
    top: 60px;
-   right: 100px;
+   right: 250px;
+}
+
+
+
+.fixed_button_prom_night_send{
+   position: fixed;
+   top: 60px;
+   right: 100px ;
+   font-size: 43px;
+   line-height: 26px;
+   font-family: Jomhuria;
+   font-style: normal;
+   /* width: 110px; */
+   padding: 8px 30px 2px;
+   background-image: linear-gradient(
+      92.23deg,
+      #ff56f6 21.43%,
+      #b936ee 50.63%,
+      #3bace2 100%,
+      #406aff 117.04%
+   );
+   color: #ffffff;
+   letter-spacing: 2px;
+   border: 2px solid transparent;
+   border-image: linear-gradient(90deg, #3c79d5 47.49%, #ffa6fa 98.81%);
+   border-image-slice: 1;
+   box-shadow: 0px 4px 97px 10px #ff56f682;
+   border-radius: 3px;
 }
 
 .TiketsSection-blockDescript-defaultName {
@@ -569,6 +605,12 @@
    border-radius: 2px;
 }
 
+.blockCenter_nameBlock-inptData{
+   display: flex !important;
+   align-items: center !important;
+   gap: 20px;
+}
+
 
 
 /* ==============media */
@@ -589,7 +631,7 @@
 
    .tiketsHeader-background-video{
       position: static;
-      width: 400px;
+      width: 100%;
       height: 300px;
       transform: translate(0, 0);
       object-fit: contain;
@@ -620,7 +662,7 @@
 
    .blockCenter_nameBlock-name-bigName{
       font-size: 100px;
-      height: 60px;
+      height: 110px;
    }
 
    .blockCenter_nameBlock-name-minname{
@@ -643,6 +685,8 @@
       display: none;
    }
 
+  
+
    .blockCenter_nameBlock-inptData > input{
       font-size: 25px;
    }
@@ -657,7 +701,7 @@
 @media (max-width: 460px) {
    .blockCenter_nameBlock-name-bigName{
       font-size: 80px;
-      height: 60px;
+      height: 90px;
    }
 
    .blockCenter_nameBlock-name-minname{
@@ -670,7 +714,7 @@
    }
 
    .tiketsHeader-background-video{
-      width: 250px;
+      width: 100%;
       height: 200px;
    }
 }

@@ -13,9 +13,9 @@ export const getProject = createAsyncThunk(
         const response = await instance(config);
         
         localStorage.setItem('lang', response.data.data.lang);
-        if (window.location.pathname !== `/${response.data.data.lang}/wedding1/`) {
-          window.location.pathname = `/${response.data.data.lang}/wedding1/`;
-        }
+        // if (window.location.pathname !== `/${response.data.data.lang}/wedding1/`) {
+        //   window.location.pathname = `/${response.data.data.lang}/wedding1/`;
+        // }
         return response?.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);

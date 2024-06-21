@@ -12,7 +12,7 @@ import Footer_Autors from '../footer_autors/Footer_Autors'
 import { musicModalSelector, open } from '../../store/slices/MusicModalSlice/MusicModalSlice'
 import { useLocation } from 'react-router-dom'
 import { selectProjectData } from '../../store/slices/GetProjectSlice/GetProjectSlice'
-
+import './Wedding1.css'
 
 function Wedding1() {
   const leng = localStorage.getItem('lang') != null ? localStorage.getItem('lang') : 'am';
