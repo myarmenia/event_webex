@@ -22,12 +22,13 @@ const RotatingModel = ({ scene }) => {
 
 const CustomCanvas = ({ imgUrl, style }) => {
   const { scene } = useGLTF(`${imgUrl}`);
+  const scene1 = scene.clone();
   return (
     <Canvas
       dpr={[1, 3]}
       shadows
       camera={{ fov: 45 }}
-      style={{ width: "100px", height: "100px", background: "transparent" }}
+      style={style}
       gl={{ alpha: true }}
     >
       <ambientLight intensity={2} />
@@ -40,7 +41,7 @@ const CustomCanvas = ({ imgUrl, style }) => {
         polar={[-0.1, Math.PI / 4]}
       >
         <Stage environment="sunset">
-          <RotatingModel scene={scene} />
+          <RotatingModel scene={scene1} />
         </Stage>
       </PresentationControls>
       <Environment preset="sunset" />

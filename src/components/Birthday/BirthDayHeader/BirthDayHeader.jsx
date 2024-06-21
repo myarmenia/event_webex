@@ -1,44 +1,27 @@
 import React, { useEffect, useState, memo } from "react";
+import { postPrivateProject } from "../../../store/slices/privateProjectSlice/privateProjectApi";
 import { useTranslation } from "react-i18next";
 import {
   setDate,
   setModal,
   setView,
   setTest,
-} from "../../../store/slices/BirthDaySlice/BirthDaySlice";
-// import Language from "../../language/Language";
-import { background, balloons } from "../../../images/BirthDayImg";
-import CustomCanvas from "../../../hooks/CustomCanvas";
-import {
   setEdit,
   setAge,
+  setTime,
+  setName,
+  setText,
+  setFull_name,
+  setAddress,
+  setInvitation,
+  setAddress_Link,
+  setImages,
 } from "../../../store/slices/BirthDaySlice/BirthDaySlice";
+import { background, balloons } from "../../../images/BirthDayImg";
+import CustomCanvas from "../../../hooks/CustomCanvas";
+import { numberArray } from "../../../asets/3d_model";
 import Timer from "../../timer/Timer";
-import {
-  number0,
-  number1,
-  number2,
-  number3,
-  number4,
-  number5,
-  number6,
-  number7,
-  number8,
-  number9,
-} from "../../../asets/3d_models";
 import { useDispatch, useSelector } from "react-redux";
-const numberArray = [
-  number0,
-  number1,
-  number2,
-  number3,
-  number4,
-  number5,
-  number6,
-  number7,
-  number8,
-  number9,
-];
 function BirthDayHeader() {
   const { t, i18n } = useTranslation();
   const [headerDisplay, setHeaderDisplay] = useState(false);
@@ -48,84 +31,142 @@ function BirthDayHeader() {
   const day = new Date().getDate();
   const year = new Date().getFullYear();
   const month = new Date().getMonth();
-  const now = `${year}-${month <= 8 ? `0${month + 1}` : `${month + 1}`}-${day}`;
-  // console.log(now);
-  const { age, date, edit, tell, view, test } = useSelector(
-    (store) => store.birthDay
-  );
+  const now = `${year}-${month <= 8 ? `0${month + 1}` : `${month + 1}`}-${
+    day + 1
+  }`;
+  const {
+    age,
+    date,
+    edit,
+    tell,
+    view,
+    name,
+    time,
+    full_name,
+    address,
+    address_link,
+    invitation,
+    images,
+    text,
+    test,
+  } = useSelector((store) => store.birthDay);
   const [ageArray, setAgeArray] = useState([]);
-  // const age2 = "50";
-  // const ageArray2 = age2.split("");
-  // const date2 = "2024-08-03";
-  // const dateArray = date ? date.split("-") : date2.split("-");
+  const lang = localStorage.getItem("lang");
   const dateArray = date.split("-");
   useEffect(() => {
     setTimeout(() => {
       setHeaderDisplay(true);
     }, 500);
-
-    console.log("barev");
   }, []);
+  useEffect(() => {
+    const a = localStorage.getItem("edit");
+    if (a === "true") {
+      dispatch(setEdit(a));
+    }
+  }, []);
+
   useEffect(() => {
     dispatch(setAge(age1));
     if (age.length > age1.length) {
       setAgeArray(ageArray.pop());
     }
     setAgeArray(age1.split(""));
-
-    // setAgeArray([...new Array(age1.length)]);
   }, [age1]);
   useEffect(() => {
     dispatch(setDate(date1));
   }, [date1]);
+  useEffect(() => {
+    setDate1(date);
+  }, [date]);
   useEffect(() => {
     if (!view) {
       setDate1("2024-08-03");
       setAge1("50");
     }
   }, [edit]);
-
+  const EditClick = () => {
+    localStorage.setItem("edit", true);
+    dispatch(setEdit(true));
+    dispatch(setModal(true));
+    dispatch(setView(false));
+  };
+  const viewClick = () => {
+    localStorage.setItem("edit", false);
+    dispatch(setEdit(false));
+    dispatch(setView(true));
+  };
+  const saveClick = () => {
+    const obj = {
+      template_id: "2",
+      template_route: "/birthDay",
+      date: date,
+      feedback: tell,
+      age: age,
+      invitation_name: name,
+      sections: [
+        {
+          section_number: 1,
+          ...(text && { text: text }),
+          ...(time && { time: time }),
+          ...(full_name && { full_name: full_name }),
+          ...(address && { address: address }),
+          ...(invitation && { images: invitation }),
+        },
+        {
+          section_number: 2,
+          ...(address_link && { address_link: address_link }),
+          ...(images && { images: images }),
+        },
+      ].filter((item) => Object.keys(item).length !== 1),
+    };
+    console.log(obj);
+    dispatch(postPrivateProject(obj)).then((res) => {
+      if (res.payload.data) {
+        window.location.href = res.payload.data.redirect_url;
+        dispatch(setTest(true));
+        // dispatch(setDate(res.payload.data.date));
+        // dispatch(setAge(res.payload.data.age));
+        // dispatch(setName(res.payload.data.invitation_name));
+        // dispatch(setTime(res.payload.data.sections[0].time));
+        // dispatch(setText(res.payload.data.sections[0].text));
+        // dispatch(setFull_name(res.payload.data.sections[0].full_name));
+        // dispatch(setAddress(res.payload.data.sections[0].address));
+        // dispatch(setInvitation(res.payload.data.sections[0].images));
+        // dispatch(setAddress_Link(res.payload.data.sections[1].address_link));
+        // dispatch(setImages(res.payload.data.sections[1].images));
+      }
+    });
+  };
   return (
     <div
       className="birthday_header"
       style={{
         backgroundImage: `url(${background})`,
+        height: "auto",
       }}
     >
       <div className="header_content">
         <div className="button_parent">
-          {!edit && (
-            <button
-              className="button"
-              onClick={() => {
-                dispatch(setEdit(true));
-                dispatch(setModal(true));
-                dispatch(setView(false));
-              }}
-            >
+          {!edit && !test && (
+            <button className="button" onClick={EditClick}>
               Edit Template
             </button>
           )}
           {edit && (
             <div>
-              <button
-                className="view button"
-                onClick={(e) => {
-                  dispatch(setEdit(false));
-                  dispatch(setView(true));
-                }}
-              >
+              <button className="view button" onClick={viewClick}>
                 View
               </button>
             </div>
           )}
-          {tell && date && <button className="button save">Save</button>}
+          {tell && date && name && (
+            <button className="button save" onClick={saveClick}>
+              Save
+            </button>
+          )}
         </div>
         {headerDisplay && (
-          <div
-            className="birthday_box"
-            style={{ marginTop: view && !date && "150px" }}
-          >
+          <div className="birthday_box">
             <h1>{t("birthDayHeaderTitle.0")}</h1>
             <h2>{t("birthDayHeaderTitle.1")}</h2>
             <div className="round">
@@ -133,28 +174,30 @@ function BirthDayHeader() {
                 {ageArray.length !== 0 &&
                   ageArray.map((el, index) => (
                     <div className="test1" key={index}>
-                      {/* <CustomCanvas
-                      imgUrl={numberArray.find((_, ind) => ind === +age[index])}
-                    /> */}
                       {numberArray.map((elem, ind) =>
                         +el === ind ? (
-                          <CustomCanvas imgUrl={elem} key={ind} />
+                          <CustomCanvas
+                            imgUrl={elem}
+                            key={ind}
+                            style={
+                              age.length > 2
+                                ? {
+                                    width: "60px",
+                                    height: "60px",
+                                    background: "transparent",
+                                  }
+                                : {
+                                    width: "100px",
+                                    height: "100px",
+                                    background: "transparent",
+                                  }
+                            }
+                          />
                         ) : (
                           ""
                         )
                       )}
                     </div>
-                    //   ))
-                    // : ageArray2.map((el, index) => (
-                    //     <div className="test1" key={index}>
-                    //       {numberArray.map((elem, ind) =>
-                    //         +el === ind ? (
-                    //           <CustomCanvas imgUrl={elem} key={ind} />
-                    //         ) : (
-                    //           ""
-                    //         )
-                    //       )}
-                    //     </div>
                   ))}
               </div>
             </div>
@@ -162,7 +205,7 @@ function BirthDayHeader() {
               <p>
                 <input
                   type="number"
-                  value={age1}
+                  value={age1.length <= 5 ? age1 : setAge1("")}
                   onChange={(e) => setAge1(e.target.value)}
                 />
               </p>
@@ -173,27 +216,26 @@ function BirthDayHeader() {
               </span>
             )}
             {edit && (
-              <p>
+              <p style={{ zIndex: "999999999" }}>
                 <input
                   type="date"
-                  required
                   value={date1}
                   min={now}
                   onChange={(e) => setDate1(e.target.value)}
                 />
               </p>
             )}
-            {((!edit && !view) || edit || (view && date)) && (
-              <>
-                <p style={{ color: "white", fontSize: "32px" }}>
-                  {t("birthDay.0")}
-                </p>
-                <Timer />
-              </>
-            )}
+
+            <p style={{ color: "white", fontSize: "32px", zIndex: "9999" }}>
+              {t("birthDay.0")}
+            </p>
+            <Timer allInfo={{ date }} />
 
             {headerDisplay && (
-              <div className="balloons">
+              <div
+                className="balloons"
+                style={{ bottom: lang === "ru" ? "-35px" : "" }}
+              >
                 <img src={balloons} alt="not found" />
               </div>
             )}

@@ -3,11 +3,16 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import HomeWraper from "./page/HomeWraper";
 import { Tikets } from "./components";
 import Wedding1 from "./components/Wedding1/Wedding1";
-import BirthDay from "./components/Birthday/BirthDay";
-import Modal from "./components/Birthday/modal/Modal";
 import { useEffect, useState } from "react";
+import { customBasesUrlFunc } from "./utils/helperFunck";
+import { useDispatch, useSelector } from "react-redux";
+import { getProject } from "./store/slices/GetProjectSlice/GetProjectApi";
+// import { selectProjectData } from "./store/slices/GetProjectSlice/GetProjectSlice";
+import BirthDay from "./components/Birthday/BirthDay";
 
 function App() {
+  // const respProjectData = useSelector(selectProjectData);
+
   const [musicModal, setMusicModal] = useState(false);
 
   const leng =
@@ -16,20 +21,27 @@ function App() {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    pathname == "/" && navigate(`/${leng}/`);
+    pathname == "/" && navigate(/${leng}/);
   }, []);
+
+  // useEffect(() => {
+  //   const params = customBasesUrlFunc();
+  //   if (pathname !== `/${leng}/wedding1`) {
+  //     params?.token && dispatch(getProject(params.token));
+  //   }
+  // }, []);
 
   return (
     <div className="App">
-      <Modal />
       <Routes>
         <Route path="/" element={<HomeWraper />}>
           <Route path=":lang">
             <Route path="wedding1">
               <Route index element={<Wedding1 />} />
-              <Route path=":name" element={<h1>aaaaaaaaa</h1>} />
+              {/* <Route path=":m" element={<Wedding1/>} /> */}
             </Route>
             <Route
               path="tikets"

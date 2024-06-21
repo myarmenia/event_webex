@@ -6,6 +6,7 @@ import {
   setAddress_Link,
   setImages,
 } from "../../../store/slices/BirthDaySlice/BirthDaySlice";
+import { convertToBase64 } from "../../../utils/helperFunck";
 function Main_Restaurant() {
   const { t, i18n } = useTranslation();
   const [restaurantDisplay, setRestaurantDisplay] = useState(false);
@@ -39,13 +40,22 @@ function Main_Restaurant() {
     if (view) {
       dispatch(setAddress_Link(address1));
       dispatch(setImages(img));
+      setImg([]);
+      setAddress1("");
     }
   }, [view]);
   useEffect(() => {
-    if (image) {
-      setImg([...img, image]);
+    if (!view) {
+      dispatch(setAddress_Link(""));
+      dispatch(setImages([]));
     }
-  }, [image]);
+  }, [view]);
+
+  const handleChange = (e) => {
+    convertToBase64(e.target.files[0]).then((base64) =>
+      setImg([...img, base64])
+    );
+  };
   return (
     <div
       className="main_restaurant"
@@ -97,8 +107,8 @@ function Main_Restaurant() {
                 <input
                   type="file"
                   disabled={img.length === 3 ? true : false}
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  // value={image}
+                  onChange={handleChange}
                 />
               </p>
             )}

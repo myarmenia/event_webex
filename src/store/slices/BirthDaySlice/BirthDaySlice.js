@@ -15,6 +15,7 @@ const initialState = {
   address: "",
   lang: "am",
   view: false,
+  name: "",
   modal: false,
   object: {
     name: "",
@@ -70,6 +71,9 @@ const birthDaySlice = createSlice({
     setTell: (state, { payload }) => {
       state.tell = payload;
     },
+    setName: (state, { payload }) => {
+      state.name = payload;
+    },
   },
 });
 export const {
@@ -87,5 +91,6 @@ export const {
   setInvitation,
   setImages,
   setTell,
+  setName,
 } = birthDaySlice.actions;
 export default birthDaySlice;

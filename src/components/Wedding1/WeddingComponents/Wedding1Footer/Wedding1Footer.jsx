@@ -4,7 +4,6 @@ import { footerBackground, handLeft, handRight, redHeart, wedding } from '../../
 import './Wedding1Footer.css';
 import { allInfoSelector, changeFeedback, changeInfoSelector, changeInfoWatsUp } from '../../../../store/slices/ChangeInfoSlice/ChangeInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { postPrivateProject } from '../../../../store/slices/privateProjectSlice/privateProjectApi';
 import { privateProjectSelector } from '../../../../store/slices/privateProjectSlice/privateProjectSlice';
 
 function Wedding1Footer() {
@@ -36,80 +35,13 @@ function Wedding1Footer() {
       }, [wutsUpNumber]);
 
 
-      const privateProject = () => {
-        if (wutsUpNumber !== '') {
-            const resultObj = {
-                template_id: '1',
-                date: allInfo.date,
-                // sound_path: allInfo.music_path,
-                feedBack: allInfo.feedback,
-                invitation_name: allInfo.nameBoy + '-' + allInfo.nameGirl,
-                sections: [
-                    {
-                        section_number: 1,
-                        ...(allInfo.nameBoy && { name_1: allInfo.nameBoy }),
-                        ...(allInfo.nameGirl && { name_2: allInfo.nameGirl })
-                    },
-
-                    {   
-                        section_number: 2,
-                        ...(allInfo.eventTime && { time: allInfo.eventTime }),
-                        ...(allInfo.eventText && { text: allInfo.eventText }),
-                        ...(allInfo.eventAddres && { address: allInfo.eventAddres }),
-                        ...(allInfo.event_addres_link && { address_link: allInfo.event_addres_link }),
-                        // ...(allInfo.event_imgs.length > 0 && { images: allInfo.event_imgs })
-                    },
-
-                    {
-                        section_number: 3,
-                        ...(allInfo.churchesTime && { time: allInfo.churchesTime }),
-                        ...(allInfo.chrchesText && { text: allInfo.chrchesText }),
-                        ...(allInfo.chrchesAddres && { address: allInfo.chrchesAddres }),
-                        ...(allInfo.churches_addres_link && { address_link: allInfo.churches_addres_link }),
-                        // ...(allInfo.churches_imgs.length > 0 && { images: allInfo.churches_imgs })
-                    },
-
-                    {
-                        section_number: 4,
-                        ...(allInfo.registryTime && { time: allInfo.registryTime }),
-                        ...(allInfo.registryText && { text: allInfo.registryText }),
-                        ...(allInfo.registryAddres && { address: allInfo.registryAddres }),
-                        ...(allInfo.registry_addres_link && { address_link: allInfo.registry_addres_link }),
-                        // ...(allInfo.registry_imgs.length > 0 && { images: allInfo.registry_imgs })
-                    },
-
-                    {
-                        section_number: 5,
-                        ...(allInfo.banquetTime && { time: allInfo.banquetTime }),
-                        ...(allInfo.banquetText && { text: allInfo.banquetText }),
-                        ...(allInfo.banquetAddres && { address: allInfo.banquetAddres }),
-                        ...(allInfo.banquet_addres_link && { address_link: allInfo.banquet_addres_link }),
-                        // ...(allInfo.banquet_imgs.length > 0 && { images: allInfo.banquet_imgs })
-                    }
-                ].filter(item => Object.keys(item).length !== 1),
-                  
-
-            }
-            
-          dispatch(postPrivateProject(resultObj)).then(res =>{
-             if (res.payload.success) {
-                window.location.href = res.payload.data.redirect_url
-             }
-          })
-          
-        }
-
-       
-      }
-
     return (
         <footer style={{ backgroundImage: `url(${footerBackground})` } }  ref={footerRef}>
             <div className='container'>
                 <div className='footer'>
                     {changeInfoState === 'edit' && <div className='wats_up_number_div'>
                         <h1>Գրել Wats Up-ի հեռախոսահամար</h1>
-                        <input type="text" value={wutsUpNumber} placeholder='Համար'  onChange={(e) => setWutsUpNumber(e.target.value)}/>
-                        <button className='wats_up_number_button' onClick={privateProject}>ՊԱՏՎԻՐԵԼ</button>
+                        <input type="text" value={wutsUpNumber} placeholder='Համար'  onChange={(e) => setWutsUpNumber(e.target.value.split('').filter(char => /^[0-9+\(\)]$/.test(char)).join(''))}/>
                     </div>}
                     <h1>{t('formText.0')}</h1>
                     <form onSubmit={handleSubmit}>

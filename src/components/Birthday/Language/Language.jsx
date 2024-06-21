@@ -1,11 +1,11 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   setEdit,
   setModal,
 } from "../../../store/slices/BirthDaySlice/BirthDaySlice";
 import i18n from "../../../translatedFolder/i18n";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { circle, check } from "../../../iconsFolder/icons";
 const languageArray = [
   { lang: "am", name: "Armenian" },
@@ -14,18 +14,23 @@ const languageArray = [
 ];
 function Language() {
   const { t, i18n } = useTranslation();
-  const dispath = useDispatch();
-  const checkLang = localStorage.getItem("lang");
-  // const prevLng = localStorage.getItem("lang");
+  const dispatch = useDispatch();
+  // const checkLang = localStorage.getItem("lang");
+  const prevLng = localStorage.getItem("lang");
+  const { edit } = useSelector((store) => store.birthDay);
+  // dispatch(setEdit(localStorage.getItem("edit")));
+
   const changelanguage = (lng) => {
-    const prevLng = localStorage.getItem("lang");
+    // const prevLng = localStorage.getItem("lang");
     i18n.changeLanguage(lng);
     const pathName = window.location.pathname;
     const result = pathName.replace("/" + prevLng, "/" + lng);
     localStorage.setItem("lang", lng);
-    dispath(setModal(false));
+    dispatch(setModal(false));
+    console.log(pathName, "pat");
+    console.log(prevLng, "prev");
     window.location.href = result;
-    localStorage.setItem("activeInputs", "true");
+    // localStorage.setItem("activeInputs", "true");
   };
 
   return (
@@ -57,11 +62,12 @@ function Language() {
             className="round"
             id={el.lang}
             onClick={(e) => {
-              changelanguage(e.target.id);
-              // localStorage.setItem("leng", JSON.stringify(el.lang));
+              el.lang !== prevLng
+                ? changelanguage(e.target.id)
+                : dispatch(setModal(false));
             }}
           >
-            {checkLang === el.lang && check}
+            {prevLng === el.lang && check}
           </span>
           <span> {el.name}</span>
         </p>

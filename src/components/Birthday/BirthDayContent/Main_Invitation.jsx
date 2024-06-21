@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { phone } from "../../../iconsFolder/icons";
 import { invitation1 } from "../images";
+import { convertToBase64 } from "../../../utils/helperFunck";
 import {
   setDate,
   setTime,
@@ -11,35 +12,39 @@ import {
   setTell,
   setInvitation,
   setText,
+  setName,
 } from "../../../store/slices/BirthDaySlice/BirthDaySlice";
 function Main_Invitation() {
   const { t, i18n } = useTranslation();
-  const { view, text, invitation, date, time, full_name, address, edit, test } =
-    useSelector((store) => store.birthDay);
+  const {
+    view,
+    text,
+    invitation,
+    date,
+    time,
+    full_name,
+    address,
+    edit,
+    test,
+    name,
+  } = useSelector((store) => store.birthDay);
   const [invitationDisplay, setInvitationDisplay] = useState(false);
   const invitationRef = useRef(null);
   const [img, setImg] = useState([]);
-  const [addImg, setAddImg] = useState("");
   const [date1, setDate1] = useState("");
   const [time1, setTime1] = useState("");
   const [full_name1, setFull_Name1] = useState("");
   const [tell1, setTell1] = useState("");
+  const [name1, setName1] = useState("");
   const day = new Date().getDate();
   const year = new Date().getFullYear();
   const month = new Date().getMonth();
   const now = `${year}-${month <= 8 ? `0${month + 1}` : `${month + 1}`}-${day}`;
-  // const date2 = "2024-08-03";
   const [address1, setAddress1] = useState("");
   const dispatch = useDispatch();
   const [text1, setText1] = useState();
-  // const dateArray = date ? date.split("-") : date2.split("-");
   const dateArray = date ? date.split("-") : date1.split("-");
   const invitationImg = invitation.length ? invitation : invitation1;
-  useEffect(() => {
-    if (addImg) {
-      setImg([...img, addImg]);
-    }
-  }, [addImg]);
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -61,6 +66,11 @@ function Main_Invitation() {
     setDate1(date);
   }, [date]);
   useEffect(() => {
+    if (date1) {
+      dispatch(setDate(date1));
+    }
+  }, [date1]);
+  useEffect(() => {
     if (view) {
       dispatch(setText(text1));
       dispatch(setFull_name(full_name1));
@@ -68,21 +78,34 @@ function Main_Invitation() {
       dispatch(setTime(time1));
       dispatch(setTell(tell1));
       dispatch(setInvitation(img));
-      dispatch(setDate(date1));
-    }
-  }, [view]);
-  useEffect(() => {
-    if (view) {
+      dispatch(setName(name1));
       setText1("");
       setFull_Name1("");
       setAddress1("");
       setTime1("");
       setTell1("");
       setImg([]);
-      setAddImg("");
-      // dispatch(setDate(date1));
+      setName1("");
     }
   }, [view]);
+  useEffect(() => {
+    if (!view) {
+      dispatch(setText(""));
+      dispatch(setFull_name(""));
+      dispatch(setAddress(""));
+      dispatch(setTime(""));
+      dispatch(setTell(""));
+      dispatch(setInvitation(""));
+      dispatch(setName(""));
+    }
+  }, [view]);
+
+  function handleChange(e) {
+    convertToBase64(e.target.files[0]).then((base64) => {
+      setImg([...img, base64]);
+    });
+  }
+
   return (
     <div className="main_invitation" ref={invitationRef}>
       <div className="container">
@@ -94,6 +117,7 @@ function Main_Invitation() {
                 {edit ? (
                   <p>
                     <textarea
+                      className="textarea"
                       value={text1 ? text1 : `${t("main_invitation.0")}`}
                       onChange={(e) => setText1(e.target.value)}
                     ></textarea>
@@ -114,6 +138,7 @@ function Main_Invitation() {
             className="invitation_box"
             style={{
               justifyContent: view && invitation.length === 0 && "center",
+              gap: invitation.length === 0 && "10px",
             }}
           >
             {invitationImg.length && (
@@ -135,8 +160,8 @@ function Main_Invitation() {
               <>
                 <input
                   type="file"
-                  value={addImg}
-                  onChange={(e) => setAddImg(e.target.value)}
+                  // value={addImg}
+                  onChange={handleChange}
                   disabled={img.length === 3 ? true : false}
                 />
               </>
@@ -218,24 +243,56 @@ function Main_Invitation() {
                           type="text"
                           placeholder="phone number"
                           value={tell1}
-                          onChange={(e) => setTell1(e.target.value)}
+                          onChange={(e) =>
+                            setTell1(
+                              e.target.value
+                                .split("")
+                                .filter((char) => /^[0-9+\(\)]$/.test(char))
+                                .join("")
+                            )
+                          }
                           style={{ paddingLeft: "40px" }}
                         />
-                        <span
-                          style={{
-                            position: "absolute",
-                            top: "40%",
-                            left: "10px",
-                          }}
-                        >
-                          {phone}
-                        </span>
+                        <span className="phone">{phone}</span>
                       </p>
                     </>
                   )}
 
-                  <span></span>
-                  {/* <span className="autor_text">{t("main_invitation.9")}</span> */}
+                  {/* <span></span> */}
+
+                  {edit ? (
+                    <>
+                      {" "}
+                      <span className="autor_text">
+                        {t("main_invitation.9")}
+                      </span>{" "}
+                      <input
+                        type="text"
+                        value={name1}
+                        onChange={(e) => setName1(e.target.value)}
+                      />
+                    </>
+                  ) : !view ? (
+                    <>
+                      {" "}
+                      <span className="autor_text">
+                        {t("main_invitation.9")}
+                      </span>
+                      <span className="autor_text">
+                        {t("main_invitation.10")}
+                      </span>
+                    </>
+                  ) : name ? (
+                    <>
+                      {" "}
+                      <span className="autor_text">
+                        {t("main_invitation.9")}
+                      </span>
+                      <span className="autor_text">{name}</span>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             )}

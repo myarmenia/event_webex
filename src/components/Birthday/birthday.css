@@ -1,5 +1,13 @@
 /*......... header start....... */
+:root {
+  --cream-color: #c6900a;
+}
+.birthday {
+  max-width: 1500px;
+  margin: 0 auto;
+}
 .birthday_header {
+  font-family: "poppins";
   width: 100%;
   height: 900px;
   background-repeat: no-repeat;
@@ -22,7 +30,7 @@
   gap: 10px;
 }
 .birthday .button {
-  background: #c6900a;
+  background: var(--cream-color);
   width: 146px;
   height: 44px;
   border-radius: 8px;
@@ -107,11 +115,11 @@
   font-size: 90px;
   text-align: center;
   letter-spacing: 5px;
+  font-family: "Poppins";
 }
 
 .birthday_box > h2 {
-  /* color: var(--cream-color); */
-  color: #c6900a;
+  color: var(--cream-color);
   font-size: 50px;
   transform: translateX(58%);
   font-family: "global-font1";
@@ -122,6 +130,7 @@
   font-size: 32px;
   color: white;
   font-weight: 400;
+  z-index: 99999;
 }
 
 .age {
@@ -134,24 +143,23 @@
 }
 /* ........header end..... */
 /*.......... modal......... */
-.birth_day_modal_bacground {
+.birthday_modal {
   position: fixed;
-  background-color: #ccc;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.605);
   display: flex;
   justify-content: center;
   padding-top: 200px;
   width: 100vw;
   height: 100vh;
-  z-index: 999999;
+  z-index: 9999999;
 }
-.birth_day_modal_bacground {
-  /* background: #c6900a;
-  color: white; */
-}
+
 /* ........language...... */
 
 .menu_language1 {
-  background-color: #c6900a;
+  background-color: var(--cream-color);
   width: 465px;
   height: 324px;
   color: white;
@@ -207,7 +215,7 @@
 
 .timer_content > div > span:first-child {
   font-size: 32px;
-  font-family: "poppins-font";
+  font-family: "Poppins";
 }
 
 .timer_content > div > span:last-child {
@@ -230,7 +238,7 @@
 }
 .main_invitation input {
   width: 300px;
-  border: 1px solid #c6900a;
+  border: 1px solid var(--cream-color);
   color: #000;
   text-align: center;
   font-size: 18px;
@@ -250,7 +258,7 @@
   width: 300px;
   height: 80px;
   border-radius: 10px;
-  border: 1px solid #c6900a;
+  border: 1px solid var(--cream-color);
   background-color: transparent;
 }
 .invintation_text {
@@ -273,9 +281,8 @@
 
 .invintation_text > h1 {
   font-size: 44px;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  font-family: "global-font";
+  color: var(--cream-color);
+  font-family: "global-font1";
   letter-spacing: 2px;
   position: absolute;
   top: -30%;
@@ -286,9 +293,15 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  gap: 120px;
+  flex-wrap: wrap;
   padding: 30px;
 }
-
+.invitation_box .phone {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+}
 /* -------------------------------------images---------------------------------- */
 .invitation_image {
   position: relative;
@@ -393,9 +406,8 @@
 
 .invitation_blank > h1 {
   font-size: 44px;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  font-family: "global-font";
+  color: var(--cream-color);
+  font-family: "global-font1";
   letter-spacing: 1px;
 }
 
@@ -411,8 +423,7 @@
 }
 
 .invitation_blank > div > span:last-child {
-  /* color: var(--cream-color); */
-  color: #c6900a;
+  color: var(--cream-color);
 }
 
 .adress_text {
@@ -432,7 +443,7 @@
   padding: 30px;
 }
 .main_restaurant input {
-  border: 1px solid #c6900a;
+  border: 1px solid var(--cream-color);
   font-size: 18px;
   height: 50px;
   color: #000;
@@ -449,9 +460,8 @@
 
 .main_restaurant_content > h1 {
   font-size: 44px;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  font-family: "global-font";
+  color: var(--cream-color);
+  font-family: "global-font1";
   letter-spacing: 1px;
   position: absolute;
   top: -10%;
@@ -518,16 +528,13 @@
   width: 400px;
   height: 45px;
   font-size: 16px;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  /* border: 1px solid var(--cream-color); */
-  border: 1px solid #c6900a;
+  color: var(--cream-color);
+  border: 1px solid var(--cream-color);
   background-color: transparent;
 }
 
 .get:hover {
-  /* background-color: var(--cream-color); */
-  background-color: #c6900a;
+  background-color: var(--cream-color);
   color: white;
   transition: background-color 800ms linear;
 }
@@ -567,15 +574,12 @@
   height: 40px;
   font-size: 16px;
   background-color: transparent;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  /* border: 1px solid var(--cream-color); */
-  border: 1px solid #c6900a;
+  color: var(--cream-color);
+  border: 1px solid var(--cream-color);
 }
 
 .register_btn:hover {
-  /* background-color: var(--cream-color); */
-  background-color: #c6900a;
+  background-color: var(--cream-color);
   color: white;
   transition: background-color 800ms linear;
 }
@@ -611,6 +615,7 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+
   align-items: flex-start;
 }
 
@@ -653,7 +658,9 @@
   transition: all 0.5s;
   background-color: #aaaaaa;
 }
-
+.radio-label {
+  color: #000;
+}
 .radio_inp > div {
   display: flex;
   align-items: center;
@@ -686,7 +693,7 @@
 .firework-par1,
 .firework-par2 {
   position: relative;
-  background-color: #c6900a;
+  background-color: var(--cream-color);
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -778,9 +785,8 @@
 
 .footer_content > h1 {
   font-size: 44px;
-  /* color: var(--cream-color); */
-  color: #c6900a;
-  font-family: "global-font";
+  color: var(--cream-color);
+  font-family: "global-font1";
   letter-spacing: 1px;
   max-width: 600px;
   text-align: center;
@@ -789,8 +795,7 @@
 /*............... miniFooter........... */
 .mini_footer {
   width: 100%;
-  /* background-color: var(--cream-color); */
-  background-color: #c6900a;
+  background-color: var(--cream-color);
   /* margin-top: 50px; */
 }
 
@@ -847,13 +852,13 @@
     /* height:; */
   }
 
-  .invitation_box {
+  /* .invitation_box {
     flex-direction: column;
     align-items: center;
     gap: 80px;
-  }
+  } */
 
-  .invitation_image_1 {
+  /* .invitation_image_1 {
     max-width: 280px;
     height: 310px;
   }
@@ -870,7 +875,7 @@
     height: 210px;
     top: 45%;
     right: -30%;
-  }
+  } */
 }
 @media screen and (max-width: 1024px) {
   .birthday_box {
@@ -895,7 +900,7 @@
   .birthday_box > h2 {
     font-size: 35px;
   }
-  .birthday textarea {
+  .main_invitation .textarea {
     width: 600px;
   }
   .birthday_header {
@@ -935,7 +940,7 @@
     width: 350px;
     border: none;
   }
-  .birthday textarea {
+  .main_invitation .textarea {
     width: 400px;
   }
   .balloons {
@@ -966,6 +971,24 @@
   .timer > h1 {
     font-size: 18px;
   }
+  .invitation_image_1 {
+    max-width: 280px;
+    height: 310px;
+  }
+
+  .invitation_image_2 {
+    max-width: 160px;
+    height: 145px;
+    top: 70%;
+    right: -2%;
+  }
+
+  .invitation_image_3 {
+    max-width: 180px;
+    height: 210px;
+    top: 45%;
+    right: -30%;
+  }
   .main_invitation {
     padding-bottom: 50px;
   }
@@ -976,6 +999,9 @@
   .invitation_blank > h1 {
     font-size: 34px;
   }
+  .invitation_box .phone {
+    top: 30%;
+  }
   .round {
     background: url("../../images/BirthDayImg/round.png") no-repeat center/cover;
     width: 220px;
@@ -985,48 +1011,7 @@
     justify-content: center;
   }
 }
-@media screen and (min-width: 480px) and (max-width: 768px) {
-  .restaurant {
-    flex-wrap: wrap;
-    /* gap: 30px; */
-    align-items: center;
-    height: auto;
-  }
 
-  .main_restaurant {
-    max-height: auto;
-  }
-
-  .restaurant_1 > div {
-    max-width: 410px;
-  }
-
-  .restaurant_2_3 > div {
-    max-width: 410px;
-  }
-  .register {
-    width: 100%;
-  }
-
-  .radio_inp > span {
-    font-size: 12px;
-  }
-
-  .radio-label {
-    font-size: 12px;
-  }
-  .footer_content > h1 {
-    font-size: 24px;
-    max-width: 400px;
-  }
-  .mini_footer_content > a {
-    font-size: 15px;
-  }
-
-  .mini_footer_content > span {
-    font-size: 15px;
-  }
-}
 @media screen and (max-width: 480px) {
   .birthday_box {
     width: 300px;
@@ -1054,7 +1039,7 @@
   .header {
     height: 600px;
   }
-  .birthday textarea {
+  .birthday .textarea {
     width: 300px;
   }
   .birthday_box {
@@ -1099,7 +1084,7 @@
   }
 
   .main_invitation {
-    height: 1200px;
+    height: auto;
     padding: 70px 0;
   }
 
