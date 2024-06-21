@@ -1,0 +1,653 @@
+
+.saving_section .detail-box {
+  padding: 0;
+}
+
+.carousel-inner img {
+  max-width: 100%;
+}
+
+
+@media (max-width: 1283px) {
+  .carousel-inner img {
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 1170px) {
+  .carousel-inner img {
+    object-fit: cover;
+  }
+  #carouselExampleControls .slider_section {
+    max-width: 100%;
+  }
+  .row {
+    max-width: 800px;
+  }
+}
+
+
+@media (max-width: 1120px) {
+  .saving_section .detail-box {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1100px) {
+ .tarif_h1{
+  position: relative;
+
+ }
+}
+
+
+@media (max-width: 1000px) {
+  .row {
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+  }
+  
+  
+}
+
+@media (max-width: 992px) {
+  .user_option {
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .custom_nav-container {
+    flex-direction: row;
+  }
+  .custom_nav-container .navbar-nav {
+    align-items: center;
+  }
+  #navbarSupportedContent .navbar-nav .nav-link {
+    margin: 5px 0;
+  }
+  .slider_section .detail-box {
+    padding-left: 0;
+  }
+  .slider_section .detail-box h1 {
+    font-size: 3rem;
+  }
+  .slider_section .img-box {
+    padding: 0;
+  }
+  .saving_section .row {
+    flex-direction: column-reverse;
+  }
+  .saving_section .detail-box {
+    margin-bottom: 30px;
+  }
+  .client_section .box {
+    margin: 15px 25px;
+  }
+  .client_section .carousel_btn-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+  }
+  .client_section .carousel-control-prev,
+  .client_section .carousel-control-next {
+    position: unset;
+    margin: 0 2.5px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+
+@media (max-width: 983px) {
+  .tarifPlan {
+    max-width: 100%;
+  }
+  .tarifPlan1, .tarifPlan2, .tarifPlan3 {
+    max-width: 280px;
+  }
+  .tarif_plan2>h4,
+  .tarifPlan3>h6 {
+    font-size: 12px;
+  }
+  .tarifPlan2>button,
+  .tarifPlan3>button {
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 980px) {
+  .row {
+    max-width: 700px;
+  }
+
+  .tarif-plan-general .tarif_button{
+    position: relative;
+    right: 20px;
+ 
+  }
+}
+
+@media (max-width: 965px) {
+ .curvy-wavy-background>svg{
+     margin-top: -5px;
+ }
+ .curvy-wavy-background .content .dfg1{
+  margin-left: -18px;
+ }
+}
+
+
+@media (max-width: 900px) {
+  .row {
+    max-width: 60px;
+    margin-bottom: 130px;
+  }
+  .row .box {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 150px;
+  }
+  .row .box .img-box {
+    margin-left: 35px;
+  }
+  .row .detail-box button {
+    margin-left: 10px;
+  }
+
+  .tarif_button{
+  margin-left: 150px;
+  }
+  
+}
+
+
+@media (max-width: 864px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 80px;
+  }
+  .row .box {
+    max-width: 660px;
+    max-height: 1400px;
+  }
+  .loh_span {
+    align-items: center;
+  }
+
+  .curvy-wavy-background>svg{
+    margin-top: -3px;
+  }
+  .curvy-wavy-background .content .dfg1{
+    margin-left: -10px;
+  }
+ 
+ 
+}
+
+
+@media(max-width:840px){
+  .tarifPlann{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+ 
+  }
+  .tarif-plan-general{
+    margin-bottom: 30px;
+  }
+  .curvy-wavy-background>svg{
+    margin-top: -4px;
+  }
+  .tarif-plan-general .tarif_button{
+    position: relative;
+    max-width: 80px;
+    left: 5px;
+  }
+
+}
+
+@media (max-width: 760px) {
+  .row {
+    max-width: 300px;
+    margin-bottom: 100px;
+  }
+  .Coment_img {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 760px;
+    font-size: 15px;
+  }
+  .Coment_img1 {
+    display: flex;
+    justify-content: space-around;
+    max-width: 220px;
+    max-height: 200px;
+  }
+  .Coment_img1 span {
+    margin-top: -90px;
+  }
+  .row .box {
+    max-width: 200px;
+    max-height: 400px;
+  }
+  .row .box .img-box {
+    max-width: 200px;
+    margin-top: -40px;
+  }
+  .hero_area {
+    padding: 0;
+  }
+  .box p {
+    max-width: 150px;
+    max-height: 45px;
+    font-size: 12px;
+  }
+  .box button {
+    max-width: 60px;
+    font-size: 12px;
+    margin-left: 20px;
+  }
+  .sec_loh {
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    margin-left: 120px;
+  }
+  .sec_loh h1 {
+    display: flex;
+  }
+
+
+    .tarifPlann{
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+     
+   
+    }
+  .loh_span {
+    align-items: center;
+    font-size: 12px;
+  }
+  .section_buy1 {
+    max-width: 760px;
+  }
+  .Coment .Coment_h1 {
+    align-items: center;
+    justify-content: space-around;
+  }
+  .img-box .puk {
+    align-items: center;
+    flex-direction: column;
+  }
+  .detail-box button {
+    width: 120px;
+  }
+  .tarifPlan {
+    max-width: 100%;
+  }
+  .tarifPlan1,
+  .tarifPlan2,
+  .tarifPlan3 {
+    max-width: 200px;
+  }
+
+  .curvy-wavy-background .content .dfg1 {
+    margin-left: -10px;
+    margin-top: -10px;
+  }
+
+  .tarif-plan-general .tarif_button {
+
+    position: relative;
+
+    top: -20px;
+  }
+  .curvy-wavy-background {
+    margin-top: -10px;
+  }
+  .curvy-wavy-background > svg {
+    margin-top: 0-1px;
+  }
+  .tarif-plan-general{
+    max-width: 300px;
+  }
+
+
+}
+
+
+@media (max-width: 698px) {
+  .row {
+    max-width: 400px;
+    margin-left: 80px;
+  }
+}
+
+
+@media (max-width: 630px) {
+
+  .row .box {
+    max-width: 300px;
+    position: relative;
+   left: -150px;
+   top: -160px;
+  
+  }
+  .row .box{
+    position: relative;
+    top: 5px;
+  }
+ 
+  .tarif-plan-general {
+    max-width: 300px;
+  }
+  .curvy-wavy-background > svg {
+    margin-top: -1px;
+  }
+  .tarifPlann {
+    flex-direction: column;
+  }
+
+  .Coment .Coment_map{
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .tarif-plan-general .tarif_button{
+    position: relative;
+    left: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact_section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .shop_section {
+    padding: 20px 0;
+  }
+
+}
+
+@media(max-width:576px){
+  .tarif-plan-general .tarif_button {
+    position: relative;
+    left: 10px;
+  }
+  .sec_loh{
+    position: relative;
+    left: -40px;
+  }
+}
+
+
+@media (max-width: 570px) {
+  .container-mt-2 {
+    justify-content: space-between;
+    max-width: 570px;
+  }
+  .row {
+    width: 100%;
+    justify-content: start;
+  }
+  .row .box {
+    max-width: 240px;
+    max-height: 320px;
+  }
+  .tarif_plan2 {
+    flex-direction: column;
+  }
+
+  .tarifPlann {
+    flex-direction: column;
+
+    margin-top: -150px;
+  }
+  .tarif-plan-general {
+    max-width: 400px;
+    margin-top: -30px;
+  }
+  .tarifPlan1,
+  .tarifPlan2,
+  .tarifPlan3 {
+    max-width: 300px;
+    margin-top: 50px;
+  }
+  .curvy-wavy-background > svg {
+    margin-top: 1px;
+  }
+  .curvy-wavy-background .content .dfg1 {
+    margin-left: -30px;
+    max-width: 130px;
+    font-size: 4px;
+  }
+  .tarifPlan {
+    margin-top: 30px;
+    max-width: 100%;
+  }
+  .tarif-plan-general {
+    max-width: 220px;
+    font-size: 8px;
+ 
+  }
+  .tarif_plan2 > h4 {
+    font-size: 5px;
+  }
+  .tarif_plan2 > h6 {
+    font-size: 4px;
+  }
+  .tarif-plan-general > button {
+    max-width: 50px;
+  }
+  .Coment .Coment_map {
+    width: 350px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .shop_section .box .img-box {
+    max-width: 150px;
+    max-height: 130px;
+  }
+  .form-check {
+    width: 120px;
+    margin-left: -60px;
+  }
+  .loh_span {
+    padding-bottom: 150px;
+  }
+  .tarif-plan-general .tarif_button{
+    position: relative;
+    left: -20px;
+  }
+ 
+
+}
+
+@media (max-width: 560px) {
+  .carousel-item img {
+    max-width: 100%;
+  }
+  .shop_section .box{
+     max-width: 200px;
+     margin-right: 200px;
+  }
+
+  .shop_section .box{
+    margin-right: 300px;
+  }
+
+    .row .box{
+      position: relative;
+      top: -150px;
+    }
+  .row{
+    max-width: 200px;
+
+  }
+}
+
+@media(max-width:545px){
+  .tarif-plan-general .tarif_button{
+    position: relative;
+   right: 10px;
+  }
+}
+
+@media (max-width: 530px) {
+  .carousel-inner img {
+    max-width: 100%;
+  }
+  .row .box{
+    position: relative;
+    bottom: 30px;
+  }
+}
+@media (max-width: 500px) {
+  .carousel-inner img {
+    max-width: 100%;
+  }
+
+ 
+}
+
+
+
+
+
+
+@media (max-width: 480px) {
+  .saving_section .detail-box,
+  .gift_section .detail-box {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 460px) {
+  .carousel-inner img {
+    max-width: 100%;
+  }
+  .row .box{
+    position: relative;
+    left: -200px;
+  }
+
+  .sec_loh{
+    position: relative;
+    left: -60px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 440px) {
+  .carousel-item img {
+    max-width: 100%;
+  }
+  .row .box{
+     max-width: 150px;
+    
+  }
+
+  .shop_section .box{
+    margin-right: 400px;
+  }
+
+  .row{
+     position: relative;
+     top: 300px;
+    max-width: 200px;
+
+  }
+}
+
+
+@media (max-width: 420px) {
+  .carousel-inner img {
+    max-width: 100%;
+  }
+
+  .row{
+ 
+
+    left: -150px;
+    
+  }
+  .tarif_h1 h1{
+ 
+  position: relative;
+  left: -30px;
+  
+  }
+  .shop_section .box .img-box{
+    margin-left: -5px;
+  }
+  .shop_section .box .puk {
+    font-size: 8px;
+  }
+
+  .tarif-plan-general .tarif_button {
+    position: relative;
+   
+    left: -30px;
+    font-size: 5px;
+  }
+}
+
+
+
+@media (max-width: 420px) {
+
+  .row{
+   
+   position: relative;
+
+  }
+  .carousel-item img {
+    max-width: 100%;
+  }
+  .row .detail-box button{
+    max-width: 40px;
+    font-size: 7px;
+  }
+  .shop_section .box .img-box{
+    left: -30px;
+  }
+ .tarif_h1{
+  left: 30px;
+
+ }
+  .section_buy1 img{
+    max-height: 300px;
+  }
+
+  .row .box{
+    position: relative;
+    top: 30px;
+    max-width: 110px;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .sec_loh{
+    margin-left: -10px;
+  }
+}
+
+
+@media(max-width:400){
+  .sec_loh {
+    max-width: 100%;
+ display: flex;
+ justify-content: center;
+  }
+}

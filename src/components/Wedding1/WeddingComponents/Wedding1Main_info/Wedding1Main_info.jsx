@@ -6,35 +6,65 @@ import Wedding1Church from '../Wedding1Church/Wedding1Church';
 import Wedding1Registry from '../../Wedding1Registry/Wedding1Registry';
 import Wedding1Bonquete from '../../Wedding1Bonquete/Wedding1Bonquete';
 import { sectiosData } from '../../../../dataFolder/data';
+import {useSelector } from 'react-redux';
+import { selectProjectData } from '../../../../store/slices/GetProjectSlice/GetProjectSlice';
+import { privateProjectLoading } from '../../../../store/slices/privateProjectSlice/privateProjectSlice';
 
 function Wedding1Main_info() {
+const respProjectData = useSelector(selectProjectData);
+const loading = useSelector(privateProjectLoading)
+
+  console.log(respProjectData,'ddddd');
   return (
 
     <div className='main_info'>
         <Wedding1Date/>
         {
-          sectiosData && sectiosData.sections.map((item, index) => {
-              if (item.section_number === 2) {
+           respProjectData.data.data ?  respProjectData.data.data.sections.map((item, index) => {
+              if (item.section_number === '2') {
                 return (
                   <Wedding1Event key={index}  item={item}/>
                 )
               }
-              if (item.section_number === 3) {
+              if (item.section_number === '3') {
                 return (
                   <Wedding1Church key={index} item={item}/>
                 )
               }
-              if (item.section_number === 4) {
+              if (item.section_number === '4') {
                 return (
                   <Wedding1Registry key={index} item={item}/>
                 )
               }
-              if (item.section_number === 5) {
+              if (item.section_number === '5') {
                 return (
                   <Wedding1Bonquete key={index} item={item}/>
                 )
               }
-          })
+          }) : sectiosData.sections.map((item, index) => {
+            if (item.section_number === '2') {
+              return (
+                <Wedding1Event key={index}  item={item}/>
+              )
+            }
+            if (item.section_number === '3') {
+              return (
+                <Wedding1Church key={index} item={item}/>
+              )
+            }
+            if (item.section_number === '4') {
+              return (
+                <Wedding1Registry key={index} item={item}/>
+              )
+            }
+            if (item.section_number === '5') {
+              return (
+                <Wedding1Bonquete key={index} item={item}/>
+              )
+            }
+
+            console.log(item,'hgcrdfgtyh');
+        }) 
         }
     </div>
   )

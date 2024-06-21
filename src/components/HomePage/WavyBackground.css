@@ -1,0 +1,49 @@
+.curvy-wavy-background {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin-top: -128px;
+    text-align: center;   
+}
+
+.curvy-wavy-background .content {
+    position: relative;
+    z-index: 1;
+    margin-top: -55px;
+    margin-left: 80px;
+    color: white;
+}
+
+.curvy-wavy-background .content .dfg{
+    background: rgb(32,103,167);
+  background: linear-gradient(90deg, rgba(32,103,167,1) 9%, rgba(14,175,205,1) 51%, rgba(20,111,169,1) 94%);
+    font-size: 25px;
+    width: 160px;
+    border-radius: 0 0 100px 100px;
+    color: white;
+ 
+
+}
+
+.curvy-wavy-background .content .dfg1{
+    background: rgb(240,123,107);
+    background: linear-gradient(90deg, rgba(240,123,107,1) 11%, rgba(247,170,66,1) 53%, rgba(249,182,40,1) 78%, rgba(249,182,39,1) 90%);
+  
+    font-size: 25px;
+    border-radius: 30px;
+    width: 160px;
+    border-radius: 0 0 90px 90px;
+
+}
+
+.curvy-wavy-background .content .dfg2{
+    background-color: #2A2867;
+  background: linear-gradient(90deg, rgba(156, 192, 75, 1) 5%, rgba(98, 181, 130, 1) 49%, rgba(156, 192, 75, 1) 96%);
+    font-size: 25px;
+    width: 160px;
+    border-radius: 0 0 90px 90px;
+
+}

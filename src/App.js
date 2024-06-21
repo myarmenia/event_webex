@@ -1,62 +1,63 @@
-import "./App.css";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import HomeWraper from "./page/HomeWraper";
-import { Tikets } from "./components";
-import Wedding1 from "./components/Wedding1/Wedding1";
-import { useEffect, useState } from "react";
-import { customBasesUrlFunc } from "./utils/helperFunck";
-import { useDispatch, useSelector } from "react-redux";
-import { getProject } from "./store/slices/GetProjectSlice/GetProjectApi";
-// import { selectProjectData } from "./store/slices/GetProjectSlice/GetProjectSlice";
-import BirthDay from "./components/Birthday/BirthDay";
+import './App.css';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import HomeWraper from './page/HomeWraper';
+import { Tikets } from './components';
+import Wedding1 from './components/Wedding1/Wedding1';
+import { useEffect, useState } from 'react';
+import HomePage from './components/HomePage/HomePage';
+import { customBasesUrlFunc } from './utils/helperFunck';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProject } from './store/slices/GetProjectSlice/GetProjectApi';
+import { selectProjectData } from './store/slices/GetProjectSlice/GetProjectSlice';
+import BirthDay from './components/Birthday/BirthDay';
 
 function App() {
-  // const respProjectData = useSelector(selectProjectData);
+   const respProjectData = useSelector(selectProjectData);
 
-  const [musicModal, setMusicModal] = useState(false);
+   const [musicModal, setMusicModal] = useState(false);
 
-  const leng =
-    localStorage.getItem("lang") != null ? localStorage.getItem("lang") : "am";
+   const leng = localStorage.getItem('lang') != null ? localStorage.getItem('lang') : 'am';
 
-  const navigate = useNavigate();
+   const navigate = useNavigate();
 
-  const { pathname } = useLocation();
-  const dispatch = useDispatch();
+   const { pathname } = useLocation();
+   const dispatch = useDispatch();
 
-  useEffect(() => {
-    pathname == "/" && navigate(/${leng}/);
-  }, []);
+   useEffect(() => {
+      pathname == '/' && navigate(`/${leng}/`);
+   }, []);
 
-  // useEffect(() => {
-  //   const params = customBasesUrlFunc();
-  //   if (pathname !== `/${leng}/wedding1`) {
-  //     params?.token && dispatch(getProject(params.token));
-  //   }
-  // }, []);
+   useEffect(() => {
+      const params = customBasesUrlFunc();
+        params?.token && dispatch(getProject(params.token));
 
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<HomeWraper />}>
-          <Route path=":lang">
-            <Route path="wedding1">
-              <Route index element={<Wedding1 />} />
-              {/* <Route path=":m" element={<Wedding1/>} /> */}
+    }, []);
+
+
+   return (
+      <div className="App">
+         <Routes>
+            <Route path="/" element={<HomeWraper />}>
+               <Route path=":lang">
+               <Route index element={<HomePage/>}/>
+                  <Route path="wedding1">
+                     <Route index element={<Wedding1 />} />
+                  </Route>
+
+                  <Route path="tikets" element={ <div style={{ backgroundColor: 'black' }}> <Tikets /></div>}/>
+
+                  <Route path="tikets" element={
+                        <div style={{ backgroundColor: 'black' }}>
+                           <Tikets />
+                        </div>
+                     }
+                  />
+                  <Route path="birthDay" element={<BirthDay />} />
+               </Route>
             </Route>
-            <Route
-              path="tikets"
-              element={
-                <div style={{ backgroundColor: "black" }}>
-                  <Tikets />
-                </div>
-              }
-            />
-            <Route path="birthDay" element={<BirthDay />} />
-          </Route>
-        </Route>
-      </Routes>
-    </div>
-  );
+         </Routes>
+      </div>
+   );
 }
 
 export default App;

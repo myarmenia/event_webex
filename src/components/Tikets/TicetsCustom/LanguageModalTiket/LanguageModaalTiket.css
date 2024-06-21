@@ -1,0 +1,58 @@
+.language_modal_tiket{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000000;
+
+}
+
+
+.language_modaal_tiket_block{
+    width: 400px;
+    height: 300px;
+    padding-top: 20px;
+    background: hsla(191, 98%, 56%, 1);
+    background: linear-gradient(360deg, hsla(191, 98%, 56%, 1) 0%, hsla(281, 100%, 56%, 1) 100%);
+
+    background: -moz-linear-gradient(360deg, hsla(191, 98%, 56%, 1) 0%, hsla(281, 100%, 56%, 1) 100%);
+
+    background: -webkit-linear-gradient(360deg, hsla(191, 98%, 56%, 1) 0%, hsla(281, 100%, 56%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#21D4FD", endColorstr="#B721FF", GradientType=1 );
+}
+
+
+.language_modaal_tiket_block label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.language_modaal_tiket_block label input{
+    width: 18px;
+    height: 18px;
+    accent-color: #21D4FD;
+}
+
+.language_modaal_tiket_block_h3{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.language_modaal_tiket_block_span{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}

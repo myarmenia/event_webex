@@ -11,7 +11,8 @@ import MusicModal from '../MusicModal/MusicMoadal'
 import Footer_Autors from '../footer_autors/Footer_Autors'
 import { musicModalSelector, open } from '../../store/slices/MusicModalSlice/MusicModalSlice'
 import { useLocation } from 'react-router-dom'
-
+import { selectProjectData } from '../../store/slices/GetProjectSlice/GetProjectSlice'
+import './Wedding1.css'
 
 function Wedding1() {
   const leng = localStorage.getItem('lang') != null ? localStorage.getItem('lang') : 'am';
@@ -21,6 +22,7 @@ function Wedding1() {
 
   const [langModal, setLangModal] = useState(false);
   const musicModalIsopen = useSelector(musicModalSelector);
+  const respProjectData = useSelector(selectProjectData);
   const dispatch = useDispatch()
   const {pathname} = useLocation()
 
@@ -53,12 +55,13 @@ function Wedding1() {
     }, 2000);
   }, [langModal]);
 
+
   return (
     <div className='wedding_1'>
         <Wedding1Header/>
         <Wedding1Main/>
         <Wedding1Footer/>
-        {selectLinkModal && <Wedding1LinkModal/>}
+        {(!respProjectData.data.success) && selectLinkModal && <Wedding1LinkModal/>}
         <Footer_Autors />
         {langModal && <Language setLangModal={setLangModal}/>}
         {musicModalIsopen && <MusicModal  lengModal={langModal}/>}

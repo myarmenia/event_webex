@@ -59,7 +59,6 @@ function Wedding1Church({item}) {
         file && dispatch(changeInfoChurch_imgs(file));
       }, [file, dispatch]);
 
-
     return (
         <div className='church' ref={churchRef}>
             {
@@ -69,8 +68,8 @@ function Wedding1Church({item}) {
                     <div className='about'>
                         <span className='marriage_title'>{t('marriage.0')}</span>
                         {changeInfoState === 'edit' ? <input className='event_inp' type="time" placeholder='Ժամ' value={allInfo.churchesTime} onChange={(e) => setChurchTime(e.target.value)} /> : <span>{allInfo.churchesTime || item.time}</span>}
-                        {changeInfoState === 'edit' ? <input className='event_inp' type="text" placeholder='Տեքստ' value={allInfo.chrchesText} onChange={(e) => setChurchText(e.target.value)} /> : <span>{allInfo.chrchesText || item.text}</span>}
-                        {changeInfoState === 'edit' ? <input className='event_inp' type="text" placeholder='Հասցե' value={allInfo.chrchesAddres} onChange={(e) => setChurchAddress(e.target.value)}/> : <span>{allInfo.chrchesAddres ||item.address}</span>}
+                        {changeInfoState === 'edit' ? <input className='event_inp' type="text" placeholder={t('placeholderWedding1.2')} value={allInfo.chrchesText} onChange={(e) => setChurchText(e.target.value)} /> : <span>{allInfo.chrchesText || item.text}</span>}
+                        {changeInfoState === 'edit' ? <input className='event_inp' type="text" placeholder={t('placeholderWedding1.3')} value={allInfo.chrchesAddres} onChange={(e) => setChurchAddress(e.target.value)}/> : <span>{allInfo.chrchesAddres ||item.address}</span>}
                     </div>
                     <a href={item.address_link} target='_blank'>
                         <button className='get even' onClick={() => dispatch(openLinkModal('church'))}>{t('marriage.3')}</button>
@@ -85,8 +84,8 @@ function Wedding1Church({item}) {
                         <span className='wedding1_edite_image'>{editIcon}</span>
                     </label>}
                      {
-                        item.images.map((img, index) => {
-                            return <img key={index} src={(changeInfoState === 'view' && file) || img} alt="not found" />
+                     item.images && item.images.map((img, index) => {
+                            return <img key={index} src={(changeInfoState === 'view' && file) || img.path}alt="not found" />
                         })
                     }
                 </div>

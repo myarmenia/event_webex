@@ -32,12 +32,11 @@ img {
   font-family: "global-font1";
   src: url(../src/fonts/IngridDarling-Regular.ttf);
 }
-@font-face {
-  font-family: "Poppins";
-  src: url(../src/fonts/Poppins-ExtraBold.ttf);
-}
 
 .App {
   font-family: "global-font";
   font-style: italic;
+
+   font-family: 'Poppins';
+   src: url('../src/fonts/Poppins-ExtraLight.ttf');
 }
