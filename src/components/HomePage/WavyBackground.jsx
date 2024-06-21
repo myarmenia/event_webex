@@ -1,5 +1,6 @@
 import React from 'react';
 import './WavyBackground.css';
+import './Responsev.css'
 
 const WavyBackground = ({ fill = "#6fb3e0", height = "420px", text,text1,text2}) => {
     return (
@@ -24,13 +25,17 @@ const WavyBackground = ({ fill = "#6fb3e0", height = "420px", text,text1,text2})
                    
             </svg>
             <div className="content">
-            <div style={{marginTop:"180px", color:"white"}} className='dfg'>{text}</div>
+            <div style={{ marginTop: "180px", color: "white"}} className='dfg'>
+  {text}
+</div>
+
             <div style={{marginTop:"180px", color:"white"}} className='dfg1'>{text1}</div>
             <div style={{marginTop:"180px", color:"white"}} className='dfg2'>{text2}</div>
 
             </div>  
         
         </div>
+         
     );
 };
 

@@ -2,8 +2,10 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-top: -128px;
+    display: flex;
+    justify-content: space-between;
     color: white;
+    margin-top: -128px;
     text-align: center;   
 }
 
