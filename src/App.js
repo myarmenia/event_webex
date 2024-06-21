@@ -9,6 +9,7 @@ import { customBasesUrlFunc } from './utils/helperFunck';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProject } from './store/slices/GetProjectSlice/GetProjectApi';
 import { selectProjectData } from './store/slices/GetProjectSlice/GetProjectSlice';
+import BirthDay from './components/Birthday/BirthDay';
 
 function App() {
    const respProjectData = useSelector(selectProjectData);
@@ -51,7 +52,7 @@ function App() {
                         </div>
                      }
                   />
-
+                  <Route path="birthDay" element={<BirthDay />} />
                </Route>
             </Route>
          </Routes>

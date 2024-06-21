@@ -9,7 +9,7 @@ import getProjectSlice from './slices/GetProjectSlice/GetProjectSlice';
 import weeding1ResultMessageSlice from './slices/Wedding1ResultMessageSlice/Wedding1ResultMessageSlice';
 import modalPrivateSlice from './slices/ModalPrivate/ModalPrivateSlice';
 import tiketsLengModalSlice from './slices/TiketsLengModal/TiketsLengModalSlice';
-
+import birthDaySlice from "./slices/BirthDaySlice/BirthDaySlice";
 
 
 
@@ -24,7 +24,8 @@ const store = configureStore({
       projectData: getProjectSlice.reducer,
       wedding1ResultMessage: weeding1ResultMessageSlice.reducer,
       modalPrivate: modalPrivateSlice.reducer,
-      tiketsLengModal: tiketsLengModalSlice.reducer
+      tiketsLengModal: tiketsLengModalSlice.reducer,
+      birthDay: birthDaySlice.reducer,
 
    },
 });
