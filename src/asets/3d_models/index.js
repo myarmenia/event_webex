@@ -1,0 +1,10 @@
+export { default as number5 } from "./3d_number_-_5_five.glb";
+export { default as number0 } from "./3d_number_-_0_zero.glb";
+export { default as number1 } from "./3d_number_-_1_one.glb";
+export { default as number2 } from "./3d_number_-_2_two.glb";
+export { default as number3 } from "./3d_number_-_3_three.glb";
+export { default as number4 } from "./3d_number_-_4_four.glb";
+export { default as number6 } from "./3d_number_-_6_six.glb";
+export { default as number7 } from "./3d_number_-_7_seven.glb";
+export { default as number8 } from "./3d_number_-_8_eight.glb";
+export { default as number9 } from "./3d_number_-_9_nine.glb";

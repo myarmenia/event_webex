@@ -1,36 +1,42 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App {
+  overflow: hidden;
 }
 
 body {
-   overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .container {
-   max-width: 1500px;
-   margin: 0 auto;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 img {
-   width: 100%;
+  width: 100%;
 }
 
 @font-face {
-   font-family: 'Jomhuria';
-   src: url('../src/fonts/Jomhuria-Regular.ttf');
+  font-family: "Jomhuria";
+  src: url("../src/fonts/Jomhuria-Regular.ttf");
 }
 @font-face {
-   font-family: 'Poppins';
-   src: url('../src/fonts/Poppins-ExtraLight.ttf');
+  font-family: "global-font";
+  src: url(../src/fonts/ArmenianDecorativeU-Italic.ttf);
 }
 @font-face {
-   font-family: 'global-font';
-   src: url(../src/fonts/ArmenianDecorativeU-Italic.ttf);
+  font-family: "global-font1";
+  src: url(../src/fonts/IngridDarling-Regular.ttf);
 }
 
 .App {
-   /* font-family: 'global-font';
-   font-style: italic; */
+  font-family: "global-font";
+  font-style: italic;
+
+   font-family: 'Poppins';
+   src: url('../src/fonts/Poppins-ExtraLight.ttf');
 }
