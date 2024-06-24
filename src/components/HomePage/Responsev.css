@@ -25,6 +25,11 @@
   .row {
     max-width: 800px;
   }
+
+  .showHideClassName{
+    position: relative;
+    left: -120px;
+  }
 }
 
 
@@ -151,9 +156,7 @@
     align-items: center;
     margin-left: 150px;
   }
-  .row .box .img-box {
-    margin-left: 35px;
-  }
+ 
   .row .detail-box button {
     margin-left: 10px;
   }
@@ -234,8 +237,9 @@
     margin-top: -90px;
   }
   .row .box {
-    max-width: 200px;
+    max-width: 300px;
     max-height: 400px;
+    margin-left: -2px;
   }
   .row .box .img-box {
     max-width: 200px;
@@ -262,6 +266,10 @@
   }
   .sec_loh h1 {
     display: flex;
+  }
+
+  .Coment_h1{
+    max-width: 700px;
   }
 
 
@@ -330,6 +338,11 @@
     max-width: 400px;
     margin-left: 80px;
   }
+
+  .Coment_h1{
+    max-width: 400px;
+
+  }
 }
 
 
@@ -338,14 +351,26 @@
   .row .box {
     max-width: 300px;
     position: relative;
-   left: -150px;
-   top: -160px;
+   left: -100px;
+   top: 160px;
   
   }
-  .row .box{
+  .category_home{
     position: relative;
-    top: 5px;
+    max-width: 200px;
+     right: -180px;
   }
+  .hoqs{
+    position: relative;
+    max-width: 200px;
+    right: -180px;
+  }
+  .sec_loh{
+    max-width: 400;
+    position: relative;
+    right: 60px;
+  }
+ 
  
   .tarif-plan-general {
     max-width: 300px;
@@ -474,6 +499,13 @@
 
 }
 
+@media(max-width:569px){
+  .row{
+    position: relative;
+    left: -10px;
+  }
+}
+
 @media (max-width: 560px) {
   .carousel-item img {
     max-width: 100%;
@@ -489,11 +521,31 @@
 
     .row .box{
       position: relative;
-      top: -150px;
+      top: px;
+    }
+    .hoqs{
+      position: relative;
+     left: 150px;
+    }
+    .category_home{
+      position: relative;
+      left: 130px;
     }
   .row{
-    max-width: 200px;
-
+    max-width: 300px;
+    position: relative;
+    left: 20px;
+  }
+  .prom_code{
+    position: relative;
+    top: 50px;
+  }
+  .section_buy{
+    position: relative;
+    top: 50px;
+  }
+  .section_buy1{
+    max-height: 200px;
   }
 }
 
@@ -512,13 +564,31 @@
     position: relative;
     bottom: 30px;
   }
+  .prom_code{
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+  }
+ 
+  .Coment_map span{
+    font-size: 15px;
+  }
 }
 @media (max-width: 500px) {
   .carousel-inner img {
     max-width: 100%;
   }
 
+
  
+}
+
+@media(max-width:490px){
+  .row{
+    max-width: 200px;
+  }
+  
 }
 
 
@@ -539,13 +609,42 @@
   }
   .row .box{
     position: relative;
-    left: -200px;
+    left: -180px;
+    max-width: 180px;
+  }
+  .hoqs{
+    position: relative;
+ left: 90px;
+  }
+  .category_home{
+    position: relative;
+    left: 70px;
   }
 
-  .sec_loh{
+  .sec_loh span{
     position: relative;
-    left: -60px;
-    font-size: 12px;
+    left: -10px;
+    font-size: 14px;
+  }
+  .sec_loh h1{
+    position: relative;
+    left: -20px;
+  }
+  .section_buy1 .section_buyimg{
+    max-height: 230px;
+  }
+  .Coment_map{
+    position: relative;
+    top: 90px;
+  }
+
+  .Coment{
+    position: relative;
+    top: -110px;
+  }
+  .row{
+    position: relative;
+    left: 50px;
   }
 }
 
@@ -555,7 +654,14 @@
   }
   .row .box{
      max-width: 150px;
-    
+  }
+ 
+
+  .shop_section .box{
+    position: relative;
+    top: -170px;
+    left: -300px;
+   
   }
 
   .shop_section .box{
@@ -565,8 +671,18 @@
   .row{
      position: relative;
      top: 300px;
-    max-width: 200px;
-
+     left: 160px;
+     max-width: 100px;
+  }
+  .sec_loh1{
+    max-width: 300px;
+  }
+  
+}
+@media(max-width:430px){
+  .row{
+    position: relative;
+    left: 150px;
   }
 }
 
@@ -577,16 +693,34 @@
   }
 
   .row{
- 
-
-    left: -150px;
+    max-width: 80px;
+    position: relative;
+      top:300px; 
+      right: 220px; 
     
+  }
+
+  .shop_section .box{
+      max-width: 200px;
   }
   .tarif_h1 h1{
  
   position: relative;
   left: -30px;
   
+  }
+  .prom_code{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .prom_code h1{
+    font-size: 18px;
+  }
+
+  .prom_code span{
+    font-size: 11px;
   }
   .shop_section .box .img-box{
     margin-left: -5px;
@@ -603,51 +737,166 @@
   }
 }
 
-
-
-@media (max-width: 420px) {
-
+@media(max-width:410px){
   .row{
-   
-   position: relative;
+    max-width: 60px;
+  }
+}
 
-  }
-  .carousel-item img {
-    max-width: 100%;
-  }
-  .row .detail-box button{
-    max-width: 40px;
-    font-size: 7px;
-  }
-  .shop_section .box .img-box{
-    left: -30px;
-  }
- .tarif_h1{
-  left: 30px;
-
- }
-  .section_buy1 img{
-    max-height: 300px;
-  }
-
-  .row .box{
+@media(max-width:410px){
+  .row{
+    max-width: 50px;
     position: relative;
-    top: 30px;
-    max-width: 110px;
-    display: flex;
-    flex-direction: column;
-  
+    left: 150px;
   }
-  .sec_loh{
-    margin-left: -10px;
+  .prom_code >div{
+    max-width: 200px;
+    margin-top: 10px;
+    margin-left: -100px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
   }
 }
 
 
-@media(max-width:400){
-  .sec_loh {
-    max-width: 100%;
- display: flex;
- justify-content: center;
+@media(max-width:392px){
+  .carousel-item{
+   max-width: 100%;
+    
+  }
+  .sec_loh1{
+    position: relative;
+    top: 50px;
+    bottom: 50px;
+
+    font-size: 12px;
+  }
+
+   .hoqs{
+    position: relative;
+    top: 100px;
+    left: 80px;
+   }
+  .category_home {
+    position: relative;
+    top: 100px;
+    left: 60px;
+  }
+  .row{
+    position: relative;
+    left: 140px;
+    top: 390px;
+    bottom: 80px;
+  }
+  .prom_code{
+    position: relative;
+    top: 80px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
+  }
+  .Coment_h1{
+    position: relative;
+    top: 50px;
+  }
+  .section_buy1{
+    position: relative;
+    top: 40px;
+  }
+
+
+}
+
+@media(max-width:390px){
+  .row{
+    position: relative;
+    left: 130px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
   }
 }
+
+@media(max-width:375px){
+  .row{
+    position: relative;
+    left: 110px;
+  }
+  .hoqs{
+    position: relative;
+    left: 30px;
+  }
+  .category_home{
+    position: relative;
+    left: 25px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media(max-width:360px){
+  .row{
+    position: relative;
+    left: 100px;
+  }
+  .hoqs{
+    position: relative;
+    left: 30px;
+  }
+  .category_home{
+    position: relative;
+    left: 25px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
+  }
+}
+@media(max-width:349px){
+  .row{
+    position: relative;
+    left: 90px;
+  }
+  .hoqs{
+    position: relative;
+    left: 30px;
+  }
+  .category_home{
+    position: relative;
+    left: 25px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media(max-width:340px){
+  .row{
+    position: relative;
+    left: 90px;
+  }
+  .hoqs{
+    position: relative;
+    left: 30px;
+  }
+  .category_home{
+    position: relative;
+    left: 25px;
+  }
+  .prom_code button{
+    position: relative;
+    top: 10px;
+  } 
+}
+
+
+
+
+

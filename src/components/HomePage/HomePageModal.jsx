@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Modal.css";
+import './Responsev.css'
 
 const HomePageModal = ({ show, handleClose }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   const [count, setCount] = useState(() => {
     const savedCount = localStorage.getItem('count');
+    console.log(savedCount);
     return savedCount !== null ? JSON.parse(savedCount) : 0;
   });
 
