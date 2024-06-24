@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getHomePage } from "./HomePageApi";
+import { getHomePage, getPromoCode } from "./HomePageApi";
 
 
 const homePageSlice = createSlice ({
     name: 'homePage',
     initialState: {
         data: {},
-        loading:'pending'
+        loading:'pending',
+        promoCode:''
     },
     reducers: {
        
@@ -26,6 +27,21 @@ const homePageSlice = createSlice ({
              state.data = action.payload
              state.loading = 'rejected'
         })
+
+        // ==========================
+
+        .addCase(getPromoCode.pending, (state, action) => {
+            state.promoCode = action.payload
+      
+       })
+       .addCase(getPromoCode.fulfilled, (state, action) => {
+            state.promoCode = action.payload
+          
+       })
+       .addCase(getPromoCode.rejected, (state, action) => {
+            state.promoCode = action.payload
+        
+       })
     }
 });
 
@@ -34,5 +50,7 @@ export const {  } = homePageSlice.actions;
 export const homePageLoading = (state) => state.homePage.loading;
 
 export const homePageSelector = (state) => state.homePage.data;
+
+export const selectPromoCode = (state) => state.homePage.promoCode
 
 export default homePageSlice;
