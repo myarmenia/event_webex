@@ -22,3 +22,23 @@ export const getHomePage = createAsyncThunk(
     }
   }
 );
+
+//=============================================
+
+
+export const getPromoCode = createAsyncThunk(
+  'promoCode/getPromoCode',
+  async (code, thunkAPI) => {
+    try {
+      const config = {
+        method: "GET",
+        url: `check-promo-code?promo_code=${code}`,
+      };
+
+      const response = await instance(config);
+      return response?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
