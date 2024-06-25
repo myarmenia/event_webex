@@ -24,6 +24,7 @@ import {
 } from '../../../store/slices/TiketsLengModal/TiketsLengModalSlice';
 import { sectiosData } from '../../../dataFolder/data';
 import '../tikets.css';
+import { selectProjectData } from '../../../store/slices/GetProjectSlice/GetProjectSlice';
 
 const TiketsHeader = () => {
     const dispatch = useDispatch();
@@ -35,6 +36,8 @@ const TiketsHeader = () => {
     const allInfoPromNight = useSelector(selectDefaultData);
     const [promNightDate, setPromNightDate] = useState(allInfoPromNight.date);
     const [promNightTime, setPromNightTime] = useState(allInfoPromNight.section_1_time);
+    const respProjectData = useSelector(selectProjectData);
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -67,7 +70,7 @@ const TiketsHeader = () => {
                 Your browser does not support the video tag.
             </video>
             <div className="tiketsHeader-blockButton">
-                {!editStatusTemplate ? (
+                {!respProjectData?.success && ( !editStatusTemplate ? (
                     <CustomBtnTikets2
                         handleOpenLengModal={() => dispatch(openModalTiketsLeng(true))}
                         handleClick={() => dispatch(setEditStatusTemplate(true))}
@@ -80,7 +83,7 @@ const TiketsHeader = () => {
                         handleClick={() => dispatch(setEditStatusTemplate(false))} 
                         background="#c93789" 
                     />
-                )}
+                ))}
 
                 {allInfoPromNight.date && allInfoPromNight.feedback && (
                     <button 
@@ -122,7 +125,7 @@ const TiketsHeader = () => {
                                 />
                             ) : (
                                 <p className='nameBlock-inptData-text'>
-                                    {allInfoPromNight.section_1_time || sectiosData.sections[1]?.time || '18:00'}
+                                    {allInfoPromNight.section_1_time || respProjectData?.data?.sections[0]?.time || '18:00'}
                                 </p>
                             )}
                             {editStatusTemplate ? (
@@ -134,7 +137,7 @@ const TiketsHeader = () => {
                                 />
                             ) : (
                                 <p className="nameBlock-inptData-text">
-                                    {allInfoPromNight.date || '2024-10-12'}
+                                    {allInfoPromNight.date || respProjectData?.data?.date || '2024-10-12'}
                                 </p>
                             )}
                         </div>

@@ -13,12 +13,16 @@ import SectionDescript from './SectionDescript';
 import SectionImages from './SectionImages';
 import FormBlockRight from './FormBlockRight';
 import { sectiosData } from '../../../dataFolder/data';
+import { selectProjectData } from '../../../store/slices/GetProjectSlice/GetProjectSlice';
 const textArea_plesholder =
    'Dear teachers and classmates, we invite you to spend our prom together. We will celebrate at the Felice restaurant complex We are waiting with love';
 
 const TiketsSection = () => {
    const [velTextArea, setVelTextArea] = React.useState(false);
    const { statusTemplate, editStatusTemplate } = useSelector((state) => state.tikets);
+   const respProject = useSelector(selectProjectData)
+
+   console.log(respProject,'respProject');
 
    return (
       <div
@@ -28,7 +32,7 @@ const TiketsSection = () => {
             className="TiketsSection-contaner"
             style={{ backgroundImage: `url(${TiketsSectionBackground})` }}>
             {
-               sectiosData.sections.length  ? sectiosData.sections.map((item, index) => {
+               respProject?.data?.sections?.length  ? respProject?.data.sections .map((item, index) => {
                   if (item.section_number === '2') {
                      return (<div key={index} className="TiketsSection-contaner-blockLeft">
                         <SectionDescript
@@ -36,7 +40,7 @@ const TiketsSection = () => {
                            editStatusTemplate={editStatusTemplate}
                            item={item}
                         />
-                        <SectionImages defaultImagesList={defaultImagesList} item={item} />
+                        <SectionImages defaultImagesList={item.images} item={item} />
                      </div>
                      )
 

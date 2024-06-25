@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-body {
-  color: #101010;
-  background-color: #ffffff;
-}
+
 
 .layout_padding {
   padding-top: 90px;
@@ -298,7 +295,7 @@ a:focus {
   text-transform: uppercase;
 }
 
-.form input{
+.hero_area .form input{
   background-color: #109dbd;
 }
 .slider_section .carousel_btn-box {
@@ -347,7 +344,7 @@ a:focus {
   object-fit: cover;
 }
 .row .puk {
-  font-size: 20px;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -498,10 +495,13 @@ a:focus {
   display: flex;
   align-items: center;
 }
+.hcategory_home{
+  margin-top: 40px;
+}
 .sec_loh h1 {
   display: flex;
   align-items: center;
-  font-size: 35px;
+
   margin-top: 150px;
 }
 
@@ -561,7 +561,7 @@ a:focus {
   padding: 20px -50px;
   width: 1000px;
   margin-left: 170px;
-  margin-top: 30px;
+
   margin-bottom: 50px;
 }
 

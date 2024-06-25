@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import './Wedding1Header.css';
 import Timer from '../../../timer/Timer';
 import { down } from '../../../../iconsFolder/icons';
@@ -47,6 +47,8 @@ function Wedding1Header() {
       }
    }, [debouncedInputs, dispatch]);
 
+
+
    return (
       <header style={{ backgroundImage: `url(${headerBackground})` }}>
          <div className="container">
@@ -73,7 +75,7 @@ function Wedding1Header() {
                                  onChange={handleInputChange}
                               />
                            ) : (
-                              <span className="male">{respProjectData?.data?.data?.sections[0].name_1 || allInfo.nameBoy || t('couple.0')}</span>
+                              <span className="male">{respProjectData?.data?.sections[0].name_1 || allInfo.nameBoy || t('couple.0')}</span>
                            )}
                            {changeInfoState === 'edit' ? (
                               <input
@@ -85,7 +87,7 @@ function Wedding1Header() {
                                  onChange={handleInputChange}
                               />
                            ) : (
-                              <span className="female">{respProjectData?.data?.data?.sections[0].name_2 || allInfo.nameGirl || t('couple.1')}</span>
+                              <span className="female">{respProjectData?.data?.sections[0].name_2 || allInfo.nameGirl || t('couple.1')}</span>
                            )}
                         </div>
                      )}
