@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { phone } from "../../../iconsFolder/icons";
+import { phone, galeriaIcon } from "../../../iconsFolder/icons";
 import { invitation1 } from "../images";
 import { convertToBase64 } from "../../../utils/helperFunck";
 import {
@@ -42,8 +42,13 @@ function Main_Invitation() {
   const now = `${year}-${month <= 8 ? `0${month + 1}` : `${month + 1}`}-${day}`;
   const [address1, setAddress1] = useState("");
   const dispatch = useDispatch();
+  const date2 = "24-08-03";
   const [text1, setText1] = useState();
-  const dateArray = date ? date.split("-") : date1.split("-");
+  const dateArray = date
+    ? date.split("-")
+    : // : date1
+      // ? date1.split("-")
+      date2.split("-");
   const invitationImg = invitation.length ? invitation : invitation1;
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +68,9 @@ function Main_Invitation() {
     };
   }, []);
   useEffect(() => {
-    setDate1(date);
+    if (date) {
+      setDate1(date);
+    }
   }, [date]);
   useEffect(() => {
     if (date1) {
@@ -86,6 +93,7 @@ function Main_Invitation() {
       setTell1("");
       setImg([]);
       setName1("");
+      setDate1("");
     }
   }, [view]);
   useEffect(() => {
@@ -97,13 +105,16 @@ function Main_Invitation() {
       dispatch(setTell(""));
       dispatch(setInvitation(""));
       dispatch(setName(""));
+      dispatch(setDate(""));
     }
   }, [view]);
 
   function handleChange(e) {
-    convertToBase64(e.target.files[0]).then((base64) => {
-      setImg([...img, base64]);
-    });
+    if (e.target.value) {
+      convertToBase64(e.target.files[0]).then((base64) => {
+        setImg([...img, base64]);
+      });
+    }
   }
 
   return (
@@ -137,8 +148,8 @@ function Main_Invitation() {
           <div
             className="invitation_box"
             style={{
-              justifyContent: view && invitation.length === 0 && "center",
-              gap: invitation.length === 0 && "10px",
+              justifyContent: invitation.length || !view ? "" : "center",
+              gap: invitation.length === 0 && view ? "" : "160px",
             }}
           >
             {invitationImg.length && (
@@ -158,12 +169,18 @@ function Main_Invitation() {
             )}
             {edit && (
               <>
-                <input
-                  type="file"
-                  // value={addImg}
-                  onChange={handleChange}
-                  disabled={img.length === 3 ? true : false}
-                />
+                <label>
+                  <div className="galeria-icon">
+                    {galeriaIcon} /{img.length}
+                  </div>
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    // value={addImg}
+                    onChange={handleChange}
+                    disabled={img.length === 3 ? true : false}
+                  />
+                </label>
               </>
             )}
             {invitationDisplay && (
@@ -184,7 +201,7 @@ function Main_Invitation() {
                     <p>
                       <input
                         type="date"
-                        value={date1}
+                        value={date1 ? date1 : date2}
                         min={now}
                         onChange={(e) => setDate1(e.target.value)}
                       />
@@ -220,7 +237,7 @@ function Main_Invitation() {
                         <input
                           type="text"
                           value={full_name1}
-                          placeholder="restaurant name"
+                          placeholder={`${t("main_invitation.7")}`}
                           onChange={(e) => setFull_Name1(e.target.value)}
                         />
                       </p>
@@ -236,12 +253,14 @@ function Main_Invitation() {
                   {edit && (
                     <>
                       <p>
-                        <textarea placeholder="address"></textarea>
+                        <textarea
+                          placeholder={`${t("placholderBirthday.0")}`}
+                        ></textarea>
                       </p>
                       <p style={{ position: "relative", width: "300px" }}>
                         <input
                           type="text"
-                          placeholder="phone number"
+                          placeholder={`${t("placholderBirthday.1")}`}
                           value={tell1}
                           onChange={(e) =>
                             setTell1(
@@ -269,6 +288,7 @@ function Main_Invitation() {
                       <input
                         type="text"
                         value={name1}
+                        placeholder={`${t("main_invitation.10")}`}
                         onChange={(e) => setName1(e.target.value)}
                       />
                     </>
