@@ -10,6 +10,7 @@ import weeding1ResultMessageSlice from './slices/Wedding1ResultMessageSlice/Wedd
 import modalPrivateSlice from './slices/ModalPrivate/ModalPrivateSlice';
 import tiketsLengModalSlice from './slices/TiketsLengModal/TiketsLengModalSlice';
 import birthDaySlice from "./slices/BirthDaySlice/BirthDaySlice";
+import getTariffDataSlice from "./slices/TarifData/TarifDataSlice";
 
 
 
@@ -26,7 +27,7 @@ const store = configureStore({
       modalPrivate: modalPrivateSlice.reducer,
       tiketsLengModal: tiketsLengModalSlice.reducer,
       birthDay: birthDaySlice.reducer,
-
+      gettariffData: getTariffDataSlice,
    },
 });
 

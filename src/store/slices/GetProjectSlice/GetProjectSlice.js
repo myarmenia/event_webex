@@ -20,6 +20,7 @@ const getProjectSlice = createSlice({
             .addCase(getProject.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.loading = 'idle';
+                console.log(state.data, '-----');
             })
             .addCase(getProject.rejected, (state, action) => {
                 state.error = action.error.message;

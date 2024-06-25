@@ -30,10 +30,10 @@ function FixedButton({setLangModal, lengModal}) {
 
   }
   
-
+  console.log(respProjectData, 'changeInfoState');
   return (
     <>
-      {(!respProjectData.data.success) && changeInfoState === 'view' && <button className='fixed_button' onClick={editTemplateBtn} >{t('wedding1_buttons.0')}</button>}
+      {(!respProjectData?.success) && changeInfoState === 'view' && <button className='fixed_button' onClick={editTemplateBtn} >{t('wedding1_buttons.0')}</button>}
       {changeInfoState === 'edit' && <button className='fixed_button'onClick={handleButtonClick}>{t('wedding1_buttons.1')}</button>}
       {allInfo.date  !== ""  &&  allInfo.feedback !== "" && <button  className='fixed_button_2' onClick={() => dispatch(openModalPrivate('wedding1'))}>{t('wedding1_buttons.2')}</button>}
   </>

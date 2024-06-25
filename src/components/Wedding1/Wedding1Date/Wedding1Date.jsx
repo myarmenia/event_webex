@@ -22,13 +22,13 @@ function Wedding1Date() {
         <h1>{t('maintitle')}</h1>
       {
        changeInfoState === 'edit' ? <input type="date" value={allInfo?.date || '2024-10-12'} className='date_inp' onChange={(e) => setWedding1Date(e.target.value)}/> :  <div className='data'>
-          { respProjectData.data.data ? <span>{respProjectData.data.data.date.split('-')[2]}</span> : <span>{allInfo && allInfo?.date.split('-')[2] || 12}</span>}
+          { respProjectData?.data?.data ? <span>{respProjectData.data.data.date.split('-')[2]}</span> : <span>{allInfo && allInfo?.date.split('-')[2] || 12}</span>}
           <div></div>
           {/* <span>{allInfo && allInfo?.date.split('-')[1] || 10}</span> */}
-          { respProjectData.data.data ? <span>{respProjectData.data.data.date.split('-')[1]}</span> : <span>{allInfo && allInfo?.date.split('-')[1] || 10}</span>}
+          { respProjectData?.data?.data ? <span>{respProjectData.data.data.date.split('-')[1]}</span> : <span>{allInfo && allInfo?.date.split('-')[1] || 10}</span>}
           <div></div>
           {/* <span>{allInfo && allInfo?.date.split('-')[0] || 2024} </span> */}
-          { respProjectData.data.data ? <span>{respProjectData.data.data.date.split('-')[0]}</span> : <span>{allInfo && allInfo?.date.split('-')[0] || 2024} </span>}
+          { respProjectData?.data?.data ? <span>{respProjectData.data.data.date.split('-')[0]}</span> : <span>{allInfo && allInfo?.date.split('-')[0] || 2024} </span>}
         </div>
       }
     </div>

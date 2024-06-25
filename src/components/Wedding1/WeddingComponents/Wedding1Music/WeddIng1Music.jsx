@@ -44,11 +44,11 @@ function Wedding1Music() {
       <audio controls ref={audioRef} style={{ display: 'none' }}>
         
         { 
-         params.token && respProjectData.data.data?.sound_path  && <source  src={ require(`../../../../audio/${respProjectData.data?.data?.sound_path}`)}type="audio/mpeg" />
+         params.token && respProjectData?.data?.data?.sound_path  && <source  src={ require(`../../../../audio/${respProjectData?.data?.data?.sound_path}`)}type="audio/mpeg" />
         }
 
         {
-          !params.token && !respProjectData.data.data?.sound_path && <source  src={ require(`../../../../audio/Christina Perri feat. Steve Kazee - A Thousand Years (Part 2).mp3`)}type="audio/mpeg" />
+          !params.token   && <source  src={ require(`../../../../audio/Christina Perri feat. Steve Kazee - A Thousand Years (Part 2).mp3`)}type="audio/mpeg" />
         }
 
 
