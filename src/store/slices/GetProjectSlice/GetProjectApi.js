@@ -16,6 +16,7 @@ export const getProject = createAsyncThunk(
         // if (window.location.pathname !== `/${response.data.data.lang}/wedding1/`) {
         //   window.location.pathname = `/${response.data.data.lang}/wedding1/`;
         // }
+        console.log(response.data, 'lang');
         return response?.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);

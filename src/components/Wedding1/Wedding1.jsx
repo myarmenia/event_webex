@@ -61,7 +61,7 @@ function Wedding1() {
         <Wedding1Header/>
         <Wedding1Main/>
         <Wedding1Footer/>
-        {(!respProjectData.data.success) && selectLinkModal && <Wedding1LinkModal/>}
+        {(!respProjectData?.data?.success) && selectLinkModal && <Wedding1LinkModal/>}
         <Footer_Autors />
         {langModal && <Language setLangModal={setLangModal}/>}
         {musicModalIsopen && <MusicModal  lengModal={langModal}/>}
