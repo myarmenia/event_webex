@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ModalPrivate.css";
 import { rightIconArrow } from "../../iconsFolder/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,8 @@ import { selectDefaultData } from "../../store/slices/Tikets/tiketsSlice";
 import { postPrivateProject } from "../../store/slices/privateProjectSlice/privateProjectApi";
 import { allInfoSelector } from "../../store/slices/ChangeInfoSlice/ChangeInfoSlice";
 import { selectProjectLoading } from "../../store/slices/GetProjectSlice/GetProjectSlice";
+import { selectTariffData } from "../../store/slices/TarifData/TarifDataSlice";
+import { getTarifData } from "../../store/slices/TarifData/TarifDataApi";
 
 function ModalPrivate() {
   const dispatch = useDispatch();
@@ -17,61 +19,27 @@ function ModalPrivate() {
   const selectTypeModal = useSelector(modalPrivateSelectorType);
   const allInfo = useSelector(allInfoSelector);
   const loadSpinner = useSelector(selectProjectLoading);
+  const respTariffData = useSelector(selectTariffData);
 
-  const tarifData = [
-    {
-      id: "1",
-      name: "Basic",
-      price: "4950 AMD",
-      desc: "1 invitation card",
-      infoTitle: "You can create one invitation that includes",
-      infoText: "",
-      infoItems: [
-        "1. you will automatically create the appropriate one for you",
-        "2. You will be able to quickly distribute invitations via Qr code",
-        "3)  You will receive the guest list on the phone number you sent",
-      ],
-    },
-    {
-      id: "2",
-      name: "Standart",
-      price: "35000 AMD",
-      desc: "3 months + 1 month free",
-      infoTitle: "You can create one invitation that include",
-      infoText:
-        " As part of this package you will receive a code with which you will generate invitation cards as part of the package.",
-      infoItems: [
-        "1. you will automatically create the appropriate one for you",
-        "2. You will be able to quickly distribute invitations via Qr code",
-        "3)  You will receive the guest list on the phone number you sent",
-      ],
-    },
-    {
-      id: "3",
-      name: "Premium",
-      price: "73000 AMD",
-      desc: "1 year + 3 months free",
-      infoTitle: "You can create one invitation that includes",
-      infoText:
-        " As part of this package you will receive a code with which you will generate invitation cards as part of the package.",
-      infoItems: [
-        "1. you will automatically create the appropriate one for you",
-        "2. You will be able to quickly distribute invitations via Qr code",
-        "3)  You will receive the guest list on the phone number you sent",
-      ],
-    },
-  ];
+  useEffect(() => {
+    dispatch(getTarifData());
+  }, [dispatch]);
 
-  const privateProject = (id) => {
+  const privateProject = (e, promoCode, tariff_id) => {
+    e.preventDefault();
+
+    let resultObj = null;
+
     if (selectTypeModal === "promNight") {
-      if (allInfoPromNight.feedBack !== "" && allInfoPromNight.date !== "") {
-        const resultObj = {
+      if (allInfoPromNight.feedback !== "" && allInfoPromNight.date !== "") {
+        resultObj = {
           template_id: "2",
           template_route: "/tikets",
           date: allInfoPromNight.date,
           feedback: allInfoPromNight.feedback,
           invitation_name: allInfoPromNight.invitation_name,
-          tariff_id: id,
+          ...(tariff_id && { tariff_id }),
+          ...(promoCode && { promo_code: promoCode }),
           sections: [
             {
               section_number: 1,
@@ -79,7 +47,6 @@ function ModalPrivate() {
                 time: allInfoPromNight.section_1_time,
               }),
             },
-
             {
               section_number: 2,
               ...(allInfoPromNight.section_2_text && {
@@ -92,7 +59,6 @@ function ModalPrivate() {
                 images: allInfoPromNight.section_2_images,
               }),
             },
-
             {
               section_number: 3,
               ...(allInfoPromNight.section_3_text && {
@@ -104,30 +70,24 @@ function ModalPrivate() {
             },
           ].filter((item) => Object.keys(item).length !== 1),
         };
-
-        dispatch(postPrivateProject(resultObj)).then((res) => {
-          if (res.payload.data) {
-            window.location.href = res.payload.data.redirect_url;
-          }
-        });
       }
     } else if (selectTypeModal === "wedding1") {
-      if (allInfo.feedBack !== "" && allInfo.date !== "") {
-        const resultObj = {
+      if (allInfo.feedback !== "" && allInfo.date !== "") {
+        resultObj = {
           template_id: "1",
           template_route: "/wedding1",
           date: allInfo.date,
           sound_path: allInfo.music_path,
           feedback: allInfo.feedback,
-          invitation_name: allInfo.nameBoy + "-" + allInfo.nameGirl,
-          tariff_id: id,
+          invitation_name: `${allInfo.nameBoy}-${allInfo.nameGirl}`,
+          ...(tariff_id && { tariff_id }),
+          ...(promoCode && { promo_code: promoCode }),
           sections: [
             {
               section_number: 1,
               ...(allInfo.nameBoy && { name_1: allInfo.nameBoy }),
               ...(allInfo.nameGirl && { name_2: allInfo.nameGirl }),
             },
-
             {
               section_number: 2,
               ...(allInfo.eventTime && { time: allInfo.eventTime }),
@@ -140,7 +100,6 @@ function ModalPrivate() {
                 images: allInfo.event_imgs,
               }),
             },
-
             {
               section_number: 3,
               ...(allInfo.churchesTime && { time: allInfo.churchesTime }),
@@ -153,7 +112,6 @@ function ModalPrivate() {
                 images: allInfo.churches_imgs,
               }),
             },
-
             {
               section_number: 4,
               ...(allInfo.registryTime && { time: allInfo.registryTime }),
@@ -168,7 +126,6 @@ function ModalPrivate() {
                 images: allInfo.registry_imgs,
               }),
             },
-
             {
               section_number: 5,
               ...(allInfo.banquetTime && { time: allInfo.banquetTime }),
@@ -183,55 +140,53 @@ function ModalPrivate() {
             },
           ].filter((item) => Object.keys(item).length !== 1),
         };
-
-        dispatch(postPrivateProject(resultObj)).then((res) => {
-          if (res.payload.data) {
-            window.location.href = res.payload.data.redirect_url;
-          }
-        });
       }
     } else if (selectTypeModal === "birth-day") {
-      const obj = {
+      // Assuming birth-day data is correctly formatted
+      const {
+        date,
+        tell,
+        age,
+        name,
+        text,
+        time,
+        full_name,
+        address,
+        invitation,
+        address_link,
+        images,
+      } = allInfo;
+      resultObj = {
         template_id: "2",
         template_route: "/birthDay",
-        date: date,
+        date,
         feedback: tell,
-        age: age,
+        age,
         invitation_name: name,
         sections: [
           {
             section_number: 1,
-            ...(text && { text: text }),
-            ...(time && { time: time }),
-            ...(full_name && { full_name: full_name }),
-            ...(address && { address: address }),
+            ...(text && { text }),
+            ...(time && { time }),
+            ...(full_name && { full_name }),
+            ...(address && { address }),
             ...(invitation && { images: invitation }),
           },
           {
             section_number: 2,
-            ...(address_link && { address_link: address_link }),
-            ...(images && { images: images }),
+            ...(address_link && { address_link }),
+            ...(images && { images }),
           },
         ].filter((item) => Object.keys(item).length !== 1),
       };
+    }
 
-      //   dispatch(postPrivateProject(obj)).then((res) => {
-      //     if (res.payload.data) {
-      //       window.location.href = res.payload.data.redirect_url;
-      //       dispatch(setTest(true));
-      //       // dispatch(setDate(res.payload.data.date));
-      //       // dispatch(setAge(res.payload.data.age));
-      //       // dispatch(setName(res.payload.data.invitation_name));
-      //       // dispatch(setTime(res.payload.data.sections[0].time));
-      //       // dispatch(setText(res.payload.data.sections[0].text));
-      //       // dispatch(setFull_name(res.payload.data.sections[0].full_name));
-      //       // dispatch(setAddress(res.payload.data.sections[0].address));
-      //       // dispatch(setInvitation(res.payload.data.sections[0].images));
-      //       // dispatch(setAddress_Link(res.payload.data.sections[1].address_link));
-      //       // dispatch(setImages(res.payload.data.sections[1].images));
-
-      //     }
-      //   });
+    if (resultObj) {
+      dispatch(postPrivateProject(resultObj)).then((res) => {
+        if (res.payload.data) {
+          window.location.href = res.payload.data.redirect_url;
+        }
+      });
     }
   };
 
@@ -252,17 +207,21 @@ function ModalPrivate() {
           </p>
 
           <div className="modal_private_block_top_input">
-            <div className="modal_private_block_top_input_div">
+            <form
+              className="modal_private_block_top_input_div"
+              onSubmit={(e) => privateProject(e, e.target[0].value, null)}
+            >
               <span>promo code/coupon</span>
-              <input type="text" placeholder="FRN3" />
-            </div>
-
-            <span>{rightIconArrow}</span>
+              <div className="modal_private_block_top_input_div_input">
+                <input type="text" placeholder="FRN3" />
+                <button type="submit">{rightIconArrow}</button>
+              </div>
+            </form>
           </div>
         </div>
 
         <div className="modal_private_block_bottom">
-          {tarifData.map((el) => (
+          {respTariffData?.data.map((el) => (
             <div className="modal_private_block_bottom_item" key={el.id}>
               <div className="modal_private_block_bottom_item_top">
                 <h3>{el.desc}</h3>
@@ -271,21 +230,21 @@ function ModalPrivate() {
                 </span>
               </div>
               <span className="modal_private_block_bottom_item_top_info_title">
-                {el.infoTitle}
+                {el.info_title}
               </span>
               <div>
                 <span className="modal_private_block_bottom_item_info_text">
-                  {el.infoText}
+                  {el.info_text}
                 </span>
                 <ul className="modal_private_block_bottom_item_info_list">
-                  {el.infoItems.map((item) => (
+                  {el.info_items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </div>
               <button
                 className="modal_private_block_bottom_item_btn"
-                onClick={() => privateProject(el.id)}
+                onClick={(e) => privateProject(e, null, el.id)}
               >
                 Pay
               </button>
