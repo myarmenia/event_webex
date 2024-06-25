@@ -163,8 +163,55 @@ function ModalPrivate() {
               })
               
             }
+          else if (selectTypeModal === "birth-day") {
+      const obj = {
+        template_id: "2",
+        template_route: "/birthDay",
+        date: date,
+        feedback: tell,
+        age: age,
+        invitation_name: name,
+        sections: [
+          {
+            section_number: 1,
+            ...(text && { text: text }),
+            ...(time && { time: time }),
+            ...(full_name && { full_name: full_name }),
+            ...(address && { address: address }),
+            ...(invitation && { images: invitation }),
+          },
+          {
+            section_number: 2,
+            ...(address_link && { address_link: address_link }),
+            ...(images && { images: images }),
+          },
+        ].filter((item) => Object.keys(item).length !== 1),
+      };
+
+      //   dispatch(postPrivateProject(obj)).then((res) => {
+      //     if (res.payload.data) {
+      //       window.location.href = res.payload.data.redirect_url;
+      //       dispatch(setTest(true));
+      //       // dispatch(setDate(res.payload.data.date));
+      //       // dispatch(setAge(res.payload.data.age));
+      //       // dispatch(setName(res.payload.data.invitation_name));
+      //       // dispatch(setTime(res.payload.data.sections[0].time));
+      //       // dispatch(setText(res.payload.data.sections[0].text));
+      //       // dispatch(setFull_name(res.payload.data.sections[0].full_name));
+      //       // dispatch(setAddress(res.payload.data.sections[0].address));
+      //       // dispatch(setInvitation(res.payload.data.sections[0].images));
+      //       // dispatch(setAddress_Link(res.payload.data.sections[1].address_link));
+      //       // dispatch(setImages(res.payload.data.sections[1].images));
+
+      //     }
+      //   });
+
+
+    }
+  };
         }
     }
+    
 
     return (
         <div className='modal_private'>

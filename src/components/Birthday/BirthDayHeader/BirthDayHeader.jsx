@@ -22,15 +22,18 @@ import CustomCanvas from "../../../hooks/CustomCanvas";
 import { numberArray } from "../../../asets/3d_model";
 import Timer from "../../timer/Timer";
 import { useDispatch, useSelector } from "react-redux";
+import { sectiosData } from "../../../dataFolder/data";
+import { openModalPrivate } from "../../../store/slices/ModalPrivate/ModalPrivateSlice";
 function BirthDayHeader() {
   const { t, i18n } = useTranslation();
   const [headerDisplay, setHeaderDisplay] = useState(false);
   const dispatch = useDispatch();
-  const [date1, setDate1] = useState("2024-08-03");
+  const [date1, setDate1] = useState("");
   const [age1, setAge1] = useState("50");
   const day = new Date().getDate();
   const year = new Date().getFullYear();
   const month = new Date().getMonth();
+  const date2 = "2024-08-03";
   const now = `${year}-${month <= 8 ? `0${month + 1}` : `${month + 1}`}-${
     day + 1
   }`;
@@ -52,7 +55,7 @@ function BirthDayHeader() {
   } = useSelector((store) => store.birthDay);
   const [ageArray, setAgeArray] = useState([]);
   const lang = localStorage.getItem("lang");
-  const dateArray = date.split("-");
+  const dateArray = date ? date.split("-") : date2.split("-");
   useEffect(() => {
     setTimeout(() => {
       setHeaderDisplay(true);
@@ -73,69 +76,95 @@ function BirthDayHeader() {
     setAgeArray(age1.split(""));
   }, [age1]);
   useEffect(() => {
-    dispatch(setDate(date1));
+    if (date1) {
+      dispatch(setDate(date1));
+    }
   }, [date1]);
   useEffect(() => {
-    setDate1(date);
+    if (date) {
+      setDate1(date);
+    }
   }, [date]);
   useEffect(() => {
     if (!view) {
-      setDate1("2024-08-03");
+      setDate1("");
       setAge1("50");
     }
   }, [edit]);
   const EditClick = () => {
-    localStorage.setItem("edit", true);
+    // localStorage.setItem("edit", true);
     dispatch(setEdit(true));
     dispatch(setModal(true));
     dispatch(setView(false));
   };
   const viewClick = () => {
-    localStorage.setItem("edit", false);
+    // localStorage.setItem("edit", false);
     dispatch(setEdit(false));
     dispatch(setView(true));
   };
   const saveClick = () => {
-    const obj = {
-      template_id: "2",
-      template_route: "/birthDay",
-      date: date,
-      feedback: tell,
-      age: age,
-      invitation_name: name,
-      sections: [
-        {
-          section_number: 1,
-          ...(text && { text: text }),
-          ...(time && { time: time }),
-          ...(full_name && { full_name: full_name }),
-          ...(address && { address: address }),
-          ...(invitation && { images: invitation }),
-        },
-        {
-          section_number: 2,
-          ...(address_link && { address_link: address_link }),
-          ...(images && { images: images }),
-        },
-      ].filter((item) => Object.keys(item).length !== 1),
-    };
-    console.log(obj);
-    dispatch(postPrivateProject(obj)).then((res) => {
-      if (res.payload.data) {
-        window.location.href = res.payload.data.redirect_url;
-        dispatch(setTest(true));
-        // dispatch(setDate(res.payload.data.date));
-        // dispatch(setAge(res.payload.data.age));
-        // dispatch(setName(res.payload.data.invitation_name));
-        // dispatch(setTime(res.payload.data.sections[0].time));
-        // dispatch(setText(res.payload.data.sections[0].text));
-        // dispatch(setFull_name(res.payload.data.sections[0].full_name));
-        // dispatch(setAddress(res.payload.data.sections[0].address));
-        // dispatch(setInvitation(res.payload.data.sections[0].images));
-        // dispatch(setAddress_Link(res.payload.data.sections[1].address_link));
-        // dispatch(setImages(res.payload.data.sections[1].images));
-      }
-    });
+    //   // const obj = {
+    //   //   template_id: "2",
+    //   //   template_route: "/birthDay",
+    //   //   date: date,
+    //   //   feedback: tell,
+    //   //   age: age,
+    //   //   invitation_name: name,
+    //   //   sections: [
+    //   //     {
+    //   //       section_number: 1,
+    //   //       ...(text && { text: text }),
+    //   //       ...(time && { time: time }),
+    //   //       ...(full_name && { full_name: full_name }),
+    //   //       ...(address && { address: address }),
+    //   //       ...(invitation && { images: invitation }),
+    //   //     },
+    //   //     {
+    //   //       section_number: 2,
+    //   //       ...(address_link && { address_link: address_link }),
+    //   //       ...(images && { images: images }),
+    //   //     },
+    //   //   ].filter((item) => Object.keys(item).length !== 1),
+    //   // };
+    //   // console.log(obj);
+    //   // dispatch(postPrivateProject(obj)).then((res) => {
+    //   //   if (res.payload.data) {
+    //   //     window.location.href = res.payload.data.redirect_url;
+    //   //     dispatch(setTest(true));
+    //   //     // dispatch(setDate(res.payload.data.date));
+    //   //     // dispatch(setAge(res.payload.data.age));
+    //   //     // dispatch(setName(res.payload.data.invitation_name));
+    //   //     // dispatch(setTime(res.payload.data.sections[0].time));
+    //   //     // dispatch(setText(res.payload.data.sections[0].text));
+    //   //     // dispatch(setFull_name(res.payload.data.sections[0].full_name));
+    //   //     // dispatch(setAddress(res.payload.data.sections[0].address));
+    //   //     // dispatch(setInvitation(res.payload.data.sections[0].images));
+    //   //     // dispatch(setAddress_Link(res.payload.data.sections[1].address_link));
+    //   //     // dispatch(setImages(res.payload.data.sections[1].images));
+
+    //   //     // sectiosData.date && dispatch(setDate(sectiosData.date));
+    //   //     // sectiosData.age && dispatch(setAge(sectiosData.age));
+    //   //     // sectiosData.invitation_name &&
+    //   //     //   dispatch(setName(sectiosData.invitation_name));
+    //   //     // sectiosData.sections[0].time &&
+    //   //     //   dispatch(setTime(sectiosData.sections[0].time));
+    //   //     // sectiosData.sections[0].text &&
+    //   //     //   dispatch(setText(sectiosData.sections[0].text));
+    //   //     // sectiosData.sections[0].full_name &&
+    //   //     //   dispatch(setFull_name(sectiosData.sections[0].full_name));
+    //   //     // sectiosData.sections[0].address &&
+    //   //     //   dispatch(setAddress(sectiosData.sections[0].address));
+    //   //     // sectiosData.sections[0].images &&
+    //   //     //   dispatch(setInvitation(sectiosData.sections[0].images));
+    //   //     // sectiosData.sections[1].address_link &&
+    //   //     //   dispatch(setAddress_Link(sectiosData.sections[1].address_link));
+    //   //     // sectiosData.sections[1].images &&
+    //   //     //   dispatch(setImages(sectiosData.sections[1].images));
+    //   //   }
+
+    //   //   dispatch(openModalPrivate("birth-day"));
+    //   // });
+    dispatch(openModalPrivate("birth-day"));
   };
   return (
     <div
@@ -219,17 +248,22 @@ function BirthDayHeader() {
               <p style={{ zIndex: "999999999" }}>
                 <input
                   type="date"
-                  value={date1}
+                  value={date1 ? date1 : date2}
                   min={now}
                   onChange={(e) => setDate1(e.target.value)}
                 />
               </p>
             )}
 
-            <p style={{ color: "white", fontSize: "32px", zIndex: "9999" }}>
-              {t("birthDay.0")}
-            </p>
-            <Timer allInfo={{ date }} />
+            {(date || !view) && (
+              <>
+                {" "}
+                <p style={{ color: "white", fontSize: "32px", zIndex: "9999" }}>
+                  {t("birthDay.0")}
+                </p>
+                <Timer allInfo={{ date: date || date2 }} />
+              </>
+            )}
 
             {headerDisplay && (
               <div

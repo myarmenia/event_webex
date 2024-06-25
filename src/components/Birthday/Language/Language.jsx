@@ -31,6 +31,8 @@ function Language() {
     console.log(prevLng, "prev");
     window.location.href = result;
     // localStorage.setItem("activeInputs", "true");
+    dispatch(setModal(false));
+    localStorage.setItem("edit", "true");
   };
 
   return (

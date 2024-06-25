@@ -7,6 +7,7 @@ import {
   setImages,
 } from "../../../store/slices/BirthDaySlice/BirthDaySlice";
 import { convertToBase64 } from "../../../utils/helperFunck";
+import { galeriaIcon } from "../../../iconsFolder/icons";
 function Main_Restaurant() {
   const { t, i18n } = useTranslation();
   const [restaurantDisplay, setRestaurantDisplay] = useState(false);
@@ -52,9 +53,11 @@ function Main_Restaurant() {
   }, [view]);
 
   const handleChange = (e) => {
-    convertToBase64(e.target.files[0]).then((base64) =>
-      setImg([...img, base64])
-    );
+    if (e.target.value) {
+      convertToBase64(e.target.files[0]).then((base64) =>
+        setImg([...img, base64])
+      );
+    }
   };
   return (
     <div
@@ -103,14 +106,19 @@ function Main_Restaurant() {
               ""
             )}
             {edit && (
-              <p>
-                <input
-                  type="file"
-                  disabled={img.length === 3 ? true : false}
-                  // value={image}
-                  onChange={handleChange}
-                />
-              </p>
+              <div>
+                <label>
+                  <div className="galeria-icon">
+                    {galeriaIcon} / {img.length}
+                  </div>
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    disabled={img.length === 3 ? true : false}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
             )}
             {(!edit && !view) || (view && address_link) ? (
               <a
@@ -132,7 +140,7 @@ function Main_Restaurant() {
               <p>
                 <input
                   type="text"
-                  placeholder="address_link"
+                  placeholder={`${t("placholderBirthday.2")}`}
                   value={address1}
                   onChange={(e) => setAddress1(e.target.value)}
                 />
