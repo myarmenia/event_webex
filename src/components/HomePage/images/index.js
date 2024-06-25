@@ -38,6 +38,8 @@ export {default as Slod}  from './slod.png'
 export {default as Slaide7} from './Erexaner.png'
 export const bgImageBanner = require('../images/kaput.png')
 export const KidsImage = require('../images/erexaner1245.png')
+export {default as Frame} from './Frame.png'
+
 
 
 
