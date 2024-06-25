@@ -13,14 +13,12 @@ import { privateProjectLoading } from '../../../../store/slices/privateProjectSl
 function Wedding1Main_info() {
 const respProjectData = useSelector(selectProjectData);
 const loading = useSelector(privateProjectLoading)
-
-  console.log(respProjectData,'ddddd');
   return (
 
     <div className='main_info'>
         <Wedding1Date/>
         {
-           respProjectData.data.data ?  respProjectData.data.data.sections.map((item, index) => {
+           respProjectData?.data ?  respProjectData?.data?.sections.map((item, index) => {
               if (item.section_number === '2') {
                 return (
                   <Wedding1Event key={index}  item={item}/>

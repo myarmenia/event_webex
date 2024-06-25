@@ -142,6 +142,21 @@
     font-size: 30px;
 }
 
+.modal_private_block_top_input_div_input {
+   display: flex;
+   gap: 10px;
+}
+
+.modal_private_block_top_input_div_input button {
+    outline: none;
+    border: none;
+    width: 50px;
+    color: white;
+    background-color: #3D229E;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 @media(max-width: 1024px) {  
 .modal_private_block {

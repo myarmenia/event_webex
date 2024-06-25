@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ModalPrivate.css'
 import { rightIconArrow } from '../../iconsFolder/icons'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,13 +7,17 @@ import { selectDefaultData } from '../../store/slices/Tikets/tiketsSlice'
 import { postPrivateProject } from '../../store/slices/privateProjectSlice/privateProjectApi'
 import { allInfoSelector } from '../../store/slices/ChangeInfoSlice/ChangeInfoSlice'
 import { selectProjectLoading } from '../../store/slices/GetProjectSlice/GetProjectSlice'
+import { selectTariffData } from '../../store/slices/TarifData/TarifDataSlice'
+import { getTarifData } from '../../store/slices/TarifData/TarifDataApi'
+import { event } from 'jquery'
 
 function ModalPrivate() {
     const dispatch = useDispatch()
     const allInfoPromNight = useSelector(selectDefaultData)
     const selectTypeModal = useSelector(modalPrivateSelectorType)
-  const allInfo  = useSelector(allInfoSelector);
-  const loadSpinner = useSelector(selectProjectLoading);
+    const allInfo  = useSelector(allInfoSelector);
+    const loadSpinner = useSelector(selectProjectLoading);
+    const respTariffData = useSelector(selectTariffData)
 
     const tarifData = [
         {
@@ -47,7 +51,11 @@ function ModalPrivate() {
         }
     ]
 
-    const privateProject = (promoCode, tariff_id) => {
+    useEffect(() => {
+        dispatch(getTarifData())
+    },[])
+    const privateProject = (e, promoCode, tariff_id) => {
+        e.preventDefault()
         if (selectTypeModal === 'promNight') {
             if (allInfoPromNight.feedBack !== '' && allInfoPromNight.date !== '') {
                 const resultObj = {
@@ -167,10 +175,12 @@ function ModalPrivate() {
                     <p>A word or set of letters and numbers that you can use to get a discount</p>
 
                     <div className='modal_private_block_top_input'>
-                        <form className='modal_private_block_top_input_div' onSubmit={(e) => privateProject(e.target[0].value,null)}>
+                        <form className='modal_private_block_top_input_div' onSubmit={(e) => privateProject(e, e.target[0].value,null)}>
                             <span>promo code/coupon</span>
-                            <input type="text" placeholder='FRN3' />
-                            <span></span>
+                            <div className='modal_private_block_top_input_div_input'>
+                                <input type="text" placeholder='FRN3' />
+                                <button>{rightIconArrow}</button>
+                            </div>
                         </form>
 
                     </div>
@@ -178,24 +188,24 @@ function ModalPrivate() {
 
                 <div className="modal_private_block_bottom">
                     {
-                        tarifData.map(el => (
+                        respTariffData?.data.map(el => (
                             <div className='modal_private_block_bottom_item' key={el.id}>
                                 <div className='modal_private_block_bottom_item_top'>
                                     <h3>{el.desc}</h3>
                                     <span className='modal_private_block_bottom_item_top_price'>{el.price}</span>
                                 </div>
-                                <span className='modal_private_block_bottom_item_top_info_title'>{el.infoTitle}</span>
+                                <span className='modal_private_block_bottom_item_top_info_title'>{el.info_title}</span>
                                 <div>
-                                    <span className='modal_private_block_bottom_item_info_text'>{el.infoText}</span>
+                                    <span className='modal_private_block_bottom_item_info_text'>{el.info_text}</span>
                                     <ul className='modal_private_block_bottom_item_info_list'>
                                         {
-                                            el.infoItems.map(item => (
+                                            el.info_items.map(item => (
                                                 <li key={item}>{item}</li>
                                             ))
                                         }
                                     </ul>
                                 </div>
-                                <button className='modal_private_block_bottom_item_btn' onClick={() => privateProject(null, el.id)}>Pay</button>
+                                <button className='modal_private_block_bottom_item_btn' onClick={(e) => privateProject(e, null, el.id)}>Pay</button>
                             </div>
                         ))
                     }

@@ -298,7 +298,7 @@ a:focus {
   text-transform: uppercase;
 }
 
-.form input{
+.hero_area .form input{
   background-color: #109dbd;
 }
 .slider_section .carousel_btn-box {

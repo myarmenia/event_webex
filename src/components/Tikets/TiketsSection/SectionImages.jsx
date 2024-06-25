@@ -6,12 +6,12 @@ import OneImage from './OneImage';
 
 const SectionImages = ({ defaultImagesList, item }) => {
    
-
+   console.log(defaultImagesList, 'defaultImagesList');
    return (
       <div className="TiketsSection-blockLeft-blockImg">
          
          {defaultImagesList.map((el, idx) => (
-            <OneImage key={idx} el={el} methodDispatch={changePromNight_imgs_section_2}/>
+            <OneImage key={idx} item={el} methodDispatch={changePromNight_imgs_section_2}/>
          ))}
       </div>
    );

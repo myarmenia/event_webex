@@ -29,8 +29,8 @@ const FormBlockRight = ({ defaultImages_place, editStatusTemplate, item}) => {
          <div className="TiketsSection-blockRight-img">
             {/* <img src={defaultImages_place} alt="" /> */}
             {item ? item.images.map((img, index) =>(
-               <OneImage key={index} el={img} methodDispatch={changePromNight_imgs_section_3}/>
-            )) : <img  src={defaultImages_place} alt="img" />}
+               <OneImage key={index} item={img} methodDispatch={changePromNight_imgs_section_3}/>
+            )) : <OneImage  item={defaultImages_place} methodDispatch={changePromNight_imgs_section_3} alt="img" />}
             {editStatusTemplate && (
                <div className="iketsSection-blockRight-img-blockPhoneNumger">
                   <p>Your phone number is required for data accuracy</p>
