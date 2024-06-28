@@ -64,6 +64,7 @@ const birthDaySlice = createSlice({
     },
     setInvitation: (state, { payload }) => {
       state.invitation = payload;
+      console.log(payload, "6666");
     },
     setImages: (state, { payload }) => {
       state.images = payload;

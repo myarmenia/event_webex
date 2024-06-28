@@ -50,6 +50,7 @@ function Main_Invitation() {
       // ? date1.split("-")
       date2.split("-");
   const invitationImg = invitation.length ? invitation : invitation1;
+  console.log(invitationImg, "lllll");
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -161,7 +162,12 @@ function Main_Invitation() {
                         className={`invitation_image_${index + 1}`}
                         key={index}
                       >
-                        <img src={invitationImg[index]} alt="not found" />
+                        <img
+                          src={
+                            invitationImg[index].path || invitationImg[index]
+                          }
+                          alt="not found"
+                        />
                       </div>
                     ))
                   : ""}

@@ -24,6 +24,7 @@ import Timer from "../../timer/Timer";
 import { useDispatch, useSelector } from "react-redux";
 import { sectiosData } from "../../../dataFolder/data";
 import { openModalPrivate } from "../../../store/slices/ModalPrivate/ModalPrivateSlice";
+import { customBasesUrlFunc } from "../../../utils/helperFunck";
 function BirthDayHeader() {
   const { t, i18n } = useTranslation();
   const [headerDisplay, setHeaderDisplay] = useState(false);
@@ -55,6 +56,7 @@ function BirthDayHeader() {
   } = useSelector((store) => store.birthDay);
   const [ageArray, setAgeArray] = useState([]);
   const lang = localStorage.getItem("lang");
+  const params = customBasesUrlFunc();
   const dateArray = date ? date.split("-") : date2.split("-");
   useEffect(() => {
     setTimeout(() => {
