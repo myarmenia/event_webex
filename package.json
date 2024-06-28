@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
-
->>>>>>> 33a3743ce1e14883edd4b5a49d6f2c55e411e8e9
     "@react-three/drei": "^9.107.0",
     "@react-three/fiber": "^8.16.8",
     "@reduxjs/toolkit": "^2.2.5",
